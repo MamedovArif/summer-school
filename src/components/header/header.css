@@ -137,7 +137,7 @@
   width: 14px;
   height: 16px;
 
-  background-image: url("img/svg-technomart/icon-bookmark.svg");
+  background-image: url("./img/icon-bookmark.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
   opacity: 0.3;
@@ -171,7 +171,7 @@
   width: 16px;
   height: 16px;
 
-  background-image: url("img/svg-technomart/icon-cart.svg");
+  background-image: url("./img/icon-cart.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
   opacity: 0.3;
@@ -273,7 +273,7 @@
   width: 19px;
   height: 19px;
 
-  background-image: url("img/svg-technomart/icon-phone.svg");
+  background-image: url("./img/icon-phone.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
 }
@@ -404,7 +404,7 @@
   width: 20px;
   height: 18px;
 
-  background-image: url("img/svg-technomart/icon-user.svg");
+  background-image: url("./img/icon-user.svg");
   background-position: 0 0;
   background-repeat: no-repeat;
   opacity: 0.3;
@@ -429,7 +429,7 @@
   width: 21px;
   height: 17px;
 
-  background-image: url("img/svg-technomart/icon-logout.svg");
+  background-image: url("./img/icon-logout.svg");
   background-position: 0 0;
   background-repeat: no-repeat;
   opacity: 0.3;

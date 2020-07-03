@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './header.css';
+import logo from './img/logo-technomart.svg';
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
       <div className="top-header">
         <div className="top-header-container">
          <Link className="logotype" to="/">
-           <img className="logotype-img" src="img/svg-technomart/logo-technomart.svg"
+           <img className="logotype-img" src={logo}
            alt="Логотип Техномарта" width="137" height="22" />
          </Link>
          <form method="get" action="https://echo.htmlacademy.ru">
