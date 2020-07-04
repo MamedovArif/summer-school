@@ -1,106 +1,119 @@
-export default class SwapiService {
+export default class MockService {
 
-  _apiBase = 'https://swapi.dev/api';
-  _imageBase = 'https://starwars-visualguide.com/assets/img'
+  _perforators = [
+    {
+      id: 1,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 3000',
+      isNew: true,
+      initialPrice: 500,
+      price: 15,
+      url: 'jkjk',
+    },
 
-  getResource = async (url) => {
-    const res = await fetch(`${this._apiBase}${url}`);
+    {
+      id: 2,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 6000',
+      isNew: false,
+      initialPrice: 30500,
+      price: 125500,
+      url: 'jkjk',
+    },
 
-    if (!res.ok) {
-      throw new Error(`Could not fetch ${url}` +
-        `, received ${res.status}`)
-    }
-    return await res.json();
-  };
+    {
+      id: 3,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 2000',
+      isNew: false,
+      initialPrice: null,
+      price: 12500,
+      url: 'jkjk',
+    },
 
-  getAllPeople = async () => {
-    const res = await this.getResource(`/people/`);
-    return res.results
-      .map(this._transformPerson)
-      .slice(0, 5);
-  };
+    {
+      id: 4,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 3000',
+      isNew: false,
+      initialPrice: 22500,
+      price: 15500,
+      url: 'jkjk',
+    },
 
-  getPerson = async (id) => {
-    const person = await this.getResource(`/people/${id}/`);
-    return this._transformPerson(person);
-  };
+    {
+      id: 5,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 6000',
+      isnew: false,
+      initialPrice: 30500,
+      price: 25500,
+      url: 'jkjk',
+    },
 
-  getAllPlanets = async () => {
-    const res = await this.getResource(`/planets/`);
-    return res.results
-      .map(this._transformPlanet)
-      .slice(0, 5);
-  };
+    {
+      id: 6,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 2000',
+      isNew: false,
+      initialPrice: null,
+      price: 12500,
+      url: 'jkjk',
+    },
 
-  getPlanet = async (id) => {
-    const planet = await this.getResource(`/planets/${id}/`);
-    return this._transformPlanet(planet);
-  };
+        {
+      id: 7,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 3000',
+      isNew: false,
+      initialPrice: 22500,
+      price: 15500,
+      url: 'jkjk',
+    },
 
-  getAllStarships = async () => {
-    const res = await this.getResource(`/starships/`);
-    return res.results
-      .map(this._transformStarship)
-      .slice(0, 5);
-  };
+    {
+      id: 8,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 6000',
+      isNew: false,
+      initialPrice: 30500,
+      price: 25500,
+      url: 'jkjk',
+    },
 
-  getStarship = async (id) => {
-    const starship = await this.getResource(`/starships/${id}/`);
-    return this._transformStarship(starship);
-  };
+    {
+      id: 9,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'BFG 2000',
+      isNew: false,
+      initialPrice: null,
+      price: 12500,
+      url: 'jkjk',
+    },
+  ]
 
-  _extractId = (item) => {
-    const idRegExp = /\/([0-9]*)\/$/;
-    return item.url.match(idRegExp)[1];
-  };
-
-  _transformPlanet = (planet) => {
-    return {
-      id: this._extractId(planet),
-      name: planet.name,
-      diameter: planet.diameter,
-      gravity: planet.gravity,
-      orbitalPeriod: planet.orbital_period,
-      population: planet.population,
-      terrain: planet.terrain,
-      climate: planet.climate,
-      rotationPeriod: planet.rotation_period,
-    };
-  };
-
-  _transformStarship = (starship) => {
-    return {
-      id: this._extractId(starship),
-      name: starship.name,
-      model: starship.model,
-      manufacturer: starship.manufacturer,
-      costInCredits: starship.cost_in_credits,
-      length: starship.length,
-      crew: starship.crew,
-      passengers: starship.passengers,
-      cargoCapacity: starship.cargo_capacity
-    }
-  };
-
-  _transformPerson = (person) => {
-    return {
-      id: this._extractId(person),
-      name: person.name,
-      gender: person.gender,
-      birthYear: person.birth_year,
-      eyeColor: person.eye_color
-    }
+  getAllPerforators = async () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (Math.random() > 0.95) {
+          reject(new Error('Something bad happened'));
+        } else {
+          resolve(this._perforators);
+        }
+      }, 700)
+    })
   }
 
-  getImagePerson = ({id}) => {
-    return `${this._imageBase}/characters/${id}.jpg`
-  }
-
-  getImageStarship = ({id}) => {
-    return `${this._imageBase}/starships/${id}.jpg`
-  }
-
-  getImagePlanet = ({id}) => {
-    return `${this._imageBase}/planets/${id}.jpg`
+  getPerforator = async () => {
+    return this._perforators[0];
   }
 }

@@ -1,0 +1,131 @@
+.popular-maker {
+  min-height: 440px;
+  max-width: 960px;
+
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-bottom: 47px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.popular-maker .upper-container {
+  min-height: 90px;
+  max-width: 940px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 27px;
+  padding-right: 25px;
+  padding-left: 28px;
+  box-sizing: border-box;
+
+  background-color: #f9f5f0;
+}
+.popular-maker .popular-maker-headline {
+  margin: 0;
+  padding: 0;
+
+  margin-top: 4px;
+
+  color: #4d5a70;
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+.popular-maker .all-popular-maker {
+  margin: 0;
+  padding: 0;
+
+  height: 38px;
+
+  padding: 10px 68px 9px 68px ;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  color: #ffffff;
+  background-color: #ee3643;
+  border-radius: 2px;
+
+  text-transform: uppercase;
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+.popular-maker .all-popular-maker:hover {
+  background-color: #ca2c37;
+}
+.popular-maker .all-popular-maker:active,
+.popular-maker .all-popular-maker:focus {
+  background-color: #ba2732;
+}
+.popular-maker .main-maker {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  min-height: 347px;
+  max-width: 940px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 1px;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+.main-maker  li {
+  height: 142px;
+  width: 219px;
+
+  margin-right: 18px;
+  margin-bottom: 21px;
+
+  border: 1px solid #eaeaea;
+}
+.main-maker  li:nth-child(4n) {
+  width: 217px;
+  margin-right: 0;
+  margin-left: 2px;
+}
+.main-maker .item-maker {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.item-maker .bosch {
+  margin: 51px 46px;
+}
+.item-maker .makita {
+  margin: 48px 48px;
+}
+.item-maker .dewalt {
+  margin: 47px 38px;
+}
+.item-maker .interskol {
+  margin: 20px 9px;
+}
+.item-maker .hitachi {
+  margin: 56px 27px;
+}
+.item-maker .lg {
+  margin: 33px 49px;
+}
+.item-maker .aeg {
+  margin: 21px 36px;
+}
+.item-maker .metabo {
+  margin: 32px 10px;
+}
+.main-maker .item-maker:hover {
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+}
+.main-maker .item-maker:focus,
+.main-maker .item-maker:active {
+  box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.3);
+  opacity: 0.4;
+}

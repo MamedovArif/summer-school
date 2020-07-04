@@ -1,0 +1,330 @@
+.filter-catalog {
+  max-width: 220px;
+  min-height: 770px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: auto;
+  margin-left: 130px;
+}
+.filter-catalog .filterh2 {
+  max-width: 220px;
+  min-height: 38px;
+  background-color: #f7f3ec;
+}
+.filter-catalog .filter-headline {
+  margin: 0;
+  padding: 0;
+
+  padding-top: 8px;
+  padding-left: 19px;
+  box-sizing: border-box;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 18px;
+
+  text-transform: uppercase;
+}
+.filter-catalog .toddler-container {
+  padding: 0;
+  margin: 0;
+
+  max-width: 220px;
+  min-height: 205px;
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+.toddler-container .range-title {
+  padding: 0;
+  margin: 0;
+
+  display: block;
+  margin-top: 0px;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+.scale {
+  width: 220px;
+  height: 80px;
+
+  margin-top: 14px;
+
+  background-color: #f7f3ec;
+
+  position: relative;
+}
+.scale .range-scale {
+  width: 180px;
+  height: 2px;
+
+  position: absolute;
+  top: 38px;
+  left: 20px;
+
+  background-color: #d7dcde;
+}
+.scale .range-bar {
+  width: 85%;
+  height: 2px;
+  background-color: #00ca74;
+}
+.scale .range-bar::before {
+  content: "";
+
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  z-index: 10;
+
+  width: 4px;
+  height: 4px;
+
+  background-color: #ababab;
+  box-shadow: 0 2px 0 0 #e0ddd8;
+  border-radius: 50%;
+  border: 8px solid white;
+  cursor: grab;
+}
+.scale .range-bar::after {
+  content: "";
+
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  z-index: 10;
+
+  width: 4px;
+  height: 4px;
+
+  background-color: #ababab;
+  box-shadow: 0 2px 0 0 #e0ddd8;
+  border-radius: 50%;
+  border: 8px solid white;
+  cursor: grab;
+}
+.output-container {
+  width: 220px;
+  height: 35px;
+
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-left: 2px;
+  box-sizing: border-box;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 18px;
+
+  position: relative;
+}
+.output-container::before {
+  content: "";
+
+  position: absolute;
+  top: 19px;
+  left: 106px;
+
+  width: 9px;
+  height: 1px;
+
+  background-color: #444444;
+}
+.output-container input[type="text"] {
+  width: 95px;
+  height: 35px;
+
+  text-align: center;
+
+  border: none;
+
+  border-radius: 5px;
+  background-color: #f7f3ec;
+}
+.filter-catalog .manufacturer {
+  max-width: 220px;
+  min-height: 263px;
+}
+.filter-catalog fieldset {
+  border: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  line-height: 20px;
+  font-family: "PT Sans", "Arial", sans-serif;
+}
+.manufacturer legend {
+  margin: 0;
+  padding: 0;
+
+  padding-top: 18px;
+  margin-left: -13px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+
+  text-transform: uppercase;
+  font-size: 17px;
+  line-height: 30px;
+  font-weight: bold;
+  font-family: "PT Sans", "Arial", sans-serif;
+}
+.manufacturer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.filter-option {
+  margin-bottom: 20px;
+  padding-left: 22px;
+}
+.filter-option:last-child {
+  margin-bottom: 0px;
+}
+.filter-option label {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+
+  position: relative;
+}
+.filter-input-checkbox:not(cheсked) + label::before {
+  content: "";
+
+  position: absolute;
+  left: -33px;
+
+  width: 23px;
+  height: 23px;
+
+  background-image: url("./img/checkbox-off.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  opacity: 0.6;
+}
+.filter-input-checkbox:checked + label::after {
+  content: "";
+
+  position: absolute;
+  top: 0px;
+  left: -34px;
+
+  width: 27px;
+  height: 23px;
+
+  background-image: url("./img/checkbox-on.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  opacity: 0.6;
+}
+.filter-input-checkbox:focus + label {
+  border: 1px solid #3bbce3;
+}
+.filter-input-radio:focus + label {
+  border: 1px solid #3bbce3;
+}
+.filter-input-checkbox:focus + label:after,
+.filter-input-checkbox:focus + label:before,
+.filter-input-radio:focus + label:after,
+.filter-input-radio:focus + label:before {
+  opacity: 1;
+}
+.checkbox:hover::after,
+.checkbox:hover::before {
+  opacity: 1;
+}
+.filter-catalog .supply {
+  max-width: 220px;
+  min-height: 264px;
+}
+.supply legend {
+  margin: 0;
+  padding: 0;
+
+  padding-top: 18px;
+  margin-left: -13px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.supply ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.filter-input-radio:not(cheсked) + label::before {
+  content: "";
+
+  position: absolute;
+  left: -33px;
+
+  width: 25px;
+  height: 25px;
+
+  background-image: url("./img//radio-off.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  opacity: 0.6;
+}
+.filter-input-radio:checked + label::after {
+  content: "";
+
+  position: absolute;
+  top: 0px;
+  left: -34px;
+
+  width: 27px;
+  height: 23px;
+
+  background-image: url("./img/radio-on.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  opacity: 0.6;
+}
+.radio:hover::after,
+.radio:hover::before {
+  opacity: 1;
+}
+.filter-input-checkbox:disabled + label {
+  opacity: 0.4;
+  cursor: default;
+}
+.filter-input-radio:disabled + label {
+  opacity: 0.4;
+  cursor: default;
+}
+.filter-catalog .show {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 39px;
+  margin-top: 70px;
+
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}

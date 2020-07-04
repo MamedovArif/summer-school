@@ -24,9 +24,9 @@ const Header = () => {
             </span>
            </label>
          </form>
-            <a className="bookmark" href="">Закладки: 0</a>
-            <a className="basket" href="">Корзина: 0</a>
-           <a className="orders" href="">Оформить заказ</a>
+            <Link className="bookmark" to="/bookmarks">Закладки: 0</Link>
+            <Link className="basket" to="/buy">Корзина: 0</Link>
+           <Link className="orders" to="/place-your-order">Оформить заказ</Link>
         </div>
       </div>
       <div className="low-header-container">
@@ -36,10 +36,10 @@ const Header = () => {
          <p className="address">г. Санкт-Петербург, ул. Б. Конюшенная, д. 19/8</p>
         </div>
         <div className="layout-button">
-         <a className="enter" href="">
+         <Link className="enter" to="/authorization/">
           Войти
-         </a>
-         <a className="registration" href="">Регистрация</a>
+         </Link>
+         <Link className="registration" to="/registration">Регистрация</Link>
         </div>
         <nav className="navigation">
          <ul>

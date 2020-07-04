@@ -1,0 +1,369 @@
+.slide {
+  max-width: 960px;
+  min-height: 415px;
+
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 33px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.slide ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.extreme {
+  min-height: 122px;
+  max-width: 300px;
+
+  box-sizing: border-box;
+  padding-top: 21px;
+  padding-bottom: 11px;
+  padding-left: 22px;
+}
+.not-grid {
+  min-height: 270px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.not-grid li {
+  margin-bottom: 20px;
+}
+.extreme h3 {
+  margin: 0;
+  padding: 0;
+
+  margin-bottom: 12px;
+
+  color: #ffffff;
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.extreme a {
+  margin: 0;
+  padding: 0;
+
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 138px;
+  margin-bottom: 11px;
+  padding: 10px 26px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  border-radius: 3px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.extreme a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.extreme a:active,
+.extreme a:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.slide .materials {
+  background-color: #ffbf47;
+  position: relative;
+}
+.slide .tool {
+  background-color: #3bbce3;
+  position: relative;
+}
+.slide .tool-link {
+  padding: 10px 28px;
+}
+.slide .technique {
+  background-color: #dc91d8;
+  position: relative;
+}
+.slide .technique-link {
+  padding: 10px 31px;
+}
+.slide .sale {
+  background-color: #8ed78f;
+  position: relative;
+}
+.slide .sale-link {
+  padding: 10px 24px;
+  margin-top: 1px;
+}
+.slide .delivery {
+  background-color: #ffc047;
+  position: relative;
+}
+.slide .delivery-link {
+  padding: 10px 38px;
+  margin-top: 2px;
+}
+.slide .extreme::before {
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.slide .materials::before {
+  top: 31px;
+  right: 43px;
+
+  width: 44px;
+  height: 65px;
+
+  background-image: url("./img/icon-1.svg");
+}
+.slide .tool::before {
+  top: 33px;
+  right: 27px;
+
+  width: 75px;
+  height: 61px;
+
+  background-image: url("./img/icon-2.svg");
+}
+.slide .technique::before {
+  top: 30px;
+  right: 30px;
+
+  width: 78px;
+  height: 62px;
+
+  background-image: url("./img/icon-3.svg");
+}
+.slide .sale::before {
+  top: 26px;
+  right: 45px;
+
+  width: 59px;
+  height: 72px;
+
+  background-image: url("./img/icon-4.svg");
+}
+.slide .delivery::before {
+  top: 32px;
+  right: 31px;
+
+  width: 78px;
+  height: 63px;
+
+  background-image: url("./img/icon-5.svg");
+}
+.materials .flag {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+
+  width: 60px;
+  height: 60px;
+
+  text-indent: -1000px;
+  overflow: hidden;
+  z-index: 20;
+}
+.materials .flag-new {
+  background: url("./img/new-flag.png") no-repeat 0 0;
+}
+.slide .slider {
+  max-width: 620px;
+  min-height: 265px;
+
+  margin-top: 20px;
+  align-self: flex-start;
+
+  position: relative;
+}
+.slide .icon-left::before {
+  content: "";
+
+  position: absolute;
+  bottom: 74px;
+  left: 262px;
+
+  width: 22px;
+  height: 40px;
+
+  background-image: url("./img/icon-right.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  z-index: 30;
+}
+.slide .icon-right::after {
+  content: "";
+
+  position: absolute;
+  bottom: 74px;
+  right: 257px;
+
+  width: 22px;
+  height: 40px;
+
+  background-image: url("./img/icon-right.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  z-index: 30;
+  transform: rotate(180deg);
+}
+.slider .open-catalog {
+  position: absolute;
+  left: 24px;
+  top: 206px;
+
+  display: block;
+  padding: 10px 48px 10px 50px;
+  box-sizing: border-box;
+
+  color: #ffffff;
+  background-color: #ee3643;
+  border-radius: 3px;
+
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: "Cuprum", "Arial", sans-serif;
+
+  z-index: 30;
+}
+.slider .open-catalog:hover {
+  background-color: #ca2c37;
+}
+.slider .open-catalog:active,
+.slider .open-catalog:focus {
+  background-color: #ba2732;
+}
+.slider input[type="radio"] {
+  display: none;
+}
+.slider-inner {
+  overflow: hidden;
+}
+.slider-slides {
+  display: flex;
+  width: 200%;
+}
+.slider-controls {
+  text-align: center;
+}
+.slider-controls label {
+  position: absolute;
+  bottom: 44px;
+
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  cursor: pointer;
+  z-index: 30;
+}
+.slider-controls .but-1 {
+  left: 295px;
+}
+.slider-controls .but-2 {
+  left: 315px;
+}
+#btn-1:checked ~ .slider-controls label[for="btn-1"],
+#btn-2:checked ~ .slider-controls label[for="btn-2"] {
+  background-color: #ee3643;
+}
+#btn-1:checked ~ .slider-inner .slider-slides {
+  transform: translate(0);
+}
+#btn-2:checked ~ .slider-inner .slider-slides {
+  transform: translate(-620px);
+}
+.slider-slides img {
+  width: 620px;
+  height: 265px;
+}
+.slider-slides .image1 {
+  position: relative;
+}
+.slider-slides .header-for-img1,
+.slider-slides .paragraph1 {
+  position: absolute;
+  color: #ffffff;
+  z-index: 30;
+}
+.slider-slides .header-for-img1 {
+  margin: 0;
+  padding: 0;
+
+  top: 23px;
+  left: 24px;
+
+  padding-bottom: 10px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 36px;
+
+  text-transform: uppercase;
+}
+.slider-slides .paragraph1 {
+  margin: 0;
+  padding: 0;
+
+  left: 25px;
+  top: 60px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: none;
+}
+.slider-slides .image2 {
+  position: relative;
+}
+.slider-slides .header-for-img2,
+.slider-slides .paragraph2 {
+  position: absolute;
+  color: #ffffff;
+  z-index: 30;
+}
+.header-for-img2 {
+  margin: 0;
+  padding: 0;
+
+  left: 644px;
+  top: 23px;
+  padding-bottom: 10px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+.slider-slides .paragraph2 {
+  margin: 0;
+  padding: 0;
+
+  left: 645px;
+  top: 60px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  text-transform: none;
+}

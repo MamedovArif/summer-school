@@ -1,0 +1,36 @@
+.about-perforator {
+  width: 100%;
+  min-height: 261px;
+  display: flex;
+  background-color: #f2f6f8;
+}
+.about-perforator-container {
+  margin: 0;
+  padding: 0;
+
+  width: 960px;
+  min-height: 260px;
+
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.about-perforator-container h2 {
+  margin-top: 66px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+.about-perforator-container p {
+  margin-top: 20px;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  letter-spacing: 0.06px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+}

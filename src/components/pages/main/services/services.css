@@ -1,0 +1,274 @@
+.out-servis {
+  width: 100%;
+  min-height: 520px;
+
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+
+  background-color: #f4f8f9;
+}
+.out-servis .servis {
+  max-width: 960px;
+  min-height: 520px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  position: relative;
+}
+.servis .servis-container {
+  width: 403px;
+  margin-right: 537px;
+  min-height: 180px;
+  align-self: flex-start;
+}
+.servis-container h2 {
+  padding-top: 38px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+.servis-container p {
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  word-spacing: 0.5px;
+}
+.servis-slide {
+  width: 940px;
+  min-height: 340px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.servis-content .hidden {
+  display: none;
+}
+.servis .servis-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  max-width: 240px;
+  min-height: 240px;
+
+  align-self: flex-start;
+  margin-top: 42px;
+  margin-right: 81px;
+  padding-top: 13px;
+  box-sizing: border-box;
+
+  position: relative;
+}
+.servis .servis-menu::before {
+  content: "";
+  width: 10px;
+  height: 260px;
+  position: absolute;
+  top: -15px;
+  left: 230px;
+  background-image: url("./img/shadow24.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+}
+.servis-menu button {
+  width: 240px;
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 22px;
+  padding-left: 16px;
+  box-sizing: border-box;
+
+  color: #ffffff;
+  background-color: #32425c;
+  border: 1px solid #293449;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 30px;
+  text-transform: capitalize;
+  text-align: left;
+}
+.servis-menu button:hover {
+  background-color: #293449;
+  color: #ffffff;
+}
+.servis-menu button:active,
+.servis-menu button:focus,
+.servis-menu .noted {
+  color: #32425c;
+  background-color: #ffffff;
+  border: none;
+}
+.servis .servis-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.servis .transfer {
+  max-width: 292px;
+  min-height: 155px;
+
+  margin-top: 57px;
+  align-self: flex-start;
+
+  position: relative;
+}
+.servis .transfer::before {
+  content: "";
+
+  width: 469px;
+  height: 262px;
+
+  position: absolute;
+  top: 25px;
+  left: 150px;
+
+  background-image: url("./img/truck.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.servis .transfer-headline {
+  margin: 0;
+  padding: 0;
+
+  display: block;
+  margin-top: -2px;
+
+  color: #32425c;
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+.servis .transfer-description {
+  max-width: 275px;
+  margin-top: 22px;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+}
+.servis .guarantee {
+  max-width: 381px;
+  min-height: 182px;
+
+  align-self: flex-start;
+  margin-top: 57px;
+
+  position: relative;
+}
+.servis .guarantee::before {
+  content: "";
+
+  width: 387px;
+  height: 283px;
+
+  position: absolute;
+  top: 4px;
+  left: 238px;
+
+  background-image: url("./img/guarantee.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.servis .guarantee-headline {
+  margin: 0;
+  padding: 0;
+
+  display: block;
+  margin-top: -4px;
+
+  color: #32425c;
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-style: oblique;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 36px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+.servis .guarantee-description {
+  max-width: 378px;
+  margin-top: 24px;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+}
+.servis .credit {
+  max-width: 280px;
+  min-height: 172px;
+
+  align-self: flex-start;
+  margin-top: 57px;
+
+  position: relative;
+}
+.servis .credit::before {
+  content: "";
+  width: 463px;
+  height: 285px;
+
+  position: absolute;
+  top: 0;
+  left: 165px;
+
+  background-image: url("./img/credit.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.servis .credit-headline {
+  margin: 0;
+  padding: 0;
+
+  display: block;
+  margin-top: -2px;
+
+  color: #32425c;
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+.servis .credit-description {
+  margin-top: 22px;
+
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+}
+.credit .credit-button {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
+  padding: 10px 45px 10px 43px;
+
+  color: #ffffff;
+  background-color: #ff5357;
+  border-radius: 5px;
+
+  font-family: "Cuprum", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+}

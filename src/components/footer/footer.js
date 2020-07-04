@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import './footer.css';
 import logo from './img/logo-technomart.svg';
 
@@ -7,41 +9,53 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="upper-footer">
-        <a  className="logotype" href="index.html">
+        <Link  className="logotype" to="/">
           <img className="logotype-img"
           src={logo}
           alt="Логотип Техномарта" width="137" height="22" />
-        </a>
+        </Link>
         <div className="layout-contact">
          <p>г. Санкт-Петербург, ул. Б. Конюшенная, д. 19/8
            <a className="tel-footer" href="tel:+78125550555">+7 (812) 555-05-55</a>
          </p>
         </div>
         <ul className="nav-footer">
-         <li><a href="">Компания</a></li>
-         <li><a href="">Новости</a></li>
-         <li><a href="techcatalog.html">Каталог</a></li>
-         <li><a href="">Доставка</a></li>
-         <li><a href="">Контакты</a></li>
+         <li><Link to="/company">Компания</Link></li>
+         <li><Link to="/news">Новости</Link></li>
+         <li><Link to="/catalog">Каталог</Link></li>
+         <li><Link to="/delivery">Доставка</Link></li>
+         <li><Link to="/contacts">Контакты</Link></li>
         </ul>
         <ul className="goods">
-         <li><a  href="">Материалы</a></li>
-         <li><a href="">Техника</a></li>
-         <li><a href="">Инструмент</a></li>
-         <li><a href="">Спецпредложения</a></li>
+         <li><Link  to="/materials">Материалы</Link></li>
+         <li><Link to="/technic">Техника</Link></li>
+         <li><Link to="/tool">Инструмент</Link></li>
+         <li><Link to="/special-offers">Спецпредложения</Link></li>
         </ul>
       </div>
       <div className="low-footer">
         <div className="low-footer-container">
-         <p className="footer2 copyright">&copy; 2010–2019 Компания «Техномарт» Все права защищены</p>
+         <p className="footer2 copyright">&copy; 2010–2020 Компания «Техномарт» Все права защищены</p>
          <ul className="social">
-           <li><a className="vk" href=""><span class="visually-hidden">Вконтакте</span></a></li>
-           <li><a className="fb" href=""><span class="visually-hidden">Фейсбук</span></a></li>
-           <li><a className="insta" href=""><span class="visually-hidden">Инстаграм</span></a></li>
+           <li>
+             <a className="vk" href="https://vk.com/">
+               <span className="visually-hidden">Вконтакте</span>
+             </a>
+           </li>
+           <li>
+             <a className="fb" href="https://ru-ru.facebook.com/">
+               <span className="visually-hidden">Фейсбук</span>
+             </a>
+           </li>
+           <li>
+             <a className="insta" href="https://www.instagram.com/">
+               <span className="visually-hidden">Инстаграм</span>
+             </a>
+           </li>
          </ul>
          <div className="layout-developer">
-           <p className="feedback">Обратная связь: <a href="">mail@htmlacademy.ru</a></p>
-           <p className="developer">Разработано — <a href="https://htmlacademy.ru/intensive/htmlcss">htmlacademy.ru</a></p>
+           <p className="feedback">Обратная связь: <Link to="/contacts">arifmho@yandex.ru</Link></p>
+           <p className="developer">Разработано — <a href="https://www.mera.com/">mera.com/</a></p>
          </div>
         </div>
       </div>
