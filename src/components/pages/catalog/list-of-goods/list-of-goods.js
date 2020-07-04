@@ -20,8 +20,11 @@ export default class ListOfGoods extends Component {
   }
 
   renderGood(good) {
-    const {id, title, brand, model, isNew, initialPrice, price} = good;
-    const sale = initialPrice ? <div className="discount">{initialPrice} P.</div> : <div></div>;
+    const {id, title, brand, model, isNew,
+      initialPrice, price, url} = good;
+    const sale = initialPrice ?
+      <div className="discount">{initialPrice} P.</div> :
+      <div className="discount"></div>;
     const novelty = isNew ? <div className="flag flag-new">новинка</div> : null;
     return (
       <li key={id} className="layout-item-goods">
@@ -31,7 +34,7 @@ export default class ListOfGoods extends Component {
           <Link to="/bookmarks" className="bookmarks-actions">В закладки</Link>
         </div>
         <div className="image-container">
-          <img className="image" src="img/perforator1.jpg"
+          <img className="image" src={url}
             alt={`${title} ${brand} ${model}`} width="218" height="170" />
         </div>
         <h3><Link className="title" to="/catalog/8">{title} {brand} {model}</Link></h3>

@@ -4,7 +4,7 @@ import PopularGoods from './popular-goods';
 import PopularMaker from './popular-maker';
 import Services from './services';
 import Company from './company';
-
+import ErrorBoundry from '../../error-boundry';
 
 import './main.css';
 
@@ -15,7 +15,9 @@ const Main = () => {
       <Slide />
       <PopularGoods />
       <PopularMaker />
-      <Services />
+      <ErrorBoundry>
+        <Services />
+      </ErrorBoundry>
       <Company />
     </main>
   )

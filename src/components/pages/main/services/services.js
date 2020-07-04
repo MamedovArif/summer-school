@@ -15,8 +15,8 @@ const Services = () => {
        </div>
        <div className="servis-slide">
          <ul className="servis-menu">
-          <li><button className="noted" >Доставка</button></li>
-          <li><button >Гарантия</button></li>
+          <li><button>Доставка</button></li>
+          <li><button className="noted">Гарантия</button></li>
           <li><button >Кредит</button></li>
          </ul>
          <ul className="servis-content">

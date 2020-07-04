@@ -9,7 +9,11 @@ export default class MockService {
       isNew: true,
       initialPrice: 500,
       price: 15,
-      url: 'jkjk',
+      powerSupply: 'electronetwork',
+      type: 'horizontal',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/345',
     },
 
     {
@@ -20,7 +24,11 @@ export default class MockService {
       isNew: false,
       initialPrice: 30500,
       price: 125500,
-      url: 'jkjk',
+      powerSupply: 'rechargeable',
+      type: 'vertical',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/34',
     },
 
     {
@@ -31,7 +39,11 @@ export default class MockService {
       isNew: false,
       initialPrice: null,
       price: 12500,
-      url: 'jkjk',
+      powerSupply: 'pneumatic',
+      type: 'vertical',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/264',
     },
 
     {
@@ -42,7 +54,11 @@ export default class MockService {
       isNew: false,
       initialPrice: 22500,
       price: 15500,
-      url: 'jkjk',
+      powerSupply: 'pneumatic',
+      type: 'vertical',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/3465',
     },
 
     {
@@ -53,7 +69,11 @@ export default class MockService {
       isnew: false,
       initialPrice: 30500,
       price: 25500,
-      url: 'jkjk',
+      powerSupply: 'pneumatic',
+      type: 'vertical',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/4578',
     },
 
     {
@@ -64,7 +84,11 @@ export default class MockService {
       isNew: false,
       initialPrice: null,
       price: 12500,
-      url: 'jkjk',
+      powerSupply: 'electronetwork',
+      type: 'horizontal',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/95',
     },
 
         {
@@ -75,7 +99,11 @@ export default class MockService {
       isNew: false,
       initialPrice: 22500,
       price: 15500,
-      url: 'jkjk',
+      powerSupply: 'electronetwork',
+      type: 'horizontal',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/35',
     },
 
     {
@@ -86,7 +114,11 @@ export default class MockService {
       isNew: false,
       initialPrice: 30500,
       price: 25500,
-      url: 'jkjk',
+      powerSupply: 'rechargeable',
+      type: 'horizontal',
+      power: 2000,
+      isHit: true,
+      url: 'https://picsum.photos/78',
     },
 
     {
@@ -97,7 +129,9 @@ export default class MockService {
       isNew: false,
       initialPrice: null,
       price: 12500,
-      url: 'jkjk',
+      powerSupply: 'rechargeable',
+      type: 'horizontal',
+      url: 'https://picsum.photos/3456',
     },
   ]
 
@@ -111,9 +145,5 @@ export default class MockService {
         }
       }, 700)
     })
-  }
-
-  getPerforator = async () => {
-    return this._perforators[0];
   }
 }
