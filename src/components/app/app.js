@@ -7,10 +7,18 @@ import Good from '../good';
 import Company from '../pages/company';
 import News from '../pages/news';
 import Delivery from '../pages/delivery';
-import SpecialOffers from '../pages/special-offers';
+
 import Contacts from '../pages/contacts';
 import Footer from '../footer';
 import MockService from '../../services/mock-service';
+
+import SpecialOffers from '../pages/catalog/special-offers';
+import Materials from '../pages/catalog/materials';
+import Technic from '../pages/catalog/technic';
+import Tool from '../pages/catalog/tool';
+import Perforators from '../pages/catalog/tool/perforators';
+//import AngleGrinders from '../pages/catalog/tool';
+
 import {ServiceProvider} from '../service-context';
 
 import './app.css';
@@ -31,31 +39,28 @@ export default class App extends Component {
               <Switch>
                 <Route path="/" component={Main} exact />
                 <Route path="/company" component={Company} />
-                <Route path="/catalog/" component={Catalog} exact />
-                <Route path="/catalog/:id"
-                  render={({match}) => {
-                    const { id } = match.params;
-                    return <Good id={id}/>
-                  }}/>
                 <Route path="/news" component={News} />
-                <Route path="/special-offers" component={SpecialOffers} />
                 <Route path="/delivery" component={Delivery} />
                 <Route path="/contacts" component={Contacts} />
                 <Route path="/manufacturers" render={() => {
                   return <h2>manufacturers</h2>
                 }} />
-                <Route path="/materials" render={() => {
-                  return <h2>Materials</h2>
-                }} />
-                <Route path="/tool" render={() => {
-                  return <h2>Tool</h2>
-                }} />
-                <Route path="/technic" render={() => {
-                  return <h2>Technic</h2>
-                }} />
-                <Route path="/discounts" render={() => {
-                  return <h2>Discounts</h2>
-                }} />
+
+                <Route path="/catalog" component={Catalog} exact />
+
+                <Route path="/catalog/special-offers" component={SpecialOffers} />
+                <Route path="/catalog/materials" component={Materials}/>
+                <Route path="/catalog/technic" component={Technic}/>
+                <Route path="/catalog/tool" component={Tool} exact/>
+
+                <Route path="/catalog/tool/perforators/"
+                component={Perforators} exact/>
+                <Route path="/catalog/tool/perforators/:id" render={({match}) => {
+                    const { id } = match.params;
+                    return <Good id={id}/>
+                  }}/>
+
+
                 <Route path="/buy" render={() => {
                   return <h2>Buy</h2>
                 }} />
@@ -65,6 +70,7 @@ export default class App extends Component {
                 <Route path="/place-your-order" render={() => {
                   return <h2>place your order</h2>
                 }} />
+
                 <Route path="/authorization/" render={() => {
                   return <h2>authorization/</h2>
                 }} />

@@ -1,0 +1,124 @@
+.inner-page {
+  width: 100%;
+
+  min-height: 1630px;
+  display: flex;
+  flex-direction: column;
+}
+.inner-page-container {
+  max-width: 1200px;
+  min-height: 1369px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin: 0 auto;
+}
+.breadcrumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  max-width: 940px;
+  min-height: 60px;
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  margin: 0 130px;
+  margin-bottom: 0;
+}
+.breadcrumbs li {
+  margin-top: 15px;
+
+  position: relative;
+}
+.breadcrumbs li:first-child {
+  margin-right: 40px;
+  display: block;
+  width: 15px;
+  min-height: 12px;
+}
+.breadcrumbs .icon-home {
+  display: block;
+  width: 15px;
+  height: 12px;
+
+  margin-top: 7px;
+  margin-left: -2px;
+
+  position: relative;
+}
+.breadcrumbs .icon-home:focus {
+  border: 1px solid #3bbce3;
+}
+.breadcrumbs .icon-home::before {
+  content: "";
+
+  position: absolute;
+
+  width: 15px;
+  height: 12px;
+
+  background-image: url("./img/icon-home.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.breadcrumbs li:nth-child(3) {
+  margin-right: 43px;
+  margin-left: 40px;
+}
+.breadcrumbs li::after {
+  content: "";
+
+  position: absolute;
+  top: 7px;
+  left: 69px;
+
+  width: 8px;
+  height: 12px;
+
+  background-image: url("./img/icon-right-small.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  opacity: 0.9;
+}
+.breadcrumbs li:first-child::after {
+  left: 29px;
+}
+.breadcrumbs li:nth-child(3)::after {
+  left: 97px;
+}
+.breadcrumbs li:last-child::after {
+  display: none;
+}
+.breadcrumbs a {
+  color: #000000;
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+.catalogh1 {
+  width: 960px;
+  min-height: 90px;
+
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin: 0 130px;
+  margin-bottom: 20px;
+
+  background-color: #f2f6f8;
+}
+.catalogh1 h1 {
+  margin-top: 30px;
+  margin-left: 18px;
+
+  color: #32425C;
+  text-transform: uppercase;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: lighter;
+}

@@ -27,10 +27,10 @@ const Footer = () => {
          <li><Link to="/contacts">Контакты</Link></li>
         </ul>
         <ul className="goods">
-         <li><Link  to="/materials">Материалы</Link></li>
-         <li><Link to="/technic">Техника</Link></li>
-         <li><Link to="/tool">Инструмент</Link></li>
-         <li><Link to="/special-offers">Спецпредложения</Link></li>
+         <li><Link  to="/catalog/materials">Материалы</Link></li>
+         <li><Link to="/catalog/technic">Техника</Link></li>
+         <li><Link to="/catalog/tool">Инструмент</Link></li>
+         <li><Link to="/catalog/special-offers">Спецпредложения</Link></li>
         </ul>
       </div>
       <div className="low-footer">

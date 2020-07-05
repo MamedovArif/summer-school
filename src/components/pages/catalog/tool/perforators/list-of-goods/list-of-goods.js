@@ -39,7 +39,7 @@ export default class ListOfGoods extends Component {
           <img className="image" src={url}
             alt={`${title} ${brand} ${model}`} width="218" height="170" />
         </div>
-        <h3><Link className="title" to={`/catalog/${id}`}>{title} {brand} {model}</Link></h3>
+        <h3><Link className="title" to={`/catalog/tool/perforators/${id}`}>{title} {brand} {model}</Link></h3>
         {sale}
         <div className="price">{price} P.</div>
       </li>

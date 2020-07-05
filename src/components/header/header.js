@@ -47,7 +47,7 @@ const Header = () => {
             <li><Link className="company-nav" to="/company">Компания</Link></li>
             <li><Link className="catalog-nav" to="/catalog">Каталог</Link></li>
             <li><Link className="news-nav" to="/news">Новости</Link></li>
-            <li><Link className="specialoffer-nav" to="/special-offers">Спецпредложения</Link></li>
+            <li><Link className="specialoffer-nav" to="/catalog/special-offers">Спецпредложения</Link></li>
             <li><Link className="delivery-nav" to="/delivery">Доставка</Link></li>
             <li><Link className="contacts-nav" to="/contacts">Контакты</Link></li>
            </ul>

@@ -18,7 +18,7 @@ const Slide = () => {
        </li>
        <li className="extreme technique">
          <h3>Техника</h3>
-         <Link className="technique-link" to="/Technic">Для стройки</Link>
+         <Link className="technique-link" to="/technic">Для стройки</Link>
        </li>
        <li className="slider">
          <input type="radio" id="btn-1" name="toggle" defaultChecked />
@@ -47,7 +47,7 @@ const Slide = () => {
          <ul>
           <li className="extreme sale">
             <h3>Скидки 50%</h3>
-            <Link className="sale-link" to="/discounts">На 350 товаров</Link>
+            <Link className="sale-link" to="/special-offers">На 350 товаров</Link>
           </li>
           <li className="extreme delivery">
              <h3>Доставка</h3>
