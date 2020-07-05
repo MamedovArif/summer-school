@@ -7,6 +7,8 @@ export default class ListOfGoods extends Component {
 
   state = {
     goods: [],
+    loading: true,
+    error: false,
   }
 
   componentDidMount() {
@@ -19,7 +21,7 @@ export default class ListOfGoods extends Component {
       })
   }
 
-  renderGood(good) {
+  renderGood = (good) => {
     const {id, title, brand, model, isNew,
       initialPrice, price, url} = good;
     const sale = initialPrice ?
@@ -37,7 +39,7 @@ export default class ListOfGoods extends Component {
           <img className="image" src={url}
             alt={`${title} ${brand} ${model}`} width="218" height="170" />
         </div>
-        <h3><Link className="title" to="/catalog/8">{title} {brand} {model}</Link></h3>
+        <h3><Link className="title" to={`/catalog/${id}`}>{title} {brand} {model}</Link></h3>
         {sale}
         <div className="price">{price} P.</div>
       </li>
@@ -46,9 +48,8 @@ export default class ListOfGoods extends Component {
 
 
   render() {
-    console.log(this.state.goods);
     const {goods} = this.state;
-    const items = goods.map(this.renderGood);
+    const items = goods.map((item) => this.renderGood(item));
     return (
       <Fragment>
         <h2 className="visually-hidden">Список товаров</h2>

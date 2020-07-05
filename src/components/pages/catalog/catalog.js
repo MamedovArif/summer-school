@@ -15,24 +15,26 @@ const Catalog = () => {
         <ul className="breadcrumbs">
           <li>
             <Link className="icon-home" to="/">
-             <span className="visually-hidden">Главная</span>
+              <span className="visually-hidden">Главная</span>
             </Link>
           </li>
           <li>
-            <Link to="/catalog/">Каталог</Link></li>
-          <li><Link to="/tool">Инструмент</Link></li>
-          <li><span>перфораторы</span></li>
+            <Link to="/catalog/">Каталог</Link>
+          </li>
         </ul>
         <div className="catalogh1">
-          <h1>Перфораторы</h1>
+          <h1>Интрументы</h1>
         </div>
         <Filters />
+
         <ServiceConsumer>
           {(service) => {
               return <ListOfGoods service={service}/>
             }
           }
         </ServiceConsumer>
+
+
         <AboutPerforator />
        </div>
     </main>

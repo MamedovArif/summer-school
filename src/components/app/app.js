@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from '../header';
 import Main from '../pages/main';
 import Catalog from '../pages/catalog';
+import Good from '../good';
 import Company from '../pages/company';
 import News from '../pages/news';
 import Delivery from '../pages/delivery';
@@ -33,8 +34,8 @@ export default class App extends Component {
                 <Route path="/catalog/" component={Catalog} exact />
                 <Route path="/catalog/:id"
                   render={({match}) => {
-                    const { id } =match.params;
-                    return <h2>id = {id}</h2>
+                    const { id } = match.params;
+                    return <Good id={id}/>
                   }}/>
                 <Route path="/news" component={News} />
                 <Route path="/special-offers" component={SpecialOffers} />
