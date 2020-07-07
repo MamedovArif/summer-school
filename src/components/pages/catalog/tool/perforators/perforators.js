@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Filters from './filters';
-import ListOfGoods from './list-of-goods';
 import AboutPerforator from './about-perforator';
 //import {ServiceConsumer} from '../../../../service-context';
 import {PerforatorList} from '../../../../app-components';

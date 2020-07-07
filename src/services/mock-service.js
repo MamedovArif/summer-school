@@ -1,21 +1,23 @@
 export default class MockService {
 
-  _imageBase = 'https://picsum.photos'
+  _imageBase = 'https://avatars.mds.yandex.net/get-mpic'
 
   _perforators = [
     {
       id: 0,
       title: 'Перфоратор',
-      brand: 'BOSCH',
-      model: 'BFG 3000',
+      brand: 'MAKITA',
+      model: 'HR2470',
       isNew: true,
-      initialPrice: 500,
-      price: 15,
-      powerSupply: 'electronetwork',
-      type: 'horizontal',
-      power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      initialPrice: 7477,
+      price: 6950,
+      powerSupply: 'electronetwork',
+      power: 780,
+      numberOfIdle: 1100,
+      frequencyOfStrikes: 4500,
+      impactEnergy: 2.7,
+      url: `${this._imageBase}/1614201/img_id7059479335064729118.jpeg/9hq`
     },
 
     {
@@ -30,13 +32,13 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1808939/img_id6111417658335389636.jpeg/9hq`
     },
 
     {
       id: 2,
       title: 'Перфоратор',
-      brand: 'BOSCH',
+      brand: 'MAKITA',
       model: 'BFG 2000',
       isNew: false,
       initialPrice: null,
@@ -45,7 +47,7 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1602935/img_id5129775492232508705.jpeg/9hq`
     },
 
     {
@@ -60,13 +62,13 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1597983/img_id3213356664837348746.png/9hq`
     },
 
     {
       id: 4,
       title: 'Перфоратор',
-      brand: 'BOSCH',
+      brand: 'HITACHI',
       model: 'BFG 6000',
       isnew: false,
       initialPrice: 30500,
@@ -75,13 +77,13 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1605421/img_id4263042739453333466.jpeg/9hq`
     },
 
     {
       id: 5,
       title: 'Перфоратор',
-      brand: 'BOSCH',
+      brand: 'ИНТЕРСКОЛ',
       model: 'BFG 2000',
       isNew: false,
       initialPrice: null,
@@ -90,7 +92,7 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1605421/img_id5473780294539838164.jpeg/9hq`
     },
 
         {
@@ -105,14 +107,14 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1644362/img_id6710038094590114061.jpeg/9hq`
     },
 
     {
       id: 7,
       title: 'Перфоратор',
-      brand: 'BOSCH',
-      model: 'BFG 6000',
+      brand: 'MAKITA',
+      model: 'HR2630',
       isNew: false,
       initialPrice: 30500,
       price: 25500,
@@ -120,20 +122,20 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1567763/img_id3219251767375855767.jpeg/9hq`
     },
 
     {
       id: 8,
       title: 'Перфоратор',
-      brand: 'BOSCH',
+      brand: 'DEWALT',
       model: 'BFG 2000',
       isNew: false,
       initialPrice: null,
       price: 12500,
       powerSupply: 'rechargeable',
       type: 'horizontal',
-      url: `${this._imageBase}/400`
+      url: `${this._imageBase}/1669769/img_id994218771506213848.jpeg/9hq`
     },
   ]
 
