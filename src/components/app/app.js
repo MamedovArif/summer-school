@@ -4,6 +4,7 @@ import Header from '../header';
 import Main from '../pages/main';
 import Catalog from '../pages/catalog';
 import Good from '../good';
+import {PerforatorDetails} from '../app-components';
 import Company from '../pages/company';
 import News from '../pages/news';
 import Delivery from '../pages/delivery';
@@ -57,7 +58,7 @@ export default class App extends Component {
                 component={Perforators} exact/>
                 <Route path="/catalog/tool/perforators/:id" render={({match}) => {
                     const { id } = match.params;
-                    return <Good id={id}/>
+                    return <PerforatorDetails itemId={id}/>
                   }}/>
 
 

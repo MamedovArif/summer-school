@@ -1,14 +1,15 @@
 import React, {Fragment, Component} from 'react';
 import { Link } from 'react-router-dom';
-import {withData} from '../../../../../hoc';
+import {withData} from '../hoc';
 
-import './list-of-goods.css';
+import './item-list.css';
 
-class ListOfGoods extends Component {
+class ItemList extends Component {
 
   renderGood = (item) => {
     const {id, title, brand, model, isNew,
       initialPrice, price, url} = item;
+    console.log(url);
     const sale = initialPrice ?
       <div className="discount">{initialPrice} P.</div> :
       <div className="discount"></div>;
@@ -35,7 +36,9 @@ class ListOfGoods extends Component {
   render() {
     console.log(this.props);
     const {data} = this.props;
-    const items = data.map((item) => this.renderGood(item));
+    const items = data.map((item) =>{
+      return this.renderGood(item)
+     });
     return (
       <Fragment>
         <h2 className="visually-hidden">Список товаров</h2>
@@ -85,4 +88,4 @@ class ListOfGoods extends Component {
   }
 }
 
-export default withData(ListOfGoods);
+export default ItemList;

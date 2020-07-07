@@ -1,5 +1,7 @@
 export default class MockService {
 
+  _imageBase = 'https://picsum.photos'
+
   _perforators = [
     {
       id: 0,
@@ -13,7 +15,7 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/345',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -28,7 +30,7 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/34',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -43,7 +45,7 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/264',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -58,7 +60,7 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/3465',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -73,7 +75,7 @@ export default class MockService {
       type: 'vertical',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/4578',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -88,7 +90,7 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/95',
+      url: `${this._imageBase}/400`
     },
 
         {
@@ -103,7 +105,7 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/35',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -118,7 +120,7 @@ export default class MockService {
       type: 'horizontal',
       power: 2000,
       isHit: true,
-      url: 'https://picsum.photos/78',
+      url: `${this._imageBase}/400`
     },
 
     {
@@ -131,7 +133,7 @@ export default class MockService {
       price: 12500,
       powerSupply: 'rechargeable',
       type: 'horizontal',
-      url: 'https://picsum.photos/3456',
+      url: `${this._imageBase}/400`
     },
   ]
 
@@ -147,8 +149,7 @@ export default class MockService {
       powerSupply: 'electronetwork',
       type: 'horizontal',
       power: 2000,
-      isHit: true,
-      url: 'https://picsum.photos/345',
+      isHit: true
     },
 
     {
@@ -162,8 +163,7 @@ export default class MockService {
       powerSupply: 'rechargeable',
       type: 'vertical',
       power: 2000,
-      isHit: true,
-      url: 'https://picsum.photos/3764',
+      isHit: true
     },
 
     {
@@ -177,8 +177,7 @@ export default class MockService {
       powerSupply: 'pneumatic',
       type: 'vertical',
       power: 2000,
-      isHit: true,
-      url: 'https://picsum.photos/64',
+      isHit: true
     },
 
     {
@@ -192,12 +191,25 @@ export default class MockService {
       powerSupply: 'pneumatic',
       type: 'vertical',
       power: 2000,
-      isHit: true,
-      url: 'https://picsum.photos/465',
+      isHit: true
     },
   ]
 
+  // getImagePerforator = (id) => {
+  //   const iden = id * 50;
+  //   return `${this._imageBase}/${id}`
+  // }
 
+  // getAllImagePerforators = () => {
+  //   const arrayOfId = this._perforators.map((item) => item.id);
+  //   console.log(arrayOfId);
+  //   return arrayOfId.map((id) => this.getImagePerforator(id));
+  // }
+
+  // getImageAngleGrinder = ({id}) => {
+  //   const iden = id * 30;
+  //   return `${this._imageBase}/${iden}`
+  // }
 
   getAllPerforators = async () => {
     return new Promise((resolve, reject) => {

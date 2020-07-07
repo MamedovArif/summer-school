@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import Filters from './filters';
 import ListOfGoods from './list-of-goods';
 import AboutPerforator from './about-perforator';
-import {ServiceConsumer} from '../../../../service-context';
+//import {ServiceConsumer} from '../../../../service-context';
+import {PerforatorList} from '../../../../app-components';
 
 import './perforators.css';
 
@@ -29,12 +30,9 @@ const Perforators = () => {
         </div>
         <Filters />
 
-        <ServiceConsumer>
-          {(service) => {
-              return <ListOfGoods service={service}/>
-            }
-          }
-        </ServiceConsumer>
+
+        <PerforatorList />
+
 
         <AboutPerforator />
        </div>
