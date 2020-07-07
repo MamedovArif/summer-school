@@ -3,16 +3,40 @@ import { Link } from 'react-router-dom';
 
 import Filters from '../filters';
 import AboutPerforator from './about-perforator';
-import {PerforatorList} from '../../../../app-components';
+import ItemList from '../../../../item-list';
+import { withService, withData } from '../../../../hoc';
+//import {PerforatorList} from '../../../../app-components';
 
 import './perforators.css';
 
-export default class Perforators extends Component {
+class Perforators extends Component {
 
-  handleCheckbox() {
-
+  state = {
+    selectedManufacturers: [
+      'BOSCH', 'INTERSKOL', 'MAKITA', 'DEWALT', 'HITACHI'
+    ],
+    powerSupply: 'electronetwork',
+    goods: this.props.data
   }
+
+  handleCheckbox = (evt) => {
+    console.log('connect')
+    const name = evt.target.name;
+    console.log(name);
+    this.setState(({goods}) => {
+      const sortGoods = goods.filter((item) => {
+        return item.brand.toLowerCase() !== name
+      })
+      console.log(sortGoods);
+      return {
+        goods: sortGoods
+      }
+    })
+  }
+
+
   render() {
+    console.log(this.props);
     return (
       <main className="inner-page">
         <div className="inner-page-container">
@@ -33,7 +57,7 @@ export default class Perforators extends Component {
           </div>
           <Filters handleCheckbox={this.handleCheckbox}/>
 
-          <PerforatorList />
+          <ItemList data={this.state.goods}/>
 
           <AboutPerforator />
          </div>
@@ -41,3 +65,12 @@ export default class Perforators extends Component {
     )
   }
 }
+
+const mapPerforatorMethodsToProps = (service) => {
+  return {
+    getData: service.getAllPerforators
+  }
+}
+
+export default withService(mapPerforatorMethodsToProps)(
+   withData(Perforators))

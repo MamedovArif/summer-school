@@ -19,8 +19,13 @@ export default class ItemList extends Component {
     })
   }
 
-  componentDidUpdate() {
-
+  componentDidUpdate(prevProps) {
+    if (this.props.data !== prevProps.data) {
+      const items = this.props.data;
+      this.setState({
+        items
+      });
+    }
   }
 
   sortingByPrice = (goods) => {
@@ -77,8 +82,7 @@ export default class ItemList extends Component {
 
 
   render() {
-    const {items} = this.state;
-    console.log(items); // className="button-current"
+    const {items} = this.state; // className="button-current"
     const goods = items.map((item) =>{
       return this.renderGood(item)
      });

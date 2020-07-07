@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ErrorButton from '../error-button';
+import Spinner from '../spinner';
 
 import './item-details.css';
 
@@ -17,7 +17,7 @@ export default class itemDetails extends Component {
 
   state = {
     item: null,
-    image: null,
+    loading: true
   };
 
   componentDidMount() {
@@ -40,16 +40,17 @@ export default class itemDetails extends Component {
     getData(itemId)
       .then((item) => {
         this.setState({
-          item
+          item,
+          loading: false
         });
       });
   }
 
   render() {
 
-    const { item } = this.state;
-    if (!item) {
-      return <span>Select a item from a list</span>;
+    const { item, loading } = this.state;
+    if (loading) {
+      return <Spinner />;
     }
 
     const { title, url } = item;
@@ -67,7 +68,6 @@ export default class itemDetails extends Component {
               })
             }
           </ul>
-          <ErrorButton />
         </div>
       </div>
     )
