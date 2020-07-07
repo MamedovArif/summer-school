@@ -185,23 +185,3 @@
   opacity: 0.4;
   cursor: default;
 }
-.filter-catalog .show {
-  display: inline-block;
-  vertical-align: top;
-  padding: 10px 39px;
-  margin-top: 70px;
-
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid lightgray;
-
-  font-family: "PT Sans", "Arial", sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  text-align: center;
-  vertical-align: middle;
-  text-transform: uppercase;
-
-  cursor: pointer;
-}

@@ -12,31 +12,81 @@ import './perforators.css';
 class Perforators extends Component {
 
   state = {
-    selectedManufacturers: [
-      'BOSCH', 'INTERSKOL', 'MAKITA', 'DEWALT', 'HITACHI'
-    ],
     powerSupply: 'electronetwork',
+    initialGoods: this.props.data,
     goods: this.props.data
   }
 
-  handleCheckbox = (evt) => {
-    console.log('connect')
-    const name = evt.target.name;
-    console.log(name);
-    this.setState(({goods}) => {
-      const sortGoods = goods.filter((item) => {
-        return item.brand.toLowerCase() !== name
-      })
-      console.log(sortGoods);
-      return {
-        goods: sortGoods
-      }
+  // componentDidMount() {
+  //   this.sortingPowerSupply(this.state.powerSupply);
+  // }
+
+  handleRadio = (event) => {
+    const currentNetworking = event.target.id;
+    console.log(currentNetworking);
+    this.setState({
+      powerSupply: currentNetworking
     })
+    console.log(this.state.powerSupply);
+    //this.sortingPowerSupply(this.state.powerSupply);
+  }
+
+  // sortingPowerSupply(value) {
+  //   this.setState(({goods}) => {
+  //     const sortSupply = goods.filter((item) => {
+  //       return item.powerSupply === value
+  //     })
+  //     return {
+  //       goods: sortSupply
+  //     }
+  //   })
+  // }
+
+  handleCheckbox = (evt) => {
+    const name = evt.target.name;
+    const checked = evt.target.checked;
+    this.setState(({goods, initialGoods}) => {
+      if (!checked) {
+        const sortGoods = goods.filter((item) => {
+          return item.brand.toLowerCase() !== name
+        })
+        return {
+          goods: sortGoods
+        }
+      } else {
+        const addGoods = initialGoods.filter((item) => {
+          return item.brand.toLowerCase() === name
+        })
+        const addCheckboxGoods = goods.concat(addGoods)
+        return {
+          goods: addCheckboxGoods
+        }
+      }
+    });
+    //handleRadio(this.state.powerSupply)
   }
 
 
   render() {
-    console.log(this.props);
+    // if (this.state.powerSupply === 'electronetwork') {
+    //   this.setState(({goods}) => {
+    //     const sortSupply = goods.filter((item) => {
+    //       return item.powerSupply === 'electronetwork'
+    //     })
+    //     return {
+    //       goods: sortSupply
+    //     }
+    //   })
+    // } else {
+    //   this.setState(({goods}) => {
+    //     const sortSupply = goods.filter((item) => {
+    //       return item.powerSupply === 'accumulator'
+    //     })
+    //     return {
+    //       goods: sortSupply
+    //     }
+    //   })
+    // }
     return (
       <main className="inner-page">
         <div className="inner-page-container">
@@ -55,7 +105,8 @@ class Perforators extends Component {
           <div className="catalogh1">
             <h1>Интрументы</h1>
           </div>
-          <Filters handleCheckbox={this.handleCheckbox}/>
+          <Filters
+            handleCheckbox={this.handleCheckbox} handleRadio={this.handleRadio}/>
 
           <ItemList data={this.state.goods}/>
 

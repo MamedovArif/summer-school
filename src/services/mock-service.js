@@ -96,19 +96,19 @@ export default class MockService {
     {
       id: 5,
       title: 'Перфоратор',
-      brand: 'ИНТЕРСКОЛ',
-      model: 'П-26/800ЭР',
+      brand: 'METABO',
+      model: 'UHEV 2860-2 Quick',
       isNew: true,
-      initialPrice: null,
-      price: 4759,
+      initialPrice: 15870,
+      price: 14800,
       powerSupply: 'electronetwork',
       isHit: true,
-      power: 780,
-      numberOfIdle: 1200,
-      frequencyOfStrikes: 5400,
-      impactEnergy: 3,
-      weight: 2.9,
-      url: `${this._imageBase}/1605421/img_id5473780294539838164.jpeg/9hq`
+      power: 1100,
+      numberOfIdle: 2100,
+      frequencyOfStrikes: 4500,
+      impactEnergy: 3.4,
+      weight: 3.3,
+      url: `${this._imageBase}/1912364/img_id5663495404948598156.jpeg/orig`
     },
 
     {

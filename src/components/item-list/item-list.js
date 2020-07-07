@@ -13,7 +13,6 @@ export default class ItemList extends Component {
 
   componentDidMount() {
     const items = this.props.data;
-    console.log(items);
     this.setState({
       items
     })
