@@ -2,47 +2,39 @@ import React from 'react';
 
 import './filters.css';
 
-const Filters = () => {
+const Filters = (props) => {
   return (
     <section className="filter-catalog">
-      <div className="filterh2"><p className="filter-headline">Фильтр:</p></div>
+      <div className="filterh2"><p className="filter-headline">Фильтры:</p></div>
       <form method="get" action="https://echo.htmlacademy.ru">
-         <fieldset className="toddler-container">
-           <h2 className="range-title">
-             Цена:<span className="visually-hidden">в рублях</span>
-           </h2>
-           <div className="scale">
-              <div className="range-scale">
-                  <div className="range-bar"></div>
-              </div>
-           </div>
-           <div className="output-container">
-              <input className="range-outputmin" name="mean-min" type="text" defaultValue="0" />
-              <input className="range-outputmax" name="mean-max" type="text" defaultValue="30000" />
-           </div>
-         </fieldset>
          <div className="manufacturer">
            <fieldset >
               <legend>Производители:</legend>
               <ul>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-checkbox" type="checkbox" defaultChecked name="bosch" id="bosch" />
+                  <input onChange={props.handleCheckbox}
+                    className="visually-hidden filter-input-checkbox" type="checkbox"
+                    defaultChecked name="bosch" id="bosch" />
                   <label className="checkbox" htmlFor="bosch">BOSCH</label>
                  </li>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-checkbox" type="checkbox" name="interskol" id="interskol" />
+                  <input className="visually-hidden filter-input-checkbox" type="checkbox"
+                    defaultChecked name="interskol" id="interskol" />
                   <label className="checkbox" htmlFor="interskol">ИНТЕРСКОЛ</label>
                  </li>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-checkbox" type="checkbox" defaultChecked name="makita" id="makita" />
+                  <input className="visually-hidden filter-input-checkbox" type="checkbox"
+                    defaultChecked name="makita" id="makita" />
                   <label className="checkbox" htmlFor="makita">MAKITA</label>
                  </li>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-checkbox" type="checkbox" name="dewalt" id="dewalt" />
+                  <input className="visually-hidden filter-input-checkbox" type="checkbox"
+                    defaultChecked name="dewalt" id="dewalt" />
                   <label className="checkbox" htmlFor="dewalt">DEWALT</label>
                  </li>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-checkbox" type="checkbox" name="hitachi" id="hitachi" />
+                  <input className="visually-hidden filter-input-checkbox" type="checkbox"
+                    defaultChecked name="hitachi" id="hitachi" />
                   <label className="checkbox" htmlFor="hitachi">HITACHI</label>
                  </li>
               </ul>
@@ -53,11 +45,13 @@ const Filters = () => {
               <legend>Питание:</legend>
               <ul>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-radio" type="radio" defaultChecked name="networking" id="rechargeable" />
+                  <input className="visually-hidden filter-input-radio" type="radio" name="networking" id="rechargeable" />
                   <label className="radio" htmlFor="rechargeable">Аккумуляторные</label>
                  </li>
                  <li className="filter-option">
-                  <input className="visually-hidden filter-input-radio disabled" type="radio" name="networking" id="networking" />
+                  <input className="visually-hidden filter-input-radio disabled"
+                  type="radio" name="networking" id="networking"
+                  defaultChecked/>
                   <label className="radio" htmlFor="networking">Сетевые</label>
                  </li>
               </ul>
