@@ -1,4 +1,3 @@
-import React from 'react';
 import ItemList from '../item-list';
 import { withData, withService} from '../hoc';
 

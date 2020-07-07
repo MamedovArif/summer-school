@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Header from '../header';
 import Main from '../pages/main';
 import Catalog from '../pages/catalog';
-import Good from '../good';
 import {PerforatorDetails} from '../app-components';
 import Company from '../pages/company';
 import News from '../pages/news';

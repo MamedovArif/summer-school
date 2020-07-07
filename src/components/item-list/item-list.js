@@ -1,17 +1,60 @@
 import React, {Fragment, Component} from 'react';
 import { Link } from 'react-router-dom';
-import {withData} from '../hoc';
 
 import './item-list.css';
 
-class ItemList extends Component {
+
+
+export default class ItemList extends Component {
+
+  state = {
+    items: []
+  }
+
+  componentDidMount() {
+    const items = this.props.data;
+    console.log(items);
+    this.setState({
+      items
+    })
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  sortingByPrice = (goods) => {
+    const sortGoods = goods.sort((a, b) => {
+      return a.price - b.price;
+    })
+    this.setState({
+      items: sortGoods
+    })
+  }
+
+  sortingByPower = (goods) => {
+    const sortGoods = goods.sort((a, b) => {
+      return a.power - b.power;
+    })
+    this.setState({
+      items: sortGoods
+    })
+  }
+
+  sortingByWeight = (goods) => {
+    const sortGoods = goods.sort((a, b) => {
+      return a.weight - b.weight;
+    })
+    this.setState({
+      items: sortGoods
+    })
+  }
 
   renderGood = (item) => {
     const {id, title, brand, model, isNew,
       initialPrice, price, url} = item;
-    console.log(url);
     const sale = initialPrice ?
-      <div className="discount">{initialPrice} P.</div> :
+      <div className="discount">{initialPrice} ₽</div> :
       <div className="discount"></div>;
     const novelty = isNew ? <div className="flag flag-new">новинка</div> : null;
     return (
@@ -27,16 +70,16 @@ class ItemList extends Component {
         </div>
         <h3><Link className="title" to={`/catalog/tool/perforators/${id}`}>{title} {brand} {model}</Link></h3>
         {sale}
-        <div className="price">{price} P.</div>
+        <div className="price">{price} ₽</div>
       </li>
     )
   }
 
 
   render() {
-    console.log(this.props);
-    const {data} = this.props;
-    const items = data.map((item) =>{
+    const {items} = this.state;
+    console.log(items); // className="button-current"
+    const goods = items.map((item) =>{
       return this.renderGood(item)
      });
     return (
@@ -47,32 +90,24 @@ class ItemList extends Component {
              <p>сортировка:</p>
              <ul className="sort-container">
                <li>
-                  <button className="button-current">по цене</button>
+                  <button onClick={() => {
+                    this.sortingByPrice(items)
+                  }}>по цене</button>
                </li>
                <li>
-                  <button>по типу</button>
+                  <button onClick={() => {
+                    this.sortingByWeight(items)
+                  }}>по весу</button>
                </li>
                <li>
-                  <button>по функционалу</button>
+                  <button onClick={() => {
+                    this.sortingByPower(items)
+                  }}>по мощности</button>
                </li>
              </ul>
-             <div className="up-down">
-               <button className="up current-up">
-                 <span className="visually-hidden">перелистать наверх</span>
-                 <svg className="svg-up" xmlns="http://www.w3.org/2000/svg"
-                 width="11" height="10" viewBox="0 0 11 10"><path d="M5.5 0L0 10h11z"/>
-                 </svg>
-               </button>
-               <button className="down">
-                 <span className="visually-hidden">перелистать вниз</span>
-                 <svg className="svg-down" xmlns="http://www.w3.org/2000/svg"
-                 width="11" height="10" viewBox="0 0 11 10"><path d="M5.5 0L0 10h11z"/>
-                 </svg>
-               </button>
-             </div>
           </div>
           <ul className="list-goods">
-            {items}
+            {goods}
           </ul>
           <div className="pagination">
           <ul className="pagination-list">
@@ -87,5 +122,3 @@ class ItemList extends Component {
     )
   }
 }
-
-export default ItemList;
