@@ -65,6 +65,7 @@ class Perforators extends Component {
   }
 
   render() {
+    const {initialGoods, currentGoods} = this.state;
     return (
       <main className="inner-page">
         <div className="inner-page-container">
@@ -84,10 +85,10 @@ class Perforators extends Component {
             <h1>Интрументы</h1>
           </div>
           <Filters sortingInitialGoods={this.sortingInitialGoods}
+            data={initialGoods}
             handleCheckbox={this.handleCheckbox} handleRadio={this.handleRadio}/>
 
-
-          <ItemList data={this.state.currentGoods}/>
+          <ItemList data={currentGoods}/>
 
           <AboutPerforator />
          </div>

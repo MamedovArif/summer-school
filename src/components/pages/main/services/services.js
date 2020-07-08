@@ -74,7 +74,7 @@ export default class Services extends Component {
           <div className="servis-slide">
             <ul className="servis-menu">
               <li>
-                <button
+                <button className="noted"
                   onClick={this.handleClick}>Доставка
                 </button>
               </li>
