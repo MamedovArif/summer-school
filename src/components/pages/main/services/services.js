@@ -41,26 +41,21 @@ const Credit = () => {
 export default class Services extends Component {
 
   state = {
-    selectedItem: 'Доставка',
+    selectedItem: 'delivery',
   }
 
-  handleClick = (evt) => {
-    const text = evt.target.textContent;
-    this.setState((state) => {
-      if (state.selectedItem === text) {
-        return;
-      }
-      return {
-        selectedItem: text
-      }
+  handleChange = (evt) => {
+    const id = evt.target.id;
+    this.setState({
+      selectedItem: id
     })
   }
 
   render() {
     const {selectedItem} = this.state;
-    const guarantee = selectedItem === 'Гарантия' ? <Guarantee /> : null;
-    const transfer = selectedItem === 'Доставка' ? <Transfer /> : null;
-    const credit = selectedItem === 'Кредит' ? <Credit /> : null;
+    const guarantee = selectedItem === 'guarantee' ? <Guarantee /> : null;
+    const transfer = selectedItem === 'delivery' ? <Transfer /> : null;
+    const credit = selectedItem === 'credit' ? <Credit /> : null;
 
     return (
       <div className="out-servis">
@@ -74,19 +69,22 @@ export default class Services extends Component {
           <div className="servis-slide">
             <ul className="servis-menu">
               <li>
-                <button className="noted"
-                  onClick={this.handleClick}>Доставка
-                </button>
+                <input onChange={this.handleChange}
+                className="visually-hidden input-radio"
+                type="radio" name="service" id="delivery" defaultChecked/>
+                <label htmlFor="delivery">Доставка</label>
               </li>
               <li>
-                <button
-                  onClick={this.handleClick}>Гарантия
-                </button>
+                <input onChange={this.handleChange}
+                className="visually-hidden input-radio"
+                type="radio" name="service" id="guarantee" />
+                <label htmlFor="guarantee">Гарантия</label>
               </li>
               <li>
-                <button
-                  onClick={this.handleClick}>Кредит
-                </button>
+                <input onChange={this.handleChange}
+                className="visually-hidden input-radio"
+                type="radio" name="service" id="credit" />
+                <label htmlFor="credit">Кредит</label>
               </li>
             </ul>
             <ul className="servis-content">
@@ -100,3 +98,4 @@ export default class Services extends Component {
     )
   }
 }
+//

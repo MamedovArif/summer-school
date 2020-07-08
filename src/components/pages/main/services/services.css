@@ -83,17 +83,13 @@
   background-repeat: no-repeat;
   opacity: 0.25;
 }
-.servis-menu button {
+.servis-menu input + label {
   width: 240px;
   display: block;
   padding-top: 15px;
   padding-bottom: 22px;
   padding-left: 16px;
   box-sizing: border-box;
-
-  color: #ffffff;
-  background-color: #32425c;
-  border: 1px solid #293449;
 
   font-family: "Cuprum", "Arial", sans-serif;
   font-weight: 700;
@@ -102,17 +98,24 @@
   text-transform: capitalize;
   text-align: left;
 }
-.servis-menu button:hover {
+.servis-menu label:hover {
   background-color: #293449;
   color: #ffffff;
 }
-.servis-menu button:active,
-.servis-menu button:focus,
-.servis-menu .noted {
+.servis-menu label:active,
+.servis-menu label:focus,
+.servis-menu .input-radio:not(checked) + label { /* input[checked] */
+  color: #ffffff;
+  background-color: #32425c;
+  border: 1px solid #293449;
+}
+
+.servis-menu .input-radio:checked + label {
   color: #32425c;
   background-color: #ffffff;
   border: none;
 }
+
 .servis .servis-content {
   list-style: none;
   margin: 0;

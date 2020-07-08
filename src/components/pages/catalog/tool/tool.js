@@ -6,7 +6,7 @@ const Tool = () => {
   return (
     <ul>
 
-      <li><Link to="/catalog/tool/perforators/">Инт</Link></li>
+      <li><Link to="/catalog/tool/perforators/">Перфораторы</Link></li>
     </ul>
   )
 }
