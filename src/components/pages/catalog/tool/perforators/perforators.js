@@ -12,81 +12,59 @@ import './perforators.css';
 class Perforators extends Component {
 
   state = {
-    powerSupply: 'electronetwork',
     initialGoods: this.props.data,
-    goods: this.props.data
+    currentGoods: this.props.data,
+    selectedBrand: ['bosch', 'metabo', 'makita', 'dewalt', 'hitachi'],
+    powerSupply: 'electronetwork',
+
   }
 
-  // componentDidMount() {
-  //   this.sortingPowerSupply(this.state.powerSupply);
-  // }
+  componentDidMount() {
+    this.sortingInitialGoods();
+  }
 
   handleRadio = (event) => {
     const currentNetworking = event.target.id;
-    console.log(currentNetworking);
     this.setState({
       powerSupply: currentNetworking
     })
-    console.log(this.state.powerSupply);
-    //this.sortingPowerSupply(this.state.powerSupply);
   }
 
-  // sortingPowerSupply(value) {
-  //   this.setState(({goods}) => {
-  //     const sortSupply = goods.filter((item) => {
-  //       return item.powerSupply === value
-  //     })
-  //     return {
-  //       goods: sortSupply
-  //     }
-  //   })
-  // }
+  sortingInitialGoods = () => {
+    this.setState(({goods, initialGoods, powerSupply, selectedBrand}) => {
+      const sortSupply = initialGoods.filter((item) => {
+        return item.powerSupply === powerSupply
+      })
+      const sortBrand = sortSupply.filter((item) => {
+        return selectedBrand.includes(item.brand.toLowerCase())
+      })
+      return {
+        currentGoods: sortBrand
+      }
+    })
+  }
 
   handleCheckbox = (evt) => {
     const name = evt.target.name;
     const checked = evt.target.checked;
-    this.setState(({goods, initialGoods}) => {
+    this.setState(({selectedBrand}) => {
       if (!checked) {
-        const sortGoods = goods.filter((item) => {
-          return item.brand.toLowerCase() !== name
+        const newSelectedBrand = selectedBrand.filter((item) => {
+          return item !== name
         })
         return {
-          goods: sortGoods
+          selectedBrand: newSelectedBrand
         }
       } else {
-        const addGoods = initialGoods.filter((item) => {
-          return item.brand.toLowerCase() === name
-        })
-        const addCheckboxGoods = goods.concat(addGoods)
+        const addSelectedBrand = selectedBrand.concat(name);
         return {
-          goods: addCheckboxGoods
+          selectedBrand: addSelectedBrand
         }
       }
     });
-    //handleRadio(this.state.powerSupply)
   }
 
-
   render() {
-    // if (this.state.powerSupply === 'electronetwork') {
-    //   this.setState(({goods}) => {
-    //     const sortSupply = goods.filter((item) => {
-    //       return item.powerSupply === 'electronetwork'
-    //     })
-    //     return {
-    //       goods: sortSupply
-    //     }
-    //   })
-    // } else {
-    //   this.setState(({goods}) => {
-    //     const sortSupply = goods.filter((item) => {
-    //       return item.powerSupply === 'accumulator'
-    //     })
-    //     return {
-    //       goods: sortSupply
-    //     }
-    //   })
-    // }
     return (
       <main className="inner-page">
         <div className="inner-page-container">
@@ -105,10 +83,11 @@ class Perforators extends Component {
           <div className="catalogh1">
             <h1>Интрументы</h1>
           </div>
-          <Filters
+          <Filters sortingInitialGoods={this.sortingInitialGoods}
             handleCheckbox={this.handleCheckbox} handleRadio={this.handleRadio}/>
 
-          <ItemList data={this.state.goods}/>
+
+          <ItemList data={this.state.currentGoods}/>
 
           <AboutPerforator />
          </div>
@@ -124,4 +103,38 @@ const mapPerforatorMethodsToProps = (service) => {
 }
 
 export default withService(mapPerforatorMethodsToProps)(
-   withData(Perforators))
+   withData(Perforators));
+
+/*
+const name = evt.target.name;
+    const checked = evt.target.checked;
+    this.setState(({currentGoods, initialGoods}) => {
+      if (!checked) {
+        const sortGoods = currentGoods.filter((item) => {
+          return item.brand.toLowerCase() !== name
+        })
+        return {
+          currentGoods: sortGoods
+        }
+      } else {
+        const addGoods = initialGoods.filter((item) => {
+          return item.brand.toLowerCase() === name
+        })
+        const addCheckboxGoods = currentGoods.concat(addGoods)
+        return {
+          currentGoods: addCheckboxGoods
+        }
+      }
+    }); */
+
+
+    // sortingPowerSupply(value) {
+  //   this.setState(({goods}) => {
+  //     const sortSupply = goods.filter((item) => {
+  //       return item.powerSupply === value
+  //     })
+  //     return {
+  //       goods: sortSupply
+  //     }
+  //   })
+  // }

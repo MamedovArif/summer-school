@@ -63,6 +63,11 @@ const Filters = (props) => {
                  </li>
               </ul>
            </fieldset>
+           <button onClick={(e) => {
+             e.preventDefault();
+             props.sortingInitialGoods()
+           }}
+           className="show" type="submit">Показать</button>
          </div>
       </form>
     </section>
