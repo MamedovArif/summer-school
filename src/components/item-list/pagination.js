@@ -11,7 +11,7 @@ const Pagination = ({itemsPerPage, totalItems, paginate}) => {
     pageNumbers.push(i)
   }
 
-  return ( //pagination-item-current // radio
+  return ( //pagination-item-current
     <nav className="pagination">
       <ul className="pagination-list">
          {pageNumbers.map((item) => {
@@ -31,8 +31,3 @@ const Pagination = ({itemsPerPage, totalItems, paginate}) => {
 }
 
 export default Pagination;
-
-/*
-<li key={item} className="pagination-item">
-                <a onClick={() => paginate(item)} >{item}</a>
-              </li> */

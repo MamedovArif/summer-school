@@ -14,38 +14,42 @@ export default class ItemList extends Component {
   }
 
   componentDidMount() {
-    const indexOfLastItem = this.state.currentPage * this.state.itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage;
+    this.updateItems();
+    this.updatePagination();
+  }
 
+  componentDidUpdate(prevProps) { //для чекбоксов
+    if (this.props.data !== prevProps.data) {
+      this.updateItems();
+      this.updatePagination();
+    }
+  }
+
+  updateItems = () => {
     const items = this.props.data;
     this.setState({
       items
-    })
+    });
+  }
+
+  updatePagination = () => {
+    const {currentPage, itemsPerPage} = this.state;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
     this.setState((state) => {
       const currentItems = state.items.slice(indexOfFirstItem, indexOfLastItem);
-      console.log(currentItems);
       return {
         currentItems
       }
     })
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      const items = this.props.data;
-      this.setState({
-        items
-      });
-    }
-  }
-
   paginate = (pageNumber) => {
     const indexOfLastItem = pageNumber * this.state.itemsPerPage;
-    console.log(indexOfLastItem);
     const indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage;
-    console.log(indexOfFirstItem);
     const currentItems = this.state.items.slice(indexOfFirstItem, indexOfLastItem);
-    console.log(currentItems);
+
     this.setState({
       currentPage: pageNumber,
       currentItems,
@@ -54,30 +58,35 @@ export default class ItemList extends Component {
 
 
   sortingByPrice = (goods) => {
-    const sortGoods = goods.sort((a, b) => {
+    console.log(goods);
+    const sortGoods = goods.slice().sort((a, b) => {
       return a.price - b.price;
-    })
+    });
+    console.log(sortGoods);
     this.setState({
       items: sortGoods
-    })
+    });
+    this.updatePagination();
   }
 
   sortingByPower = (goods) => {
     const sortGoods = goods.sort((a, b) => {
       return a.power - b.power;
-    })
+    });
     this.setState({
       items: sortGoods
-    })
+    });
+    this.updatePagination();
   }
 
   sortingByWeight = (goods) => {
     const sortGoods = goods.sort((a, b) => {
       return a.weight - b.weight;
-    })
+    });
     this.setState({
       items: sortGoods
-    })
+    });
+    this.updatePagination();
   }
 
   renderGood = (item) => {
@@ -108,6 +117,7 @@ export default class ItemList extends Component {
 
   render() {
     const {currentItems, items, itemsPerPage} = this.state; // className="button-current"
+    console.log(items);
     console.log(currentItems);
     const goods = currentItems.map((item) =>{ //
       return this.renderGood(item)
