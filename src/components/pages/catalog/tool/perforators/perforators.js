@@ -106,36 +106,3 @@ const mapPerforatorMethodsToProps = (service) => {
 export default withService(mapPerforatorMethodsToProps)(
    withData(Perforators));
 
-/*
-const name = evt.target.name;
-    const checked = evt.target.checked;
-    this.setState(({currentGoods, initialGoods}) => {
-      if (!checked) {
-        const sortGoods = currentGoods.filter((item) => {
-          return item.brand.toLowerCase() !== name
-        })
-        return {
-          currentGoods: sortGoods
-        }
-      } else {
-        const addGoods = initialGoods.filter((item) => {
-          return item.brand.toLowerCase() === name
-        })
-        const addCheckboxGoods = currentGoods.concat(addGoods)
-        return {
-          currentGoods: addCheckboxGoods
-        }
-      }
-    }); */
-
-
-    // sortingPowerSupply(value) {
-  //   this.setState(({goods}) => {
-  //     const sortSupply = goods.filter((item) => {
-  //       return item.powerSupply === value
-  //     })
-  //     return {
-  //       goods: sortSupply
-  //     }
-  //   })
-  // }

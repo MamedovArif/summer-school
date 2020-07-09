@@ -1,20 +1,32 @@
 import React, {Fragment, Component} from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from './pagination.js';
 
 import './item-list.css';
-
-
 
 export default class ItemList extends Component {
 
   state = {
-    items: []
+    items: [],
+    currentItems: [],
+    currentPage: 1,
+    itemsPerPage: 3
   }
 
   componentDidMount() {
+    const indexOfLastItem = this.state.currentPage * this.state.itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage;
+
     const items = this.props.data;
     this.setState({
       items
+    })
+    this.setState((state) => {
+      const currentItems = state.items.slice(indexOfFirstItem, indexOfLastItem);
+      console.log(currentItems);
+      return {
+        currentItems
+      }
     })
   }
 
@@ -26,6 +38,20 @@ export default class ItemList extends Component {
       });
     }
   }
+
+  paginate = (pageNumber) => {
+    const indexOfLastItem = pageNumber * this.state.itemsPerPage;
+    console.log(indexOfLastItem);
+    const indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage;
+    console.log(indexOfFirstItem);
+    const currentItems = this.state.items.slice(indexOfFirstItem, indexOfLastItem);
+    console.log(currentItems);
+    this.setState({
+      currentPage: pageNumber,
+      currentItems,
+    })
+  }
+
 
   sortingByPrice = (goods) => {
     const sortGoods = goods.sort((a, b) => {
@@ -81,8 +107,9 @@ export default class ItemList extends Component {
 
 
   render() {
-    const {items} = this.state; // className="button-current"
-    const goods = items.map((item) =>{
+    const {currentItems, items, itemsPerPage} = this.state; // className="button-current"
+    console.log(currentItems);
+    const goods = currentItems.map((item) =>{ //
       return this.renderGood(item)
      });
     return (
@@ -112,14 +139,8 @@ export default class ItemList extends Component {
           <ul className="list-goods">
             {goods}
           </ul>
-          <div className="pagination">
-          <ul className="pagination-list">
-             <li className="pagination-item pagination-item-current"><button>1</button></li>
-             <li className="pagination-item"><button>2</button></li>
-             <li className="pagination-item"><button>3</button></li>
-          </ul>
-          <button className="next">Следующая</button>
-          </div>
+          <Pagination paginate={this.paginate} totalItems={items.length}
+            itemsPerPage={itemsPerPage} />
         </div>
       </Fragment>
     )

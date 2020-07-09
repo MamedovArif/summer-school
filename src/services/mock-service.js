@@ -164,6 +164,119 @@ export default class MockService {
       weight: 3,
       url: `${this._imageBase}/1669769/img_id994218771506213848.jpeg/9hq`
     },
+
+
+
+
+
+
+    {
+      id: 9,
+      title: 'Перфоратор',
+      brand: 'MAKITA',
+      model: 'HR2470',
+      isNew: true,
+      initialPrice: 7477,
+      price: 6950,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 780,
+      numberOfIdle: 1100,
+      frequencyOfStrikes: 4500,
+      impactEnergy: 2.7,
+      weight: 2.6,
+      url: `${this._imageBase}/1614201/img_id7059479335064729118.jpeg/9hq`
+    },
+
+    {
+      id: 10,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'GBH 240',
+      isNew: false,
+      initialPrice: 6998,
+      price: 5950,
+      powerSupply: 'electronetwork',
+      isHit: false,
+      power: 790,
+      numberOfIdle: 930,
+      frequencyOfStrikes: 4500,
+      impactEnergy: 2.8,
+      weight: 2.6,
+      url: `${this._imageBase}/1808939/img_id6111417658335389636.jpeg/9hq`
+    },
+
+    {
+      id: 11,
+      title: 'Перфоратор',
+      brand: 'MAKITA',
+      model: 'DHR202RF Li-Ion 18В',
+      isNew: false,
+      initialPrice: null,
+      price: 8980,
+      powerSupply: 'accumulator',
+      isHit: true,
+      power: 700,
+      numberOfIdle: 1200,
+      frequencyOfStrikes: 4000,
+      impactEnergy: 1.9,
+      weight: 3.5,
+      url: `${this._imageBase}/1602935/img_id5129775492232508705.jpeg/9hq`
+    },
+
+    {
+      id: 12,
+      title: 'Перфоратор',
+      brand: 'BOSCH',
+      model: 'GBH 2-28 F',
+      isNew: false,
+      initialPrice: null,
+      price: 12559,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 880,
+      numberOfIdle: 900,
+      frequencyOfStrikes: 4000,
+      impactEnergy: 3.2,
+      weight: 3.1,
+      url: `${this._imageBase}/1605421/img_id3651857285969135250.jpeg/9hq`
+    },
+
+    {
+      id: 13,
+      title: 'Перфоратор',
+      brand: 'HITACHI',
+      model: 'DH24PH',
+      isNew: false,
+      initialPrice: 11750,
+      price: 10500,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 730,
+      numberOfIdle: 1050,
+      frequencyOfStrikes: 4500,
+      impactEnergy: 2.7,
+      weight: 2.7,
+      url: `${this._imageBase}/1605421/img_id4263042739453333466.jpeg/9hq`
+    },
+
+    {
+      id: 14,
+      title: 'Перфоратор',
+      brand: 'METABO',
+      model: 'UHEV 2860-2 Quick',
+      isNew: true,
+      initialPrice: 15870,
+      price: 14800,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1100,
+      numberOfIdle: 2100,
+      frequencyOfStrikes: 4500,
+      impactEnergy: 3.4,
+      weight: 3.3,
+      url: `${this._imageBase}/1912364/img_id5663495404948598156.jpeg/orig`
+    }
   ]
 
   _angleGrinders = [
