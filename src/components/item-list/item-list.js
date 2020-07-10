@@ -27,9 +27,9 @@ export default class ItemList extends Component {
       // this.setState({
       //   selectedSort: 'price'
       // })
-      const inputPrice = document.querySelector('input[id="price"]');
-      inputPrice.setAttribute('checked');
-      console.log(inputPrice);
+      // const inputPrice = document.querySelector('input[id="price"]');
+      // inputPrice.setAttribute('checked', true);
+      //console.log(inputPrice);
       this.updateItems();
       this.sortingByPrice(this.props.data);
       this.updatePagination(); //успевает среагировать?
