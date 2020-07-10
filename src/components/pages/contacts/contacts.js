@@ -1,7 +1,13 @@
 import React from 'react';
 
+import {wrapperInnerPage} from '../wrapper-inner-page';
+
 const Contacts = () => {
-  return <div>Contacts</div>
+  return <div></div>
 }
 
-export default Contacts;
+const linksOfArray = [
+  {title: 'Контакты', path: 'contacts'}
+]
+
+export default wrapperInnerPage(Contacts, linksOfArray);

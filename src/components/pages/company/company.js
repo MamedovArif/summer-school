@@ -1,7 +1,13 @@
 import React from 'react';
 
+import {wrapperInnerPage} from '../wrapper-inner-page';
+
 const Company = () => {
-  return <div>Company</div>
+  return <div></div>
 }
 
-export default Company;
+const linksOfArray = [
+  {title: 'Компания', path: 'company'}
+]
+
+export default wrapperInnerPage(Company, linksOfArray);

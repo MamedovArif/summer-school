@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
 
 import Filters from '../filters';
 import AboutPerforator from './about-perforator';
 import ItemList from '../../../../item-list';
 import { withService, withData } from '../../../../hoc';
+import {wrapperInnerPage} from '../../../wrapper-inner-page';
 //import {PerforatorList} from '../../../../app-components';
-
-import './perforators.css';
 
 class Perforators extends Component {
 
@@ -67,32 +65,15 @@ class Perforators extends Component {
   render() {
     const {initialGoods, currentGoods} = this.state;
     return (
-      <main className="inner-page">
-        <div className="inner-page-container">
-          <ul className="breadcrumbs">
-            <li>
-              <Link className="icon-home" to="/">
-                <span className="visually-hidden">Главная</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/catalog/">Каталог</Link>
-            </li>
-            <li><Link to="/catalog/tool">Инструмент</Link></li>
-            <li><span>перфораторы</span></li>
-          </ul>
-          <div className="catalogh1">
-            <h1>Интрументы</h1>
-          </div>
-          <Filters sortingInitialGoods={this.sortingInitialGoods}
-            data={initialGoods}
-            handleCheckbox={this.handleCheckbox} handleRadio={this.handleRadio}/>
+      <Fragment>
+        <Filters sortingInitialGoods={this.sortingInitialGoods}
+          data={initialGoods}
+          handleCheckbox={this.handleCheckbox} handleRadio={this.handleRadio}/>
 
-          <ItemList data={currentGoods}/>
+        <ItemList data={currentGoods}/>
 
-          <AboutPerforator />
-         </div>
-      </main>
+        <AboutPerforator />
+      </Fragment>
     )
   }
 }
@@ -103,6 +84,13 @@ const mapPerforatorMethodsToProps = (service) => {
   }
 }
 
+const linksOfArray = [
+  {title: 'Каталог', path: 'catalog/'},
+  {title: 'Инструмент', path: 'catalog/tool'},
+  {title: 'Перфораторы', path: 'catalog/tool/perforators/'},
+]
+
+
 export default withService(mapPerforatorMethodsToProps)(
-   withData(Perforators));
+  withData(wrapperInnerPage(Perforators, linksOfArray)));
 

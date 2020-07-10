@@ -1,20 +1,22 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import {wrapperInnerPage} from '../wrapper-inner-page';
 
-import './catalog.css';
+import { Link } from 'react-router-dom';
 
 const Catalog = () => {
   return (
-    <main className="inner-page">
-      <ul>
-        <li><Link to="/catalog/special-offers">Спецпредложения</Link></li>
-        <li><Link to="/catalog/technic">Техника</Link></li>
-        <li><Link to="/catalog/tool">Инструмент</Link></li>
-        <li><Link to="/catalog/materials">Материалы</Link></li>
-      </ul>
-    </main>
+    <ul>
+      <li><Link to="/catalog/special-offers">Спецпредложения</Link></li>
+      <li><Link to="/catalog/technic">Техника</Link></li>
+      <li><Link to="/catalog/tool">Инструмент</Link></li>
+      <li><Link to="/catalog/materials">Материалы</Link></li>
+    </ul>
   )
 }
 
-export default Catalog;
+const linksOfArray = [
+  {title: 'Каталог', path: 'catalog'}
+]
+
+export default wrapperInnerPage(Catalog, linksOfArray);
