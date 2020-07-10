@@ -282,76 +282,446 @@ export default class MockService {
   _angleGrinders = [
     {
       id: 0,
-      title: 'Болгарка',
-      brand: 'BOSCH',
-      model: 'BFG 3000',
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA5030',
       isNew: true,
-      initialPrice: 500,
-      price: 15,
+      initialPrice: 3955,
+      price: 3609,
       powerSupply: 'electronetwork',
-      type: 'horizontal',
-      power: 2000,
-      isHit: true
+      isHit: true,
+      power: 720,
+      numberOfIdle: 10000,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1525999/img_id5900912705532455145.jpeg/orig`
     },
 
     {
       id: 1,
-      title: 'Болгарка',
-      brand: 'BOSCH',
-      model: 'BFG 6000',
-      isNew: false,
-      initialPrice: 305,
-      price: 125,
-      powerSupply: 'rechargeable',
-      type: 'vertical',
-      power: 2000,
-      isHit: true
+      title: 'УШМ',
+      brand: 'DEWALT',
+      model: 'DWE4257',
+      isNew: true,
+      initialPrice: 8170,
+      price: 7609,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1500,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 2.6,
+      url: `${this._imageBase}/1522540/img_id9114775383041630560.jpeg/orig`
     },
 
     {
       id: 2,
-      title: 'Болгарка',
-      brand: 'BOSCH',
-      model: 'BFG 2000',
-      isNew: false,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'WX 2000',
+      isNew: true,
       initialPrice: null,
-      price: 12,
-      powerSupply: 'pneumatic',
-      type: 'vertical',
+      price: 7599,
+      powerSupply: 'electronetwork',
+      isHit: true,
       power: 2000,
-      isHit: true
+      numberOfIdle: 6600,
+      maxDiscDiameter: 230,
+      weight: 5.8,
+      url: `${this._imageBase}/96484/img_id7870553854011100454/orig`
     },
 
     {
       id: 3,
-      title: 'Перфоратор',
+      title: 'УШМ',
       brand: 'BOSCH',
-      model: 'BFG 3000',
-      isNew: false,
-      initialPrice: 22,
-      price: 15,
-      powerSupply: 'pneumatic',
-      type: 'vertical',
-      power: 2000,
-      isHit: true
+      model: 'PWS 700-125',
+      isNew: true,
+      initialPrice: null,
+      price: 4399,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 701,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 1.68,
+      url: `${this._imageBase}/1363071/img_id3082069143458408104.png/orig`
+    },
+
+    {
+      id: 4,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'WX 2200-230',
+      isNew: true,
+      initialPrice: 6972,
+      price: 6852,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 2200,
+      numberOfIdle: 6600,
+      maxDiscDiameter: 230,
+      weight: 5.8,
+      url: `${this._imageBase}/1567763/img_id8160704105666304907/orig`
+    },
+
+    {
+      id: 5,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: '9558HN',
+      isNew: true,
+      initialPrice: 4309,
+      price: 3609,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 840,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 1.6,
+      url: `${this._imageBase}/1767151/img_id3435654540053423287.jpeg/orig`
+    },
+
+    {
+      id: 6,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'WQ 1000',
+      isNew: true,
+      initialPrice: 5349,
+      price: 5190,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1010,
+      numberOfIdle: 10000,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1365202/img_id225081156555175400.jpeg/orig`
+    },
+
+    {
+      id: 7,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'WEV 850-125',
+      isNew: true,
+      initialPrice: null,
+      price: 4749,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 850,
+      numberOfIdle: 11500,
+      maxDiscDiameter: 125,
+      weight: 1.9,
+      url: `${this._imageBase}/1883514/img_id1616270054657863129.jpeg/orig`
+    },
+
+    {
+      id: 8,
+      title: 'УШМ',
+      brand: 'BOSCH',
+      model: 'GWS 22-180 LVI',
+      isNew: true,
+      initialPrice: 16469,
+      price: 15967,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 2200,
+      numberOfIdle: 8500,
+      maxDiscDiameter: 180,
+      weight: 5.3,
+      url: `${this._imageBase}/195452/img_id2829261645955279353/orig`
+    },
+
+    {
+      id: 9,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA6021',
+      isNew: true,
+      initialPrice: null,
+      price: 7430,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1050,
+      numberOfIdle: 10000,
+      maxDiscDiameter: 150,
+      weight: 2.3,
+      url: `${this._imageBase}/1538707/img_id8421780347419024688.jpeg/orig`
+    },
+
+    {
+      id: 10,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'W 850-125 603608010',
+      isNew: true,
+      initialPrice: null,
+      price: 3609,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 850,
+      numberOfIdle: 11500,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1715213/img_id816024444170068407.jpeg/orig`
+    },
+
+    {
+      id: 11,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA5030',
+      isNew: true,
+      initialPrice: 3955,
+      price: 3609,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 720,
+      numberOfIdle: 1100,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1525999/img_id5900912705532455145.jpeg/orig`
+    },
+
+    {
+      id: 12,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'W 850-125 601233010',
+      isNew: true,
+      initialPrice: 5200,
+      price: 4750,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 850,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 2,
+      url: `${this._imageBase}/1614201/img_id5784595712662820391.jpeg/orig`
+    },
+
+    {
+      id: 13,
+      title: 'УШМ',
+      brand: 'BOSCH',
+      model: 'GWX 14-125',
+      isNew: true,
+      initialPrice: 8789,
+      price: 8500,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1400,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 2.3,
+      url: `${this._imageBase}/1673800/img_id7193687748270126782.jpeg/orig`
+    },
+
+    {
+      id: 14,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'W 650-125',
+      isNew: true,
+      initialPrice: null,
+      price: 2400,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 650,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 1.7,
+      url: `${this._imageBase}/1911047/img_id8937566623143194963.jpeg/orig`
+    },
+
+    {
+      id: 15,
+      title: 'УШМ',
+      brand: 'BOSCH',
+      model: 'GWS 660-125',
+      isNew: true,
+      initialPrice: 2361,
+      price: 2100,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 660,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 1.9,
+      url: `${this._imageBase}/1571888/img_id3894645795092849270.jpeg/orig`
+    },
+
+    {
+      id: 16,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA5030X3',
+      isNew: true,
+      initialPrice: 3699,
+      price: 3600,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 720,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/195452/img_id4323487916254557205/orig`
+    },
+
+    {
+      id: 17,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA5030',
+      isNew: true,
+      initialPrice: 3955,
+      price: 3609,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 720,
+      numberOfIdle: 1100,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1525999/img_id5900912705532455145.jpeg/orig`
+    },
+
+    {
+      id: 18,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: '9069',
+      isNew: true,
+      initialPrice: null,
+      price: 6670,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 720,
+      numberOfIdle: 6600,
+      maxDiscDiameter: 230,
+      weight: 4.2,
+      url: `${this._imageBase}/1538707/img_id6875122344108762231.jpeg/orig`
+    },
+
+    {
+      id: 19,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA5030K',
+      isNew: true,
+      initialPrice: null,
+      price: 4329,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 720,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1620389/img_id5506817126363996885.jpeg/orig`
+    },
+
+    {
+      id: 20,
+      title: 'УШМ',
+      brand: 'DEWALT',
+      model: 'DWE4015',
+      isNew: true,
+      initialPrice: 3777,
+      price: 3609,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 750,
+      numberOfIdle: 12000,
+      maxDiscDiameter: 125,
+      weight: 1.8,
+      url: `${this._imageBase}/1525215/img_id5782638571093513910.jpeg/orig`
+    },
+
+    {
+      id: 21,
+      title: 'УШМ',
+      brand: 'METABO',
+      model: 'GA5030',
+      isNew: true,
+      initialPrice: 13955,
+      price: 13091,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 2600,
+      numberOfIdle: 6600,
+      maxDiscDiameter: 230,
+      weight: 6.3,
+      url: `${this._imageBase}/1884605/img_id6794302988714614067/orig`
+    },
+
+    {
+      id: 22,
+      title: 'УШМ',
+      brand: 'DEWALT',
+      model: 'DWE492',
+      isNew: true,
+      initialPrice: 9450,
+      price: 8954,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 2200,
+      numberOfIdle: 6600,
+      maxDiscDiameter: 230,
+      weight: 5.2,
+      url: `${this._imageBase}/195452/img_id5528938655782587748/orig`
+    },
+
+    {
+      id: 23,
+      title: 'УШМ',
+      brand: 'BOSCH',
+      model: 'GWS 13-125 CIE',
+      isNew: true,
+      initialPrice: 7950,
+      price: 7820,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1300,
+      numberOfIdle: 11500,
+      maxDiscDiameter: 125,
+      weight: 2.3,
+      url: `${this._imageBase}/1865278/img_id2313826261665458585/orig`
+    },
+
+    {
+      id: 24,
+      title: 'УШМ',
+      brand: 'DEWALT',
+      model: 'DWE4237',
+      isNew: true,
+      initialPrice: 9790,
+      price: 9540,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1200,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 2.2,
+      url: `${this._imageBase}/195452/img_id7439481625788293058/orig`
+    },
+
+    {
+      id: 25,
+      title: 'УШМ',
+      brand: 'MAKITA',
+      model: 'GA5041R',
+      isNew: true,
+      initialPrice: null,
+      price: 8897,
+      powerSupply: 'electronetwork',
+      isHit: true,
+      power: 1100,
+      numberOfIdle: 11000,
+      maxDiscDiameter: 125,
+      weight: 2.4,
+      url: `${this._imageBase}/1866031/img_id4984682844879837665.jpeg/orig`
     },
   ]
-
-  // getImagePerforator = (id) => {
-  //   const iden = id * 50;
-  //   return `${this._imageBase}/${id}`
-  // }
-
-  // getAllImagePerforators = () => {
-  //   const arrayOfId = this._perforators.map((item) => item.id);
-  //   console.log(arrayOfId);
-  //   return arrayOfId.map((id) => this.getImagePerforator(id));
-  // }
-
-  // getImageAngleGrinder = ({id}) => {
-  //   const iden = id * 30;
-  //   return `${this._imageBase}/${iden}`
-  // }
 
   getAllPerforators = async () => {
     return new Promise((resolve, reject) => {
