@@ -3,15 +3,13 @@ import React from 'react';
 import './pagination.css';
 
 const Pagination = ({itemsPerPage, totalItems, paginate}) => {
-  // console.log(itemsPerPage);
-  // console.log(totalItems);
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i)
   }
 
-  return ( //pagination-item-current
+  return (
     <nav className="pagination">
       <ul className="pagination-list">
          {pageNumbers.map((item) => {

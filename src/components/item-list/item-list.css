@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
 
-  max-width: 700px;
-  min-height: 1198px;
+  width: auto;
 
   margin-right: 130px;
+  flex-grow: 1;
 }
 .sort {
   max-width: 700px;
@@ -49,13 +49,11 @@
 .sort li:nth-child(3) {
   padding: 7px 35px 0px 35px;
 }
-.sort-container button {
+.sort-container label {
   padding: 0;
 
   color: #c5c5c5;
   background-color: transparent;
-  border: none;
-  border-bottom: 1.5px dotted #ee3643;
 
   font-family: "PT Sans", "Arial", sans-serif;
   font-weight: 400;
@@ -65,18 +63,22 @@
 
   cursor: pointer;
 }
-.sort-container button:hover,
-.sort-container button:active {
+.sort-container label:hover,
+.sort-container label:active {
   color: #000000;
   border-bottom: 1.5px solid #ee3643;
 }
-.sort-container button:focus {
+.sort-container label:focus {
   color: #ee3643;
   border-bottom: none;
 }
-.sort-container .button-current {
+.sort-container .input-radio:checked + label {
   color: #ee3643;
   border-bottom: none;
+}
+.sort-container .input-radio:not(checked) + label {
+  border: none;
+  border-bottom: 1.5px dotted #ee3643;
 }
 .up-down {
   width: 70px;

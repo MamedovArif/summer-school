@@ -1,11 +1,10 @@
 .filter-catalog {
   max-width: 220px;
-  min-height: 770px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-right: auto;
+  margin-right: 20px;
   margin-left: 130px;
 }
 .filter-catalog .filterh2 {

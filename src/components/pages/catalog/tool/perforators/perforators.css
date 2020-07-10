@@ -1,13 +1,11 @@
 .inner-page {
   width: 100%;
 
-  min-height: 1630px;
   display: flex;
   flex-direction: column;
 }
 .inner-page-container {
   max-width: 1200px;
-  min-height: 1369px;
 
   display: flex;
   flex-direction: row;

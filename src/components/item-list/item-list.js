@@ -10,18 +10,29 @@ export default class ItemList extends Component {
     items: [],
     currentItems: [],
     currentPage: 1,
-    itemsPerPage: 3
+    itemsPerPage: 3,
+    //selectedSort: 'price'
   }
 
-  componentDidMount() {
-    this.updateItems();
-    this.updatePagination();
-  }
+  // componentDidMount() {
+  //   this.updateItems();
+  //   // console.log(this.state.items)
+  //   // this.sortingByPrice(this.state.items);
+  //   // console.log(this.state.items)
+  //   this.updatePagination();
+  // }
 
-  componentDidUpdate(prevProps) { //для чекбоксов
+  componentDidUpdate = (prevProps) => { //для чекбоксов
     if (this.props.data !== prevProps.data) {
+      // this.setState({
+      //   selectedSort: 'price'
+      // })
+      const inputPrice = document.querySelector('input[id="price"]');
+      inputPrice.setAttribute('checked');
+      console.log(inputPrice);
       this.updateItems();
-      this.updatePagination();
+      this.sortingByPrice(this.props.data);
+      this.updatePagination(); //успевает среагировать?
     }
   }
 
@@ -58,33 +69,37 @@ export default class ItemList extends Component {
 
 
   sortingByPrice = (goods) => {
-    console.log(goods);
     const sortGoods = goods.slice().sort((a, b) => {
       return a.price - b.price;
     });
-    console.log(sortGoods);
     this.setState({
-      items: sortGoods
+      items: sortGoods,
+      // selectedSort: 'price',
+      // currentPage: 1
     });
     this.updatePagination();
   }
 
-  sortingByPower = (goods) => {
-    const sortGoods = goods.sort((a, b) => {
+  sortingByPower = (goods) => { //
+    const sortGoods = goods.slice().sort((a, b) => {
       return a.power - b.power;
     });
     this.setState({
-      items: sortGoods
+      items: sortGoods,
+      //selectedSort: 'power',
+      //currentPage: 1
     });
     this.updatePagination();
   }
 
-  sortingByWeight = (goods) => {
-    const sortGoods = goods.sort((a, b) => {
+  sortingByWeight = (goods) => { //
+    const sortGoods = goods.slice().sort((a, b) => {
       return a.weight - b.weight;
     });
     this.setState({
-      items: sortGoods
+      items: sortGoods,
+      //selectedSort: 'weight',
+      //currentPage: 1
     });
     this.updatePagination();
   }
@@ -116,35 +131,40 @@ export default class ItemList extends Component {
 
 
   render() {
-    const {currentItems, items, itemsPerPage} = this.state; // className="button-current"
+    const {currentItems, items, itemsPerPage, selectedSort} = this.state;
     console.log(items);
     console.log(currentItems);
-    const goods = currentItems.map((item) =>{ //
+    const goods = currentItems.map((item) => { //
       return this.renderGood(item)
      });
+    //const defaultChecked = selectedSort === 'price' ? true : false;
     return (
       <Fragment>
         <h2 className="visually-hidden">Список товаров</h2>
         <div className="right-catalog">
           <div className="sort">
-             <p>сортировка:</p>
-             <ul className="sort-container">
-               <li>
-                  <button onClick={() => {
-                    this.sortingByPrice(items)
-                  }}>по цене</button>
-               </li>
-               <li>
-                  <button onClick={() => {
-                    this.sortingByWeight(items)
-                  }}>по весу</button>
-               </li>
-               <li>
-                  <button onClick={() => {
-                    this.sortingByPower(items)
-                  }}>по мощности</button>
-               </li>
-             </ul>
+            <p>сортировка:</p>
+            <ul className="sort-container">
+              <li>
+                <input onChange={() => this.sortingByPrice(items)}
+                defaultChecked
+                className="visually-hidden input-radio"
+                type="radio" name="sorting" id="price"/>
+                <label htmlFor="price">по цене</label>
+              </li>
+              <li>
+                <input onChange={() => this.sortingByWeight(items)}
+                className="visually-hidden input-radio"
+                type="radio" name="sorting" id="weight"/>
+                <label htmlFor="weight">по весу</label>
+              </li>
+              <li>
+                <input onChange={() => this.sortingByPower(items)}
+                className="visually-hidden input-radio"
+                type="radio" name="sorting" id="power"/>
+                <label htmlFor="power">по мощности</label>
+              </li>
+            </ul>
           </div>
           <ul className="list-goods">
             {goods}
