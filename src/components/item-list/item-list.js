@@ -1,11 +1,12 @@
-import React, {Fragment, Component} from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './pagination.js';
 import ReactDOM from 'react-dom';
+import {withAppState} from '../hoc';
 
 import './item-list.css';
 
-export default class ItemList extends Component {
+class ItemList extends Component {
 
   state = {
     items: [],
@@ -86,9 +87,10 @@ export default class ItemList extends Component {
     )
   }
 
-  renderGood = (item) => {
+  renderGood = (item, category, funcs) => {
     const {id, title, brand, model, isNew,
       initialPrice, price, url} = item;
+    const {correctCounterCart, correctCounterBookmarks} = funcs;
     const sale = initialPrice ?
       <div className="discount">{initialPrice} ₽</div> :
       <div className="discount"></div>;
@@ -97,14 +99,21 @@ export default class ItemList extends Component {
       <li key={id} className="layout-item-goods">
         {novelty}
         <div className="actions">
-          <Link to="/buy" className="buy-actions">Купить</Link>
-          <Link to="/bookmarks" className="bookmarks-actions">В закладки</Link>
+          <button onClick={() => correctCounterCart(id)}
+            className="buy-actions">Купить</button>
+          <button onClick={() => correctCounterBookmarks(id)}
+            className="bookmarks-actions">В закладки</button>
         </div>
         <div className="image-container">
           <img className="image" src={url}
             alt={`${title} ${brand} ${model}`} width="218" height="170" />
         </div>
-        <h3><Link className="title" to={`/catalog/tool/perforators/${id}`}>{title} {brand} {model}</Link></h3>
+        <h3>
+          <Link className="title"
+            to={`/catalog/tool/${category}/${id}`}>
+            {title} {brand} {model}
+          </Link>
+        </h3>
         {sale}
         <div className="price">{price} ₽</div>
       </li>
@@ -114,9 +123,10 @@ export default class ItemList extends Component {
 
   render() {
     const {currentItems, items, itemsPerPage} = this.state;
+    const {category, appState} = this.props;
 
     const goods = currentItems.map((item) => { //
-      return this.renderGood(item)
+      return this.renderGood(item, category, appState.funcs)
      });
 
     const types = ['price', 'weight', 'power'];
@@ -141,5 +151,9 @@ export default class ItemList extends Component {
     )
   }
 }
+
+export default withAppState(ItemList);
+
+
 // <h2 className="visually-hidden">Список товаров</h2>
 // defaultChecked

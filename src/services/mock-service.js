@@ -4,7 +4,7 @@ export default class MockService {
 
   _perforators = [
     {
-      id: 0,
+      id: 'per0',
       title: 'Перфоратор',
       brand: 'MAKITA',
       model: 'HR2470',
@@ -22,7 +22,7 @@ export default class MockService {
     },
 
     {
-      id: 1,
+      id: 'per1',
       title: 'Перфоратор',
       brand: 'BOSCH',
       model: 'GBH 240',
@@ -40,7 +40,7 @@ export default class MockService {
     },
 
     {
-      id: 2,
+      id: 'per2',
       title: 'Перфоратор',
       brand: 'MAKITA',
       model: 'DHR202RF Li-Ion 18В',
@@ -58,7 +58,7 @@ export default class MockService {
     },
 
     {
-      id: 3,
+      id: 'per3',
       title: 'Перфоратор',
       brand: 'BOSCH',
       model: 'GBH 2-28 F',
@@ -76,7 +76,7 @@ export default class MockService {
     },
 
     {
-      id: 4,
+      id: 'per4',
       title: 'Перфоратор',
       brand: 'HITACHI',
       model: 'DH24PH',
@@ -94,7 +94,7 @@ export default class MockService {
     },
 
     {
-      id: 5,
+      id: 'per5',
       title: 'Перфоратор',
       brand: 'METABO',
       model: 'UHEV 2860-2 Quick',
@@ -112,7 +112,7 @@ export default class MockService {
     },
 
     {
-      id: 6,
+      id: 'per6',
       title: 'Перфоратор',
       brand: 'BOSCH',
       model: 'GBH 2-26',
@@ -130,7 +130,7 @@ export default class MockService {
     },
 
     {
-      id: 7,
+      id: 'per7',
       title: 'Перфоратор',
       brand: 'MAKITA',
       model: 'HR2630',
@@ -148,7 +148,7 @@ export default class MockService {
     },
 
     {
-      id: 8,
+      id: 'per8',
       title: 'Перфоратор',
       brand: 'DEWALT',
       model: 'D25134K ',
@@ -164,11 +164,6 @@ export default class MockService {
       weight: 3,
       url: `${this._imageBase}/1669769/img_id994218771506213848.jpeg/9hq`
     },
-
-
-
-
-
 
     // {
     //   id: 9,
@@ -281,7 +276,7 @@ export default class MockService {
 
   _angleGrinders = [
     {
-      id: 0,
+      id: 'ang0',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA5030',
@@ -298,7 +293,7 @@ export default class MockService {
     },
 
     {
-      id: 1,
+      id: 'ang1',
       title: 'УШМ',
       brand: 'DEWALT',
       model: 'DWE4257',
@@ -315,7 +310,7 @@ export default class MockService {
     },
 
     {
-      id: 2,
+      id: 'ang2',
       title: 'УШМ',
       brand: 'METABO',
       model: 'WX 2000',
@@ -332,7 +327,7 @@ export default class MockService {
     },
 
     {
-      id: 3,
+      id: 'ang3',
       title: 'УШМ',
       brand: 'BOSCH',
       model: 'PWS 700-125',
@@ -349,7 +344,7 @@ export default class MockService {
     },
 
     {
-      id: 4,
+      id: 'ang4',
       title: 'УШМ',
       brand: 'METABO',
       model: 'WX 2200-230',
@@ -366,7 +361,7 @@ export default class MockService {
     },
 
     {
-      id: 5,
+      id: 'ang5',
       title: 'УШМ',
       brand: 'MAKITA',
       model: '9558HN',
@@ -383,7 +378,7 @@ export default class MockService {
     },
 
     {
-      id: 6,
+      id: 'ang6',
       title: 'УШМ',
       brand: 'METABO',
       model: 'WQ 1000',
@@ -400,7 +395,7 @@ export default class MockService {
     },
 
     {
-      id: 7,
+      id: 'ang7',
       title: 'УШМ',
       brand: 'METABO',
       model: 'WEV 850-125',
@@ -417,7 +412,7 @@ export default class MockService {
     },
 
     {
-      id: 8,
+      id: 'ang8',
       title: 'УШМ',
       brand: 'BOSCH',
       model: 'GWS 22-180 LVI',
@@ -434,7 +429,7 @@ export default class MockService {
     },
 
     {
-      id: 9,
+      id: 'ang9',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA6021',
@@ -451,7 +446,7 @@ export default class MockService {
     },
 
     {
-      id: 10,
+      id: 'ang10',
       title: 'УШМ',
       brand: 'METABO',
       model: 'W 850-125 603608010',
@@ -468,7 +463,7 @@ export default class MockService {
     },
 
     {
-      id: 11,
+      id: 'ang11',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA5030',
@@ -485,7 +480,7 @@ export default class MockService {
     },
 
     {
-      id: 12,
+      id: 'ang12',
       title: 'УШМ',
       brand: 'METABO',
       model: 'W 850-125 601233010',
@@ -502,7 +497,7 @@ export default class MockService {
     },
 
     {
-      id: 13,
+      id: 'ang13',
       title: 'УШМ',
       brand: 'BOSCH',
       model: 'GWX 14-125',
@@ -519,7 +514,7 @@ export default class MockService {
     },
 
     {
-      id: 14,
+      id: 'ang14',
       title: 'УШМ',
       brand: 'METABO',
       model: 'W 650-125',
@@ -536,7 +531,7 @@ export default class MockService {
     },
 
     {
-      id: 15,
+      id: 'ang15',
       title: 'УШМ',
       brand: 'BOSCH',
       model: 'GWS 660-125',
@@ -553,7 +548,7 @@ export default class MockService {
     },
 
     {
-      id: 16,
+      id: 'ang16',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA5030X3',
@@ -570,7 +565,7 @@ export default class MockService {
     },
 
     {
-      id: 17,
+      id: 'ang17',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA5030',
@@ -587,7 +582,7 @@ export default class MockService {
     },
 
     {
-      id: 18,
+      id: 'ang18',
       title: 'УШМ',
       brand: 'MAKITA',
       model: '9069',
@@ -604,7 +599,7 @@ export default class MockService {
     },
 
     {
-      id: 19,
+      id: 'ang19',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA5030K',
@@ -621,7 +616,7 @@ export default class MockService {
     },
 
     {
-      id: 20,
+      id: 'ang20',
       title: 'УШМ',
       brand: 'DEWALT',
       model: 'DWE4015',
@@ -638,7 +633,7 @@ export default class MockService {
     },
 
     {
-      id: 21,
+      id: 'ang21',
       title: 'УШМ',
       brand: 'METABO',
       model: 'GA5030',
@@ -655,7 +650,7 @@ export default class MockService {
     },
 
     {
-      id: 22,
+      id: 'ang22',
       title: 'УШМ',
       brand: 'DEWALT',
       model: 'DWE492',
@@ -672,7 +667,7 @@ export default class MockService {
     },
 
     {
-      id: 23,
+      id: 'ang23',
       title: 'УШМ',
       brand: 'BOSCH',
       model: 'GWS 13-125 CIE',
@@ -689,14 +684,14 @@ export default class MockService {
     },
 
     {
-      id: 24,
+      id: 'ang24',
       title: 'УШМ',
       brand: 'DEWALT',
       model: 'DWE4237',
       isNew: true,
       initialPrice: 9790,
       price: 9540,
-      powerSupply: 'electronetwork',
+      powerSupply: 'accumulator',
       isHit: true,
       power: 1200,
       numberOfIdle: 11000,
@@ -706,14 +701,14 @@ export default class MockService {
     },
 
     {
-      id: 25,
+      id: 'ang25',
       title: 'УШМ',
       brand: 'MAKITA',
       model: 'GA5041R',
       isNew: true,
       initialPrice: null,
       price: 8897,
-      powerSupply: 'electronetwork',
+      powerSupply: 'accumulator',
       isHit: true,
       power: 1100,
       numberOfIdle: 11000,
@@ -747,7 +742,7 @@ export default class MockService {
     })
   }
 
-  getAllAngleGrinder = async () => {
+  getAllAngleGrinders = async () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.95) {

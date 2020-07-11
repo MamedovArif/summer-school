@@ -1,20 +1,18 @@
 import React, {Component, Fragment} from 'react';
 
 import Filters from '../filters';
-import AboutPerforator from './about-perforator';
 import ItemList from '../../../../item-list';
 import { withService, withData } from '../../../../hoc';
 import {wrapperInnerPage} from '../../../wrapper-inner-page';
-//import {PerforatorList} from '../../../../app-components';
 
-class Perforators extends Component {
+class AngleGrinders extends Component {
 
   state = {
     initialGoods: this.props.data,
     currentGoods: this.props.data,
     selectedBrand: ['bosch', 'metabo', 'makita', 'dewalt', 'hitachi'],
     powerSupply: 'electronetwork',
-    category: 'perforators'
+    category: 'angle-grinders'
   }
 
   componentDidMount() {
@@ -70,26 +68,26 @@ class Perforators extends Component {
           data={initialGoods}
           handleCheckbox={this.handleCheckbox} handleRadio={this.handleRadio}/>
 
-        <ItemList data={currentGoods} category={category} />
+        <ItemList data={currentGoods} category={category}/>
 
-        <AboutPerforator />
       </Fragment>
     )
   }
 }
 
-const mapPerforatorMethodsToProps = (service) => {
+const mapAngleGrindersMethodsToProps = (service) => {
   return {
-    getData: service.getAllPerforators
+    getData: service.getAllAngleGrinders
   }
 }
 
 const linksOfArray = [
   {title: 'Каталог', path: 'catalog/'},
   {title: 'Инструмент', path: 'catalog/tool'},
-  {title: 'Перфораторы', path: 'catalog/tool/perforators/'},
+  {title: 'Болгарки', path: 'catalog/tool/angle-grinders/'},
 ]
 
 
-export default withService(mapPerforatorMethodsToProps)(
-  withData(wrapperInnerPage(Perforators, linksOfArray)));
+export default withService(mapAngleGrindersMethodsToProps)(
+  withData(wrapperInnerPage(AngleGrinders, linksOfArray)));
+
