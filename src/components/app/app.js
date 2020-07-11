@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from '../header';
 import Main from '../pages/main';
 import Catalog from '../pages/catalog';
+import CartPage from '../pages/cart-page';
 import {PerforatorDetails, AngleGrinderDetails} from '../app-components';
 import Company from '../pages/company';
 import News from '../pages/news';
@@ -22,6 +23,7 @@ import AngleGrinders from '../pages/catalog/tool/angle-grinders';
 
 import {ServiceProvider} from '../service-context';
 import {AppStateProvider} from '../app-state-context';
+//import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 
 import './app.css';
 
@@ -139,6 +141,12 @@ export default class App extends Component {
                 <Route path="/place-your-order" render={() => {
                   return <h2>place your order</h2>
                 }} />
+                <Route path="/cart" component={CartPage} />
+                <Route path="/bookmarks" render={() => {
+                  return <h2>bookmarks</h2>
+                }} />
+
+
 
                 <Route path="/authorization/" render={() => {
                   return <h2>authorization/</h2>

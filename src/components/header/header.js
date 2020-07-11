@@ -25,7 +25,7 @@ const Header = ({counterCart, counterBookmarks}) => {
             </label>
           </form>
           <Link className="bookmark" to="/bookmarks">Закладки: {counterBookmarks}</Link>
-          <Link className="basket" to="/buy">Корзина: {counterCart}</Link>
+          <Link className="basket" to="/cart">Корзина: {counterCart}</Link>
           <Link className="orders" to="/place-your-order">Оформить заказ</Link>
         </div>
       </div>
