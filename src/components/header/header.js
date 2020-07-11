@@ -25,8 +25,10 @@ const Header = ({quantutyCartList, quantutyBookmarksList}) => {
             </label>
           </form>
           <Link className="bookmark" to="/bookmarks">Закладки: {quantutyBookmarksList}</Link>
-          <Link className="basket" to="/cart">Корзина: {quantutyCartList}</Link>
-          <Link className="orders" to="/place-your-order">Оформить заказ</Link>
+          <Link className="basket" to="/bookmarks/cart">Корзина: {quantutyCartList}</Link>
+          <Link className="orders" to="/bookmarks/cart/place-your-order">
+            Оформить заказ
+          </Link>
         </div>
       </div>
       <div className="low-header-container">

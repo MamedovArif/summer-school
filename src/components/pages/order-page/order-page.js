@@ -7,7 +7,9 @@ const OrderPage = () => {
 }
 
 const linksOfArray = [
-  {title: 'Оформление заказа', path: 'place-your-order'}
+  {title: 'Закладки', path: 'bookmarks'},
+  {title: 'Корзина', path: 'bookmarks/cart'},
+  {title: 'Оформление заказа', path: 'bookmarks/cart/place-your-order'}
 ]
 
 export default wrapperInnerPage(OrderPage, linksOfArray);

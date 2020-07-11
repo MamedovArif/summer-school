@@ -197,10 +197,12 @@ export default class App extends Component {
                     return <AngleGrinderDetails itemId={id}/>
                   }}/>
 
+                <Route path="/bookmarks" component= {BookmarksPage} exact/>
+                <Route path="/bookmarks/cart" component={CartPage} exact/>
+                <Route path="/bookmarks/cart/place-your-order"
+                  component={OrderPage} exact/>
 
-                <Route path="/place-your-order" component={OrderPage} />
-                <Route path="/cart" component={CartPage} />
-                <Route path="/bookmarks" component= {BookmarksPage} />
+
 
                 <Route path="/authorization/" render={() => {
                   return <h2>authorization/</h2>

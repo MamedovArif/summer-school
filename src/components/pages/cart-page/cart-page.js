@@ -41,7 +41,8 @@ const CartPage = (props) => {
 }
 
 const linksOfArray = [
-  {title: 'Корзина', path: 'cart'}
+  {title: 'Закладки', path: 'bookmarks'},
+  {title: 'Корзина', path: 'bookmarks/cart'}
 ]
 
 export default wrapperInnerPage(withAppState(CartPage), linksOfArray);
