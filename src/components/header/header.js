@@ -38,10 +38,10 @@ const Header = ({quantutyCartList, quantutyBookmarksList}) => {
           <p className="address">г. Санкт-Петербург, ул. Б. Конюшенная, д. 19/8</p>
         </div>
         <div className="layout-button">
-          <Link className="enter" to="/authorization/">
+          <Link className="enter" to="/login">
             Войти
           </Link>
-          <Link className="registration" to="/registration">Регистрация</Link>
+          <Link className="registration" to="/secret">Регистрация</Link>
         </div>
         <nav className="navigation">
           <ul>

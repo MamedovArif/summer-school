@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 import {wrapperInnerPage} from '../wrapper-inner-page';
 import {withAppState} from '../../hoc';
 import ItemDetails, {Record} from '../../item-details';
+import { Redirect } from 'react-router-dom';
 
 import './bookmarks-page.css';
 
-const BookmarksPage = (props) => {
-  const {appState} = props;
+const BookmarksPage = ({appState}) => {
+  if (!appState.isLoggedIn) {
+    return <Redirect to='/login' />
+  }
+
   const items = appState.bookmarksList.map((item) => {
     const getData = (iden) => {
       return new Promise((resolve) => {

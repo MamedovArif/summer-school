@@ -27,6 +27,8 @@ import {ServiceProvider} from '../service-context';
 import {AppStateProvider} from '../app-state-context';
 //import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 
+import LoginPage from '../pages/login.js';
+import SecretPage from '../pages/secret.js';
 import './app.css';
 
 export default class App extends Component {
@@ -34,7 +36,26 @@ export default class App extends Component {
   state = {
     cartList: [],
     bookmarksList: [],
-    funcs: {}
+    funcs: {},
+    isLoggedIn: false,
+    users: [
+      {
+        login: 'example@gmail.com',
+        passwort: 12345678,
+      }
+    ]
+  }
+
+  onLogin = (login, password) => {
+    const user = this.state.users.find((person) => {
+      return person.login === login && person.password === password
+    });
+    if (user === -1) {
+      return;
+    }
+    this.setState({
+      isLoggedIn: true
+    })
   }
 
   componentDidMount = () => {
@@ -204,11 +225,16 @@ export default class App extends Component {
 
 
 
-                <Route path="/authorization/" render={() => {
-                  return <h2>authorization/</h2>
+                <Route path="/login" render={() => {
+                  return (
+                    <LoginPage isLoggedIn={this.state.isLoggedIn}
+                      onLogin={this.onLogin}/>
+                  )
                 }} />
-                <Route path="/registration" render={() => {
-                  return <h2>registration</h2>
+                <Route path="/secret" render={() => {
+                  return (
+                    <SecretPage isLoggedIn={this.state.isLoggedIn}/>
+                  )
                 }} />
 
                 <Route render={() => <h2>Извините, такой страницы не существует</h2>} />
