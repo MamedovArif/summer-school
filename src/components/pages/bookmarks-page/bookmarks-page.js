@@ -10,19 +10,21 @@ import './bookmarks-page.css';
 const BookmarksPage = (props) => {
   const {appState} = props;
   const items = appState.bookmarksList.map((item) => {
-    const getData = (id) => {
+    const getData = (iden) => {
       return new Promise((resolve) => {
         resolve(item);
       })
     }
+    const {addToCart, deleteFromBookmarks} = appState.funcs;
+    const {id} = item;
     return (
-      <li key={item.id}>
-        <ItemDetails itemId={item.id} getData={getData}>
+      <li key={id}>
+        <ItemDetails itemId={id} getData={getData}>
           <Record field="model" label="Model" />
           <Record field="brand" label="Brand" />
         </ItemDetails>
-        <button>добавить в корзину</button>
-        <button>удалить из закладок</button>
+        <button onClick={() => addToCart(id)}>добавить в корзину</button>
+        <button onClick={() => deleteFromBookmarks(id)}>удалить из закладок</button>
       </li>
     )
   })

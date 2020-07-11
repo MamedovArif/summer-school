@@ -10,20 +10,22 @@ import './cart-page.css';
 const CartPage = (props) => {
   const {appState} = props;
   const items = appState.cartList.map((item) => {
-    const getData = (id) => {
+    const getData = (iden) => {
       return new Promise((resolve) => {
         resolve(item);
       })
     }
-    const deleteFromCart = appState.funcs.deleteFromCart;
+    const {moveToBookmarks, deleteFromCart} = appState.funcs;
+
+    const {id} = item;
     return (
-      <li key={item.id}>
-        <ItemDetails itemId={item.id} getData={getData}>
+      <li key={id}>
+        <ItemDetails itemId={id} getData={getData}>
           <Record field="model" label="Model" />
           <Record field="brand" label="Brand" />
         </ItemDetails>
-        <button>переместить в закладки</button>
-        <button onClick={() => deleteFromCart(item.id)}>удалить из корзины</button>
+        <button onClick={() => moveToBookmarks(id)}>переместить в закладки</button>
+        <button onClick={() => deleteFromCart(id)}>удалить из корзины</button>
       </li>
     )
   })

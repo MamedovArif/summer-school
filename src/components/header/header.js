@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './header.css';
 import logo from './img/logo-technomart.svg';
 
-const Header = ({counterCart, counterBookmarks}) => {
+const Header = ({quantutyCartList, quantutyBookmarksList}) => {
   return (
     <header className="main-header">
       <div className="top-header">
@@ -24,8 +24,8 @@ const Header = ({counterCart, counterBookmarks}) => {
               </span>
             </label>
           </form>
-          <Link className="bookmark" to="/bookmarks">Закладки: {counterBookmarks}</Link>
-          <Link className="basket" to="/cart">Корзина: {counterCart}</Link>
+          <Link className="bookmark" to="/bookmarks">Закладки: {quantutyBookmarksList}</Link>
+          <Link className="basket" to="/cart">Корзина: {quantutyCartList}</Link>
           <Link className="orders" to="/place-your-order">Оформить заказ</Link>
         </div>
       </div>

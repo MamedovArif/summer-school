@@ -32,8 +32,6 @@ import './app.css';
 export default class App extends Component {
 
   state = {
-    counterCart: 0,
-    counterBookmarks: 0,
     cartList: [],
     bookmarksList: [],
     funcs: {}
@@ -44,7 +42,10 @@ export default class App extends Component {
       funcs: {
         correctCounterCart: this.correctCounterCart,
         correctCounterBookmarks: this.correctCounterBookmarks,
-        deleteFromCart: this.deleteFromCart
+        deleteFromCart: this.deleteFromCart,
+        moveToBookmarks: this.moveToBookmarks,
+        addToCart: this.addToCart,
+        deleteFromBookmarks: this.deleteFromBookmarks
       }
     })
   }
@@ -103,13 +104,10 @@ export default class App extends Component {
 
   deleteFromCart = (id) => {
     const {cartList} = this.state;
-    console.log(cartList);
     const index = cartList.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw Error('cart-page см button "удалить из корзины"')
+      throw new Error('cart-page см button "удалить из корзины"')
     }
-    console.log(cartList.slice(0, index));
-    console.log(cartList.slice(index + 1));
     const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
     console.log(newCartList)
     this.setState({
@@ -117,25 +115,56 @@ export default class App extends Component {
     })
   }
 
-  moveToBookmarks = () => {
-
+  moveToBookmarks = (id) => {
+    const {cartList, bookmarksList} = this.state;
+    const index = cartList.findIndex((item) => item.id === id);
+    if (index === -1) {
+      throw new Error('')
+    }
+    const addBookmarks = cartList[index];
+    const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
+    const newBookmarksList = [].concat(bookmarksList, addBookmarks);
+    this.setState({
+      cartList: newCartList,
+      bookmarksList: newBookmarksList
+    })
   }
 
-  addToCart = () => {
-
+  addToCart = (id) => {
+    const {cartList, bookmarksList} = this.state;
+    const index = bookmarksList.findIndex((item) => item.id === id);
+    if (index === -1) {
+      throw new Error('')
+    }
+    const addCart = bookmarksList[index];
+    const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
+    const newCartList = [].concat(cartList, addCart);
+    this.setState({
+      cartList: newCartList,
+      bookmarksList: newBookmarksList
+    })
   }
 
-  deleteFromBookmarks = () => {
-
+  deleteFromBookmarks = (id) => {
+    const {bookmarksList} = this.state;
+    const index = bookmarksList.findIndex((item) => item.id === id);
+    if (index === -1) {
+      throw new Error('')
+    }
+    const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
+    this.setState({
+      bookmarksList: newBookmarksList
+    })
   }
 
   render() {
-    const {counterCart, counterBookmarks} = this.state;
+    const {cartList, bookmarksList} = this.state;
     return (
       <ServiceProvider value={this.service}>
         <Router>
           <div className="technomart-app">
-            <Header counterCart={counterCart} counterBookmarks={counterBookmarks}/>
+            <Header quantutyCartList={cartList.length}
+              quantutyBookmarksList={bookmarksList.length}/>
             <AppStateProvider value={this.state}>
               <Switch>
                 <Route path="/" component={Main} exact />
