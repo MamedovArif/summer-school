@@ -5,25 +5,24 @@ import {wrapperInnerPage} from '../wrapper-inner-page';
 import {withAppState} from '../../hoc';
 import ItemDetails, {Record} from '../../item-details';
 
-import './cart-page.css';
+import './bookmarks-page.css';
 
-const CartPage = (props) => {
+const BookmarksPage = (props) => {
   const {appState} = props;
-  const items = appState.cartList.map((item) => {
+  const items = appState.bookmarksList.map((item) => {
     const getData = (id) => {
       return new Promise((resolve) => {
         resolve(item);
       })
     }
-    const deleteFromCart = appState.funcs.deleteFromCart;
     return (
       <li key={item.id}>
         <ItemDetails itemId={item.id} getData={getData}>
           <Record field="model" label="Model" />
           <Record field="brand" label="Brand" />
         </ItemDetails>
-        <button>переместить в закладки</button>
-        <button onClick={() => deleteFromCart(item.id)}>удалить из корзины</button>
+        <button>добавить в корзину</button>
+        <button>удалить из закладок</button>
       </li>
     )
   })
@@ -32,14 +31,13 @@ const CartPage = (props) => {
       <ul>
         {items}
       </ul>
-      <Link className="orders" to="/place-your-order">Оформить заказ</Link>
-      <Link className="bookmark" to="/bookmarks">перейти в закладки</Link>
+      <Link className="basket" to="/cart">перейти в корзину</Link>
     </div>
   )
 }
 
 const linksOfArray = [
-  {title: 'Корзина', path: 'cart'}
+  {title: 'Закладки', path: 'bookmarks'}
 ]
 
-export default wrapperInnerPage(withAppState(CartPage), linksOfArray);
+export default wrapperInnerPage(withAppState(BookmarksPage), linksOfArray);

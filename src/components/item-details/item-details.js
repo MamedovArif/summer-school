@@ -47,9 +47,7 @@ export default class itemDetails extends Component {
   }
 
   render() {
-
     const { item, loading } = this.state;
-    console.log(item);
     if (loading) {
       return <Spinner />;
     }

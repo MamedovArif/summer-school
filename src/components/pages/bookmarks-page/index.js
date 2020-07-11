@@ -1,3 +1,3 @@
-import News from './news.js';
+import BookmarksPage from './bookmarks-page.js';
 
-export default News;
+export default BookmarksPage;

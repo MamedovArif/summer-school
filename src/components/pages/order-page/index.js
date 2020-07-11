@@ -1,3 +1,3 @@
-import News from './news.js';
+import OrderPage from './order-page.js';
 
-export default News;
+export default OrderPage;

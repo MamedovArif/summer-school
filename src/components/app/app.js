@@ -5,6 +5,8 @@ import Header from '../header';
 import Main from '../pages/main';
 import Catalog from '../pages/catalog';
 import CartPage from '../pages/cart-page';
+import BookmarksPage from '../pages/bookmarks-page';
+import OrderPage from '../pages/order-page';
 import {PerforatorDetails, AngleGrinderDetails} from '../app-components';
 import Company from '../pages/company';
 import News from '../pages/news';
@@ -41,7 +43,8 @@ export default class App extends Component {
     this.setState({
       funcs: {
         correctCounterCart: this.correctCounterCart,
-        correctCounterBookmarks: this.correctCounterBookmarks
+        correctCounterBookmarks: this.correctCounterBookmarks,
+        deleteFromCart: this.deleteFromCart
       }
     })
   }
@@ -98,8 +101,36 @@ export default class App extends Component {
       })
   }
 
+  deleteFromCart = (id) => {
+    const {cartList} = this.state;
+    console.log(cartList);
+    const index = cartList.findIndex((item) => item.id === id);
+    if (index === -1) {
+      throw Error('cart-page см button "удалить из корзины"')
+    }
+    console.log(cartList.slice(0, index));
+    console.log(cartList.slice(index + 1));
+    const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
+    console.log(newCartList)
+    this.setState({
+      cartList: newCartList
+    })
+  }
+
+  moveToBookmarks = () => {
+
+  }
+
+  addToCart = () => {
+
+  }
+
+  deleteFromBookmarks = () => {
+
+  }
+
   render() {
-    const {counterCart, counterBookmarks, cartList} = this.state;
+    const {counterCart, counterBookmarks} = this.state;
     return (
       <ServiceProvider value={this.service}>
         <Router>
@@ -138,15 +169,9 @@ export default class App extends Component {
                   }}/>
 
 
-                <Route path="/place-your-order" render={() => {
-                  return <h2>place your order</h2>
-                }} />
+                <Route path="/place-your-order" component={OrderPage} />
                 <Route path="/cart" component={CartPage} />
-                <Route path="/bookmarks" render={() => {
-                  return <h2>bookmarks</h2>
-                }} />
-
-
+                <Route path="/bookmarks" component= {BookmarksPage} />
 
                 <Route path="/authorization/" render={() => {
                   return <h2>authorization/</h2>
