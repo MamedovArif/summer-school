@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class LoginPage extends Component {
 
@@ -11,41 +11,36 @@ class LoginPage extends Component {
   correctField = (evt) => {
     const value = evt.target.value;
     this.setState({
-      login: value
-    })
+        [evt.target.name]: value
+      })
   }
 
   render() {
     const {login, password} = this.state;
     const {isLoggedIn, onLogin} = this.props;
-    if (isLoggedIn) {
-      return <Redirect to='/' />
+    if (isLoggedIn === 'entrance') {
+      return <Redirect to='/bookmarks' />
     }
+    const notification = isLoggedIn === 'error' ?
+      <p>логин или пароль введены неверно</p> : null //при фокусе убрать
 
     return (
       <div>
+        <p>войдите, пожалуйста, чтобы посмотреть
+        свои закладки и корзину или оформить заказ</p>
+        <p>если вы не зарегистрированы,
+        то перейдите на страницу <Link to='/registration'>регистрации</Link></p>
         <label>Логин
-          <input type="text" onChange={(evt) => this.correctField(evt)}/>
+          <input type="text" name="login" onChange={(evt) => this.correctField(evt)}/>
         </label>
         <label>Пароль
-          <input type="password" onChange={(evt) => this.correctField(evt)}/>
+          <input type="text" name="password" onChange={(evt) => this.correctField(evt)}/>
         </label>
         <button onClick={() => onLogin(login, password)}>Войти</button>
+        {notification}
       </div>
     )
   }
 }
 
 export default LoginPage;
-
-
-// <p>войдите пожалуйста или зарегистрируйтесь</p>
-//       <label>Имя
-//         <input type="text"/>
-//       </label>
-//       <label>Моб. телефон
-//         <input />
-//       </label>
-//       <label>Email
-//         <input />
-//       </label>

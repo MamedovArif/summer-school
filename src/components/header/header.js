@@ -5,7 +5,7 @@ import './header.css';
 import logo from './img/logo-technomart.svg';
 
 const Header = ({quantutyCartList, quantutyBookmarksList}) => {
-  return (
+  return (//задать по умолчанию 0
     <header className="main-header">
       <div className="top-header">
         <div className="top-header-container">
@@ -41,7 +41,7 @@ const Header = ({quantutyCartList, quantutyBookmarksList}) => {
           <Link className="enter" to="/login">
             Войти
           </Link>
-          <Link className="registration" to="/secret">Регистрация</Link>
+          <Link className="registration" to="/registration">Регистрация</Link>
         </div>
         <nav className="navigation">
           <ul>

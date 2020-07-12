@@ -721,7 +721,7 @@ export default class MockService {
   getAllPerforators = async () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (Math.random() > 0.999) {
+        if (Math.random() > 0.999999) {
           reject(new Error('Something bad happened'));
         } else {
           resolve(this._perforators);
@@ -733,7 +733,7 @@ export default class MockService {
   getPerforator = async (id) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (Math.random() > 0.999) {
+        if (Math.random() > 0.999999) {
           reject(new Error('Something bad happened'));
         } else {
           resolve(this._perforators[id]);
@@ -745,7 +745,7 @@ export default class MockService {
   getAllAngleGrinders = async () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (Math.random() > 0.999) {
+        if (Math.random() > 0.999999) {
           reject(new Error('Something bad happened'));
         } else {
           resolve(this._angleGrinders);
@@ -757,7 +757,7 @@ export default class MockService {
   getAngleGrinder = async (id) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (Math.random() > 0.999) {
+        if (Math.random() > 0.999999) {
           reject(new Error('Something bad happened'));
         } else {
           resolve(this._angleGrinders[id]);

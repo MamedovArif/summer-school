@@ -1,16 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import {wrapperInnerPage} from '../wrapper-inner-page';
 import {withAppState} from '../../hoc';
 import ItemDetails, {Record} from '../../item-details';
-import { Redirect } from 'react-router-dom';
+
 
 import './bookmarks-page.css';
 
 const BookmarksPage = ({appState}) => {
-  if (!appState.isLoggedIn) {
+  if (appState.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
+  }
+  if (appState.bookmarksList.length === 0) {
+    return (
+      <div>
+        <p>у вас пока нет закладок</p>
+        <p>посмотрите наш <Link to='/catalog'>каталог</Link></p>
+      </div>
+    )
   }
 
   const items = appState.bookmarksList.map((item) => {
@@ -37,7 +45,7 @@ const BookmarksPage = ({appState}) => {
       <ul>
         {items}
       </ul>
-      <Link className="basket" to="/cart">перейти в корзину</Link>
+      <Link className="basket" to="/bookmarks/cart">перейти в корзину</Link>
     </div>
   )
 }

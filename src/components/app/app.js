@@ -25,10 +25,10 @@ import AngleGrinders from '../pages/catalog/tool/angle-grinders';
 
 import {ServiceProvider} from '../service-context';
 import {AppStateProvider} from '../app-state-context';
-//import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 
 import LoginPage from '../pages/login.js';
-import SecretPage from '../pages/secret.js';
+import RegistrationPage from '../pages/registration.js';
+
 import './app.css';
 
 export default class App extends Component {
@@ -37,25 +37,57 @@ export default class App extends Component {
     cartList: [],
     bookmarksList: [],
     funcs: {},
-    isLoggedIn: false,
+    isLoggedIn: 'out',
+    isRegistration: 'no',
     users: [
       {
-        login: 'example@gmail.com',
-        passwort: 12345678,
+        login: 'example',
+        password: '123a',
       }
     ]
   }
 
-  onLogin = (login, password) => {
-    const user = this.state.users.find((person) => {
-      return person.login === login && person.password === password
+  onRegistration = (name, phone, login, password) => {
+    const {users} = this.state;
+
+    const user = users.find((person) => {
+      return person.login === login
     });
-    if (user === -1) {
+    console.log(login);
+    if (user) {
+      this.setState({
+        isRegistration: 'error'
+      })
       return;
     }
+    const newUser = {name, phone, login, password};
+    const updatedUsers = [].concat(users.slice(), newUser);
     this.setState({
-      isLoggedIn: true
+      isLoggedIn: 'entrance',
+      isRegistration: 'yes'
     })
+  }
+
+  onLogin = (login, password) => {
+    const user = this.state.users.find((person) => {
+      return person.login === login
+    });
+
+    if (!user) {
+      this.setState({
+        isLoggedIn: 'error'
+      })
+    } else if (user.password === password) {
+      console.log('entrance')
+      this.setState({
+        isLoggedIn: 'entrance',
+        isRegistration: 'yes'
+      })
+    } else {
+      this.setState({
+        isLoggedIn: 'error'
+      })
+    }
   }
 
   componentDidMount = () => {
@@ -110,6 +142,7 @@ export default class App extends Component {
         this.setState(({counterBookmarks, bookmarksList}) => {
 
           const newList = bookmarksList.slice();
+          //есть ли такой товар уже в закладках
           const addGood = goods.find((item) => {
             return item.id === id;
           })
@@ -221,7 +254,11 @@ export default class App extends Component {
                 <Route path="/bookmarks" component= {BookmarksPage} exact/>
                 <Route path="/bookmarks/cart" component={CartPage} exact/>
                 <Route path="/bookmarks/cart/place-your-order"
-                  component={OrderPage} exact/>
+                  exact render={() => {
+                  return (
+                    <OrderPage appState={this.state} />
+                  )
+                }} />
 
 
 
@@ -231,9 +268,10 @@ export default class App extends Component {
                       onLogin={this.onLogin}/>
                   )
                 }} />
-                <Route path="/secret" render={() => {
+                <Route path="/registration" render={() => {
                   return (
-                    <SecretPage isLoggedIn={this.state.isLoggedIn}/>
+                    <RegistrationPage isRegistration={this.state.isRegistration}
+                      onRegistration={this.onRegistration}/>
                   )
                 }} />
 
