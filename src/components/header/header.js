@@ -4,7 +4,22 @@ import { Link } from 'react-router-dom';
 import './header.css';
 import logo from './img/logo-technomart.svg';
 
-const Header = ({quantutyCartList, quantutyBookmarksList}) => {
+const Header = (props) => {
+  const {cartList, bookmarksList, isLoggedIn} = props.appState;
+  const mapping = {
+    out: 'Войти',
+    entrance: 'Выйти'
+  }
+  const mappingQ = {
+    out: 'login',
+    entrance: 'logout'
+  }
+  const registration = isLoggedIn === 'entrance' ? null :
+    (
+      <Link className="registration" to="/registration">
+        Регистрация
+      </Link>
+    );
   return (//задать по умолчанию 0
     <header className="main-header">
       <div className="top-header">
@@ -24,8 +39,8 @@ const Header = ({quantutyCartList, quantutyBookmarksList}) => {
               </span>
             </label>
           </form>
-          <Link className="bookmark" to="/bookmarks">Закладки: {quantutyBookmarksList}</Link>
-          <Link className="basket" to="/bookmarks/cart">Корзина: {quantutyCartList}</Link>
+          <Link className="bookmark" to="/bookmarks">Закладки: {bookmarksList.length}</Link>
+          <Link className="basket" to="/bookmarks/cart">Корзина: {cartList.length}</Link>
           <Link className="orders" to="/bookmarks/cart/place-your-order">
             Оформить заказ
           </Link>
@@ -38,10 +53,10 @@ const Header = ({quantutyCartList, quantutyBookmarksList}) => {
           <p className="address">г. Санкт-Петербург, ул. Б. Конюшенная, д. 19/8</p>
         </div>
         <div className="layout-button">
-          <Link className="enter" to="/login">
-            Войти
+          <Link className="enter" to={`/${mappingQ[isLoggedIn]}`}>
+            {mapping[isLoggedIn]}
           </Link>
-          <Link className="registration" to="/registration">Регистрация</Link>
+          {registration}
         </div>
         <nav className="navigation">
           <ul>
@@ -60,3 +75,13 @@ const Header = ({quantutyCartList, quantutyBookmarksList}) => {
 };
 
 export default Header;
+
+/*
+<div class="authorization">
+  <div class="account-exit">
+    <a class="personal-account">Равшан Джамшутович</a>
+    <a class="exit"><span class="visually-hidden">Выйти</span></a>
+  </div>
+  <a class="my-orders" href="">Мои заказы</a>
+  <a class="account" href="">Личный кабинет</a>
+</div> */

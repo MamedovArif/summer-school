@@ -28,6 +28,7 @@ import {AppStateProvider} from '../app-state-context';
 
 import LoginPage from '../pages/login.js';
 import RegistrationPage from '../pages/registration.js';
+import LogoutPage from '../pages/logout.js';
 
 import './app.css';
 
@@ -39,11 +40,24 @@ export default class App extends Component {
     funcs: {},
     isLoggedIn: 'out',
     isRegistration: 'no',
-    user: '', //!!!
+    currentUser: null, //!!!
     users: [
       {
+        name: 'Bob',
+        phone: '+7 786 ...',
+        login: '',
+        password: '',
+        cartList: [],
+        bookmarksList: [],
+      },
+
+      {
+        name: 'Bob',
+        phone: '+7 786 ...',
         login: 'example',
         password: '123a',
+        cartList: [],
+        bookmarksList: [],
       }
     ]
   }
@@ -54,7 +68,6 @@ export default class App extends Component {
     const user = users.find((person) => {
       return person.login === login
     });
-    console.log(login);
     if (user) {
       this.setState({
         isRegistration: 'error'
@@ -89,6 +102,17 @@ export default class App extends Component {
         isLoggedIn: 'error'
       })
     }
+  }
+
+  onLogout = (evt) => {
+    if (evt.target.textContent === 'нет') {
+      return
+    }
+    this.setState({
+      currentUser: null,
+      isLoggedIn: 'out',
+      isRegistration: 'no',
+    })
   }
 
   componentDidMount = () => {
@@ -278,8 +302,7 @@ export default class App extends Component {
       <ServiceProvider value={this.service}>
         <Router>
           <div className="technomart-app">
-            <Header quantutyCartList={cartList.length}
-              quantutyBookmarksList={bookmarksList.length}/>
+            <Header appState={this.state}/>
             <AppStateProvider value={this.state}>
               <Switch>
                 <Route path="/" component={Main} exact />
@@ -333,6 +356,11 @@ export default class App extends Component {
                   return (
                     <RegistrationPage isRegistration={this.state.isRegistration}
                       onRegistration={this.onRegistration}/>
+                  )
+                }} />
+                <Route path="/logout" render={() => {
+                  return (
+                    <LogoutPage appState={this.state} onLogout={this.onLogout}/>
                   )
                 }} />
 
