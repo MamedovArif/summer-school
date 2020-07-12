@@ -41,7 +41,7 @@ export default class App extends Component {
     currentUser: null, //!!!
     users: [
       {
-        name: 'Bob',
+        name: 'Robert',
         phone: '+7 786 ...',
         login: '',
         password: '',
@@ -173,6 +173,9 @@ export default class App extends Component {
   service = new MockService();
 
   correctCounterCart = (id) => { //КНОПКА КУПИТЬ
+    if (this.state.isLoggedIn !== 'entrance') {
+      return;
+    }
     const str = id.slice(0, 3);
     const mapping = { // move to utils
       per: this.service.getAllPerforators,
@@ -204,6 +207,9 @@ export default class App extends Component {
   }
 
   correctCounterBookmarks = (id) => { //КНОПКА "В ЗАКЛАДКИ"
+    if (this.state.isLoggedIn !== 'entrance') {
+      return;
+    }
     const str = id.slice(0, 3);
     const mapping = { // move to utils
       per: this.service.getAllPerforators,

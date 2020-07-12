@@ -8,12 +8,15 @@ const Header = (props) => {
   const {currentUser, isLoggedIn} = props.appState;
   let cartList;
   let bookmarksList;
+  let nameUser;
   if (currentUser) {
     cartList = currentUser.cartList;
     bookmarksList = currentUser.bookmarksList;
+    nameUser = currentUser.name;
   } else {
     cartList = [];
     bookmarksList = [];
+    nameUser = null;
   }
 
   const mapping = {
@@ -66,6 +69,7 @@ const Header = (props) => {
           <Link className="enter" to={`/${mappingQ[isLoggedIn]}`}>
             {mapping[isLoggedIn]}
           </Link>
+          {nameUser}
           {registration}
         </div>
         <nav className="navigation">
@@ -85,13 +89,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-/*
-<div class="authorization">
-  <div class="account-exit">
-    <a class="personal-account">Равшан Джамшутович</a>
-    <a class="exit"><span class="visually-hidden">Выйти</span></a>
-  </div>
-  <a class="my-orders" href="">Мои заказы</a>
-  <a class="account" href="">Личный кабинет</a>
-</div> */
