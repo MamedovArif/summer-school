@@ -120,7 +120,17 @@ export default class App extends Component {
           const addGood = goods.find((item) => {
             return item.id === id;
           })
-          newList.push(addGood);
+          const copyAddGood = Object.assign({}, addGood, {quantuty: 1})//zero
+          const repeatGood = newList.findIndex((item) => {
+            return item.id === id
+          });
+          console.log(repeatGood)
+          if (repeatGood === -1) {
+            newList.push(copyAddGood);
+          } else {
+            console.log(newList[repeatGood].quantuty)
+            newList[repeatGood].quantuty = newList[repeatGood].quantuty + 1
+          }
           console.log(newList);
           return {
             cartList: newList

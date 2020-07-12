@@ -32,8 +32,9 @@ const CartPage = ({appState}) => {
     return (
       <li key={id}>
         <ItemDetails itemId={id} getData={getData}>
-          <Record field="model" label="Model" />
-          <Record field="brand" label="Brand" />
+          <Record field="model" label="модель" />
+          <Record field="brand" label="бренд" />
+          <Record field="quantuty" label="количество" />
         </ItemDetails>
         <button onClick={() => moveToBookmarks(id)}>переместить в закладки</button>
         <button onClick={() => deleteFromCart(id)}>удалить из корзины</button>
