@@ -7,7 +7,8 @@ const OrderPage = ({appState}) => {
   if (appState.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
   }
-  if (appState.cartList.length === 0) {
+  const {cartList} = appState.currentUser;
+  if (cartList.length === 0) {
     return (
       <div>
         <p>добавьте в корзину интересующий вас товар из нашего

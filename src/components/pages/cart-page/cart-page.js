@@ -11,7 +11,8 @@ const CartPage = ({appState}) => {
   if (appState.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
   }
-  if (appState.cartList.length === 0) {
+  const {cartList} = appState.currentUser;
+  if (cartList.length === 0) {
     return (
       <div>
         <p>ваша корзина пока пуста</p>
@@ -21,7 +22,7 @@ const CartPage = ({appState}) => {
     )
   }
 
-  const items = appState.cartList.map((item) => {
+  const items = cartList.map((item) => {
     const getData = (iden) => {
       return new Promise((resolve) => {
         resolve(item);

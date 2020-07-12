@@ -35,8 +35,6 @@ import './app.css';
 export default class App extends Component {
 
   state = {
-    cartList: [],
-    bookmarksList: [],
     funcs: {},
     isLoggedIn: 'out',
     isRegistration: 'no',
@@ -63,7 +61,7 @@ export default class App extends Component {
   }
 
   onRegistration = (name, phone, login, password) => {
-    const {users} = this.state;
+    const {users, currentUser} = this.state;
 
     const user = users.find((person) => {
       return person.login === login
@@ -74,17 +72,26 @@ export default class App extends Component {
       })
       return;
     }
-    const newUser = {name, phone, login, password};
+
+    const newUser = {
+      name,
+      phone,
+      login,
+      password,
+      cartList: [],
+      bookmarksList: [],
+    };
     const updatedUsers = [].concat(users.slice(), newUser);
     this.setState({
       isLoggedIn: 'entrance',
-      isRegistration: 'yes'
+      isRegistration: 'yes',
+      currentUser: newUser
     })
   }
 
   onLogin = (login, password) => {
     const user = this.state.users.find((person) => {
-      return person.login === login
+      return person.login === login //сылка на объект из users
     });
 
     if (!user) {
@@ -95,7 +102,8 @@ export default class App extends Component {
       console.log('entrance')
       this.setState({
         isLoggedIn: 'entrance',
-        isRegistration: 'yes'
+        isRegistration: 'yes',
+        currentUser: user,
       })
     } else {
       this.setState({
@@ -131,7 +139,8 @@ export default class App extends Component {
   }
 
   reduceQuantuty = (id) => {
-    this.setState(({cartList}) => {
+    this.setState(({currentUser}) => {
+      const {cartList} = currentUser;
       const index = cartList.findIndex((item) => {
         return item.id === id
       })
@@ -142,27 +151,28 @@ export default class App extends Component {
         newCartList.splice(index, 1)
       }
       return {
-        cartList: newCartList
+        currentUser: Object.assign(currentUser, {cartList: newCartList})
       }
     })
   }
 
   increaseQuantuty = (id) => {
-    this.setState(({cartList}) => {
+    this.setState(({currentUser}) => {
+      const {cartList} = currentUser;
       const index = cartList.findIndex((item) => {
         return item.id === id
       })
       const newCartList = cartList.slice();
       newCartList[index].quantuty += 1;
       return {
-        cartList: newCartList
+        currentUser: Object.assign(currentUser, {cartList: newCartList})
       }
     })
   }
 
   service = new MockService();
 
-  correctCounterCart = (id) => {
+  correctCounterCart = (id) => { //КНОПКА КУПИТЬ
     const str = id.slice(0, 3);
     const mapping = { // move to utils
       per: this.service.getAllPerforators,
@@ -171,9 +181,9 @@ export default class App extends Component {
     let getGoods = mapping[str];
     getGoods()
       .then((goods) => {
-        this.setState(({counterCart, cartList}) => {
+        this.setState(({currentUser}) => {
 
-          const newList = cartList.slice();
+          const newList = currentUser.cartList.slice();
           const addGood = goods.find((item) => {
             return item.id === id;
           })
@@ -187,13 +197,13 @@ export default class App extends Component {
             newList[repeatGood].quantuty += 1
           }
           return {
-            cartList: newList
+            currentUser: Object.assign(currentUser, {cartList: newList})
           }
         })
       })
   }
 
-  correctCounterBookmarks = (id) => {
+  correctCounterBookmarks = (id) => { //КНОПКА "В ЗАКЛАДКИ"
     const str = id.slice(0, 3);
     const mapping = { // move to utils
       per: this.service.getAllPerforators,
@@ -202,9 +212,9 @@ export default class App extends Component {
     let getGoods = mapping[str];
     getGoods()
       .then((goods) => {
-        this.setState(({counterBookmarks, bookmarksList}) => {
+        this.setState(({currentUser}) => {
 
-          const newList = bookmarksList.slice();
+          const newList = currentUser.bookmarksList.slice();
           //есть ли такой товар уже в закладках
           const addGood = goods.find((item) => {
             return item.id === id;
@@ -217,27 +227,29 @@ export default class App extends Component {
           }
 
           return {
-            bookmarksList: newList
+            currentUser: Object.assign(currentUser, {bookmarksList: newList})
           }
         })
       })
   }
 
   deleteFromCart = (id) => {
-    const {cartList} = this.state;
+    const {cartList} = this.state.currentUser;
     const index = cartList.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('cart-page см button "удалить из корзины"')
     }
     const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
     console.log(newCartList)
-    this.setState({
-      cartList: newCartList
+    this.setState(({currentUser}) => {
+      return {
+        currentUser: Object.assign(currentUser, {cartList: newCartList})
+      }
     })
   }
 
   moveToBookmarks = (id) => {
-    const {cartList, bookmarksList} = this.state;
+    const {cartList, bookmarksList} = this.state.currentUser;
     const index = cartList.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('')
@@ -254,14 +266,13 @@ export default class App extends Component {
     }
     const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
 
-    this.setState({
-      cartList: newCartList,
-      bookmarksList: newBookmarksList
+    this.setState(({currentUser}) => {
+      currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
     })
   }
 
   addToCart = (id) => {
-    const {cartList, bookmarksList} = this.state;
+    const {cartList, bookmarksList} = this.state.currentUser;
     const index = bookmarksList.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('')
@@ -278,21 +289,20 @@ export default class App extends Component {
       newCartList = [].concat(cartList)
     }
     const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
-    this.setState({
-      cartList: newCartList,
-      bookmarksList: newBookmarksList
+    this.setState(({currentUser}) => {
+      currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
     })
   }
 
   deleteFromBookmarks = (id) => {
-    const {bookmarksList} = this.state;
+    const {bookmarksList} = this.state.currentUser;
     const index = bookmarksList.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('')
     }
     const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
-    this.setState({
-      bookmarksList: newBookmarksList
+    this.setState(({currentUser}) => {
+      currentUser: Object.assign(currentUser, {bookmarksList: newBookmarksList})
     })
   }
 

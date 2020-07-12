@@ -12,7 +12,8 @@ const BookmarksPage = ({appState}) => {
   if (appState.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
   }
-  if (appState.bookmarksList.length === 0) {
+  const {bookmarksList} = appState.currentUser;
+  if (bookmarksList.length === 0) {
     return (
       <div>
         <p>у вас пока нет закладок</p>
@@ -21,7 +22,7 @@ const BookmarksPage = ({appState}) => {
     )
   }
 
-  const items = appState.bookmarksList.map((item) => {
+  const items = bookmarksList.map((item) => {
     const getData = (iden) => {
       return new Promise((resolve) => {
         resolve(item);

@@ -5,7 +5,17 @@ import './header.css';
 import logo from './img/logo-technomart.svg';
 
 const Header = (props) => {
-  const {cartList, bookmarksList, isLoggedIn} = props.appState;
+  const {currentUser, isLoggedIn} = props.appState;
+  let cartList;
+  let bookmarksList;
+  if (currentUser) {
+    cartList = currentUser.cartList;
+    bookmarksList = currentUser.bookmarksList;
+  } else {
+    cartList = [];
+    bookmarksList = [];
+  }
+
   const mapping = {
     out: 'Войти',
     entrance: 'Выйти'
