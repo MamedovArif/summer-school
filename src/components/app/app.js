@@ -39,6 +39,7 @@ export default class App extends Component {
     funcs: {},
     isLoggedIn: 'out',
     isRegistration: 'no',
+    user: '', //!!!
     users: [
       {
         login: 'example',
@@ -98,7 +99,39 @@ export default class App extends Component {
         deleteFromCart: this.deleteFromCart,
         moveToBookmarks: this.moveToBookmarks,
         addToCart: this.addToCart,
-        deleteFromBookmarks: this.deleteFromBookmarks
+        deleteFromBookmarks: this.deleteFromBookmarks,
+        increaseQuantuty: this.increaseQuantuty,
+        reduceQuantuty: this.reduceQuantuty
+      }
+    })
+  }
+
+  reduceQuantuty = (id) => {
+    this.setState(({cartList}) => {
+      const index = cartList.findIndex((item) => {
+        return item.id === id
+      })
+      const newCartList = cartList.slice();
+      if (newCartList[index].quantuty > 1) {
+        newCartList[index].quantuty -= 1;
+      } else {
+        newCartList.splice(index, 1)
+      }
+      return {
+        cartList: newCartList
+      }
+    })
+  }
+
+  increaseQuantuty = (id) => {
+    this.setState(({cartList}) => {
+      const index = cartList.findIndex((item) => {
+        return item.id === id
+      })
+      const newCartList = cartList.slice();
+      newCartList[index].quantuty += 1;
+      return {
+        cartList: newCartList
       }
     })
   }
@@ -124,14 +157,11 @@ export default class App extends Component {
           const repeatGood = newList.findIndex((item) => {
             return item.id === id
           });
-          console.log(repeatGood)
           if (repeatGood === -1) {
             newList.push(copyAddGood);
           } else {
-            console.log(newList[repeatGood].quantuty)
-            newList[repeatGood].quantuty = newList[repeatGood].quantuty + 1
+            newList[repeatGood].quantuty += 1
           }
-          console.log(newList);
           return {
             cartList: newList
           }
@@ -162,7 +192,6 @@ export default class App extends Component {
             newList.push(addGood);
           }
 
-          console.log(newList);
           return {
             bookmarksList: newList
           }
@@ -214,8 +243,17 @@ export default class App extends Component {
       throw new Error('')
     }
     const addCart = bookmarksList[index];
+
+    const repeatGood = cartList.findIndex((item) => {
+      return item.id === addCart.id
+    })
+    let newCartList = [];
+    if (repeatGood === -1) {
+      newCartList = [].concat(cartList, addCart);
+    } else {
+      newCartList = [].concat(cartList)
+    }
     const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
-    const newCartList = [].concat(cartList, addCart);
     this.setState({
       cartList: newCartList,
       bookmarksList: newBookmarksList

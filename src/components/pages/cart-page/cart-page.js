@@ -27,7 +27,8 @@ const CartPage = ({appState}) => {
         resolve(item);
       })
     }
-    const {moveToBookmarks, deleteFromCart} = appState.funcs;
+    const {moveToBookmarks, deleteFromCart,
+      increaseQuantuty, reduceQuantuty} = appState.funcs;
     const {id} = item;
     return (
       <li key={id}>
@@ -38,6 +39,8 @@ const CartPage = ({appState}) => {
         </ItemDetails>
         <button onClick={() => moveToBookmarks(id)}>переместить в закладки</button>
         <button onClick={() => deleteFromCart(id)}>удалить из корзины</button>
+        <button onClick={() => increaseQuantuty(id)}>+</button>
+        <button onClick={() => reduceQuantuty(id)}>-</button>
       </li>
     )
   })
