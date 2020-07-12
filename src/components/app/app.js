@@ -123,7 +123,6 @@ export default class App extends Component {
           newList.push(addGood);
           console.log(newList);
           return {
-            counterCart: counterCart + 1,
             cartList: newList
           }
         })
@@ -146,10 +145,15 @@ export default class App extends Component {
           const addGood = goods.find((item) => {
             return item.id === id;
           })
-          newList.push(addGood);
+          const repeatGood = newList.findIndex((item) => {
+            return item.id === id
+          })
+          if (repeatGood === -1) {
+            newList.push(addGood);
+          }
+
           console.log(newList);
           return {
-            counterBookmarks: counterBookmarks + 1,
             bookmarksList: newList
           }
         })
@@ -176,8 +180,17 @@ export default class App extends Component {
       throw new Error('')
     }
     const addBookmarks = cartList[index];
+    const repeatGood = bookmarksList.findIndex((item) => {
+      return item.id === id
+    })
+    let newBookmarksList = [];
+    if (repeatGood === -1) {
+      newBookmarksList = [].concat(bookmarksList, addBookmarks);
+    } else {
+      newBookmarksList = [].concat(bookmarksList);
+    }
     const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
-    const newBookmarksList = [].concat(bookmarksList, addBookmarks);
+
     this.setState({
       cartList: newCartList,
       bookmarksList: newBookmarksList
