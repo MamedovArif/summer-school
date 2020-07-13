@@ -61,7 +61,7 @@ export default class App extends Component {
   }
 
   onRegistration = (name, phone, login, password) => {
-    const {users, currentUser} = this.state;
+    const {users} = this.state;
 
     const user = users.find((person) => {
       return person.login === login
@@ -85,7 +85,8 @@ export default class App extends Component {
     this.setState({
       isLoggedIn: 'entrance',
       isRegistration: 'yes',
-      currentUser: newUser
+      currentUser: newUser,
+      users: updatedUsers
     })
   }
 
@@ -99,7 +100,6 @@ export default class App extends Component {
         isLoggedIn: 'error'
       })
     } else if (user.password === password) {
-      console.log('entrance')
       this.setState({
         isLoggedIn: 'entrance',
         isRegistration: 'yes',
@@ -273,7 +273,9 @@ export default class App extends Component {
     const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
 
     this.setState(({currentUser}) => {
-      currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
+      return {
+        currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
+      }
     })
   }
 
@@ -296,7 +298,9 @@ export default class App extends Component {
     }
     const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
     this.setState(({currentUser}) => {
-      currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
+      return {
+        currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
+      }
     })
   }
 
@@ -308,12 +312,13 @@ export default class App extends Component {
     }
     const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
     this.setState(({currentUser}) => {
-      currentUser: Object.assign(currentUser, {bookmarksList: newBookmarksList})
+      return {
+        currentUser: Object.assign(currentUser, {bookmarksList: newBookmarksList})
+      }
     })
   }
 
   render() {
-    const {cartList, bookmarksList} = this.state;
     return (
       <ServiceProvider value={this.service}>
         <Router>

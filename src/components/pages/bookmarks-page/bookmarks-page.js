@@ -15,7 +15,7 @@ const BookmarksPage = ({appState}) => {
   const {bookmarksList} = appState.currentUser;
   if (bookmarksList.length === 0) {
     return (
-      <div>
+      <div className="wrapper-cart-list upper">
         <p>у вас пока нет закладок</p>
         <p>посмотрите наш <Link to='/catalog'>каталог</Link></p>
       </div>
@@ -30,23 +30,47 @@ const BookmarksPage = ({appState}) => {
     }
     const {addToCart, deleteFromBookmarks} = appState.funcs;
     const {id} = item;
+    const type = id.slice(0, 3);
+
+    const forPerforators = () => {
+      return (
+        <Record field="impactEnergy" label="энергия удара" />
+      )
+    }
+    const forAngleGrinders = () => {
+      return (
+        <Record field="maxDiscDiameter" label="макс. диаметр диска" />
+      )
+    }
+
+    const mapping = {
+      per: forPerforators,
+      ang: forAngleGrinders,
+    }
     return (
-      <li key={id}>
+      <li key={id} className="cart-item">
         <ItemDetails itemId={id} getData={getData}>
-          <Record field="model" label="Model" />
-          <Record field="brand" label="Brand" />
+          <Record field="model" label="модель" />
+          <Record field="brand" label="бренд" />
+          <Record field="initialPrice" label="первоначальная цена" />
+          <Record field="price" label="цена" />
+          <Record field="powerSupply" label="тип питания" />
+          <Record field="power" label="мощность" />
+          <Record field="weight" label="вес" />
+          <Record field="numberOfIdle" label="макс. частота вращения диска" />
+          {mapping[type]()}
         </ItemDetails>
-        <button onClick={() => addToCart(id)}>добавить в корзину</button>
-        <button onClick={() => deleteFromBookmarks(id)}>удалить из закладок</button>
+        <button className="button-cart" onClick={() => addToCart(id)}>добавить в корзину</button>
+        <button className="button-cart" onClick={() => deleteFromBookmarks(id)}>удалить из закладок</button>
       </li>
     )
   })
   return (
-    <div>
-      <ul>
+    <div className="wrapper-cart-list">
+      <ul className="cart-list">
         {items}
       </ul>
-      <Link className="basket" to="/bookmarks/cart">перейти в корзину</Link>
+      <Link className="button-cart nav-button" to="/bookmarks/cart">перейти в корзину</Link>
     </div>
   )
 }

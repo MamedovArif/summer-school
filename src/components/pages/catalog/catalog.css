@@ -1,0 +1,106 @@
+.inner-page-container .catalog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  margin: 0 auto;
+  padding: 0 130px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.catalog-list .child-catalog {
+  position: relative;
+
+  width: 410px;
+  height: 230px;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: bold;
+
+  margin: 20px;
+}
+
+.catalog-list .child-catalog:hover {
+
+  opacity: 0.8;
+}
+
+.catalog-list .child-catalog a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #ffffff;
+}
+
+.child-catalog:first-child {
+  background-color: #8ed78f;
+}
+
+.child-catalog:nth-child(2) {
+  background-color: #dc91d8;
+}
+
+.child-catalog:nth-child(3) {
+  background-color: #3bbce3;
+}
+
+.child-catalog:last-child {
+  background-color: #ffbf47;
+}
+
+.catalog-list .sale::before {
+  position: absolute;
+  content: "";
+  top: 106px;
+  right: 95px;
+
+  width: 59px;
+  height: 72px;
+  transform: scale(2.2);
+
+  background-image: url("./img/icon-4.svg");
+}
+
+.catalog-list .technique::before {
+  position: absolute;
+  content: "";
+  top: 100px;
+  right: 100px;
+
+  width: 78px;
+  height: 62px;
+  transform: scale(2.2);
+
+  background-image: url("./img/icon-3.svg");
+}
+
+.catalog-list .tool::before {
+  position: absolute;
+  content: "";
+  top: 93px;
+  right: 67px;
+
+  width: 75px;
+  height: 61px;
+  transform: scale(2.2);
+
+  background-image: url("./img/icon-2.svg");
+}
+
+.catalog-list .materials::before {
+  position: absolute;
+  content: "";
+  top: 100px;
+  right: 100px;
+
+  width: 44px;
+  height: 65px;
+  transform: scale(2.2);
+
+  background-image: url("./img/icon-1.svg");
+}

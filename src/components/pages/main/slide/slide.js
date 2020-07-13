@@ -10,15 +10,15 @@ const Slide = () => {
        <li className="extreme materials">
          <div className="flag flag-new">новинка</div>
          <h3>Материалы</h3>
-         <Link to="/materials">На любой вкус</Link>
+         <Link to="/catalog/materials">На любой вкус</Link>
        </li>
        <li className="extreme tool">
          <h3>Инструмент</h3>
-         <Link className="tool-link" to="/tool">На все случаи</Link>
+         <Link className="tool-link" to="/catalog/tool">На все случаи</Link>
        </li>
        <li className="extreme technique">
          <h3>Техника</h3>
-         <Link className="technique-link" to="/technic">Для стройки</Link>
+         <Link className="technique-link" to="/catalog/technic">Для стройки</Link>
        </li>
        <li className="slider">
          <input type="radio" id="btn-1" name="toggle" defaultChecked />
@@ -47,11 +47,11 @@ const Slide = () => {
          <ul>
           <li className="extreme sale">
             <h3>Скидки 50%</h3>
-            <Link className="sale-link" to="/special-offers">На 350 товаров</Link>
+            <Link className="sale-link" to="/catalog/special-offers">На 350 товаров</Link>
           </li>
           <li className="extreme delivery">
              <h3>Доставка</h3>
-             <Link className="delivery-link" to="/delivery">Бесплатно</Link>
+             <Link className="delivery-link" to="/catalog/delivery">Бесплатно</Link>
           </li>
          </ul>
         </li>

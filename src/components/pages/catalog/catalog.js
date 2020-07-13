@@ -4,13 +4,15 @@ import {wrapperInnerPage} from '../wrapper-inner-page';
 
 import { Link } from 'react-router-dom';
 
+import './catalog.css';
+
 const Catalog = () => {
   return (
-    <ul>
-      <li><Link to="/catalog/special-offers">Спецпредложения</Link></li>
-      <li><Link to="/catalog/technic">Техника</Link></li>
-      <li><Link to="/catalog/tool">Инструмент</Link></li>
-      <li><Link to="/catalog/materials">Материалы</Link></li>
+    <ul className="catalog-list">
+      <li className="child-catalog sale"><Link to="/catalog/special-offers">Спецпредложения</Link></li>
+      <li className="child-catalog technique"><Link to="/catalog/technic">Техника</Link></li>
+      <li className="child-catalog tool"><Link to="/catalog/tool">Инструмент</Link></li>
+      <li className="child-catalog materials"><Link to="/catalog/materials">Материалы</Link></li>
     </ul>
   )
 }
