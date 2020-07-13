@@ -5,8 +5,8 @@ import { withService } from '../hoc';
 const PerforatorDetails = (props) => {
   return (
     <ItemDetails {...props}>
-        <Record field="model" label="Model" />
-        <Record field="brand" label="Brand" />
+      <Record field="model" label="Model" />
+      <Record field="brand" label="Brand" />
     </ItemDetails>
   )
 }
