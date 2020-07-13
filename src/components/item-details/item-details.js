@@ -57,7 +57,7 @@ export default class itemDetails extends Component {
 
     const { title, url } = item;
     return (
-      <div className="item-details card">
+      <div className="item-details">
         <img className="item-image"
           src={url}
           alt="item"/>

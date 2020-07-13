@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+import './login.css';
+
 class LoginPage extends Component {
 
   state = {
@@ -25,11 +27,11 @@ class LoginPage extends Component {
       <p>логин или пароль введены неверно</p> : null //при фокусе убрать
 
     return (
-      <div>
+      <div className="login-page">
         <p>войдите, пожалуйста, чтобы посмотреть
         свои закладки и корзину или оформить заказ</p>
         <p>если вы не зарегистрированы,
-        то перейдите на страницу <Link to='/registration'>регистрации</Link></p>
+        то перейдите на страницу <b><Link to='/registration'>регистрации</Link></b></p>
         <label>Логин
           <input type="text" name="login" onChange={(evt) => this.correctField(evt)}/>
         </label>

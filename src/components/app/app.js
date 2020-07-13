@@ -26,9 +26,9 @@ import AngleGrinders from '../pages/catalog/tool/angle-grinders';
 import {ServiceProvider} from '../service-context';
 import {AppStateProvider} from '../app-state-context';
 
-import LoginPage from '../pages/login.js';
-import RegistrationPage from '../pages/registration.js';
-import LogoutPage from '../pages/logout.js';
+import LoginPage from '../pages/login';
+import RegistrationPage from '../pages/registration';
+import LogoutPage from '../pages/logout';
 
 import './app.css';
 

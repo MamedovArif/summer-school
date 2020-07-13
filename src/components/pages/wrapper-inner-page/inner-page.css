@@ -65,8 +65,12 @@
   background-position: 0 0;
 }
 .breadcrumbs li:nth-child(3) {
-  margin-right: 43px;
+  margin-right: 33px;
   margin-left: 40px;
+}
+.breadcrumbs li:nth-child(5) {
+  margin-right: 33px;
+  margin-left: 50px;
 }
 .breadcrumbs li::after {
   content: "";
@@ -87,6 +91,9 @@
   left: 29px;
 }
 .breadcrumbs li:nth-child(3)::after {
+  left: 97px;
+}
+.breadcrumbs li:nth-child(4)::after {
   left: 97px;
 }
 .breadcrumbs li:last-child::after {
