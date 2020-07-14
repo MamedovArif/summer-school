@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+import './registration.css';
+
 class RegistrationPage extends Component {
 
   state = {
@@ -27,7 +29,7 @@ class RegistrationPage extends Component {
       <p>указанный логин занят</p> : null
 
     return (
-      <div>
+      <div className="registration-page">
         <p>если вы уже зарегистрированы,
         то перейдите на страницу <Link to='/login'>входа</Link></p>
         <label>Имя

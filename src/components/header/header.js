@@ -12,7 +12,7 @@ const Header = (props) => {
   if (currentUser) {
     cartList = currentUser.cartList;
     bookmarksList = currentUser.bookmarksList;
-    nameUser = currentUser.name;
+    nameUser = <span className="name-user">{currentUser.name}</span>;
   } else {
     cartList = [];
     bookmarksList = [];

@@ -361,6 +361,13 @@
 
   margin-left: auto;
 }
+.low-header-container .name-user {
+  margin-top: 13px;
+  margin-left: 30px;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .authorization .account-exit {
   max-width: 300px;
   min-height: 45px;

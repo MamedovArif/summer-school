@@ -286,13 +286,14 @@ export default class App extends Component {
       throw new Error('')
     }
     const addCart = bookmarksList[index];
+    const newAddCart = Object.assign({}, addCart, {quantuty: 1});
 
     const repeatGood = cartList.findIndex((item) => {
       return item.id === addCart.id
     })
     let newCartList = [];
     if (repeatGood === -1) {
-      newCartList = [].concat(cartList, addCart);
+      newCartList = [].concat(cartList, newAddCart);
     } else {
       newCartList = [].concat(cartList)
     }
