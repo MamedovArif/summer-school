@@ -31,8 +31,7 @@ const CartPage = ({appState}) => {
     const {moveToBookmarks, deleteFromCart,
       increaseQuantuty, reduceQuantuty} = appState.funcs;
     const {id} = item;
-    const type = id.slice(0, 3)
-    console.log(type);
+    const type = id.slice(0, 3);
 
     const forPerforators = () => {
       return (

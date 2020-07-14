@@ -21,7 +21,6 @@ class LoginPage extends Component {
   componentDidUpdate = (prevProps) => {
 
     if (this.props.isLoggedIn !== prevProps.isLoggedIn) {
-      console.log('update')
       if (this.props.isLoggedIn === 'error') {
         this.setState({
           notificationError: <p className="error">логин или пароль введены неверно</p>
@@ -31,7 +30,6 @@ class LoginPage extends Component {
   }
 
   handleFocus = () => {
-    console.log('focus');
     this.setState({
       notificationError: null
     })

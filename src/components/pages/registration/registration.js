@@ -25,7 +25,6 @@ class RegistrationPage extends Component {
   }
 
   handleValidation = (onRegistration, name, phone, email, password) => {
-    const {notificationName} = this.state;
     const page = ReactDOM.findDOMNode(this);
     const nameElement = page.querySelector('input[name = name]');
     const phoneElement = page.querySelector('input[name = phone]');
@@ -38,7 +37,7 @@ class RegistrationPage extends Component {
       })
       return;
     }
-    if (phone.length < 11 || isNaN(Number(phone))) { //////////!!!!
+    if (phone.length < 10 || isNaN(Number(phone))) {
       phoneElement.style = 'border: 2px solid tomato;';
       this.setState({
         notificationPhone: <p className="validation-registration">Не корректный номер телефона</p>
@@ -73,10 +72,7 @@ class RegistrationPage extends Component {
         num = true;
       };
     }
-    if (password.length < 8 || !upper || !lower || !num) { ///////!!!!!
-      console.log(upper);
-      console.log(lower);
-      console.log(num);
+    if (password.length < 8 || !upper || !lower || !num) {
       passwordElement.style = 'border: 2px solid tomato;';
       this.setState({
         notificationPassword: (
@@ -137,9 +133,9 @@ class RegistrationPage extends Component {
         </label>
         {notificationName}
         <label>Моб. телефон
-          <input type="tel" name="phone" onFocus={this.deleteValidity} maxLength='11'
+          <input type="tel" name="phone" onFocus={this.deleteValidity} maxLength='10'
           onChange={(evt) => this.correctField(evt)}
-          placeholder="89305550555"/>
+          placeholder="9305550555"/>
         </label>
         {notificationPhone}
         <label>Email

@@ -282,7 +282,6 @@ export default class App extends Component {
       throw new Error('cart-page см button "удалить из корзины"')
     }
     const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
-    console.log(newCartList)
     this.setState(({currentUser}) => {
       return {
         currentUser: Object.assign(currentUser, {cartList: newCartList})
