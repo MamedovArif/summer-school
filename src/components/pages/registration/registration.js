@@ -13,6 +13,9 @@ class RegistrationPage extends Component {
     email: '',
     password: '',
     notificationName: null,
+    notificationEmail: null,
+    notificationPassword: null,
+    notificationPhone: null
   }
 
 
@@ -25,11 +28,41 @@ class RegistrationPage extends Component {
     const {notificationName} = this.state;
     const page = ReactDOM.findDOMNode(this);
     const nameElement = page.querySelector('input[name = name]');
-    console.log(nameElement);
-    if (this.state.name.length < 4) {
+    const phoneElement = page.querySelector('input[name = phone]');
+    const emailElement = page.querySelector('input[name = email]');
+    const passwordElement = page.querySelector('input[name = password]');
+    if (name.length < 4) {
       nameElement.style = 'border: 2px solid tomato;';
       this.setState({
         notificationName: <p className="validation-registration">Имя слишком короткое, введите не менее 4-ех символов</p>
+      })
+      return;
+    }
+    if (phone.includes('@') ) { //////////!!!!
+      phoneElement.style = 'border: 2px solid tomato;';
+      this.setState({
+        notificationPhone: <p className="validation-registration">Не корректный номер телефона</p>
+      })
+      return;
+    }
+    if (!email.includes('@') && (!email.endsWith('ya.ru') || !email.endsWith('yandex.ru') ||
+      !email.endsWith('gmail.com') || !email.endsWith('mail.ru') || !email.endsWith('list.ru') ||
+      !email.endsWith('outlook.com'))) {
+      emailElement.style = 'border: 2px solid tomato;';
+      this.setState({
+        notificationEmail: <p className="validation-registration">Не корректный адрес электронной почты</p>
+      })
+      return;
+    }
+    if (password.length < 8 ) { ///////!!!!!
+      passwordElement.style = 'border: 2px solid tomato;';
+      this.setState({
+        notificationPassword: (
+          <p className="validation-registration">
+          Кол-во символов должно быть не меньше 8,
+          пароль должен содержать заглавные и прописные символы, а также цифры
+          </p>
+        )
       })
       return;
     }
@@ -39,7 +72,19 @@ class RegistrationPage extends Component {
   deleteValidity = () => {
     this.setState({
       notificationName: null,
-    })
+      notificationEmail: null,
+      notificationPhone: null,
+      notificationPassword: null,
+    });
+    const page = ReactDOM.findDOMNode(this);
+    const nameElement = page.querySelector('input[name = name]');
+    const phoneElement = page.querySelector('input[name = phone]');
+    const emailElement = page.querySelector('input[name = email]');
+    const passwordElement = page.querySelector('input[name = password]');
+    nameElement.style = 'border: 1px solid gray;';
+    phoneElement.style = 'border: 1px solid gray;';
+    emailElement.style = 'border: 1px solid gray;';
+    passwordElement.style = 'border: 1px solid gray;';
   }
 
   correctField = (evt) => {
@@ -50,7 +95,8 @@ class RegistrationPage extends Component {
   }
 
   render() {
-    const {name, phone, email, password, notificationName} = this.state;
+    const {name, phone, email, password, notificationName,
+      notificationEmail, notificationPassword, notificationPhone} = this.state;
     const {isRegistration, onRegistration} = this.props;
     if (isRegistration === 'yes') {
       return <Redirect to='/catalog' />
@@ -64,21 +110,30 @@ class RegistrationPage extends Component {
         то перейдите на страницу <Link to='/login'>входа</Link></p>
         <label>Имя
           <input type="text" name="name" maxLength='15' onFocus={this.deleteValidity}
-            onChange={(evt) => this.correctField(evt)} />
+            onChange={(evt) => this.correctField(evt)}
+            placeholder="Albert"/>
         </label>
         {notificationName}
         <label>Моб. телефон
-          <input type="tel" name="phone" onChange={(evt) => this.correctField(evt)} />
+          <input type="tel" name="phone" onFocus={this.deleteValidity}
+          onChange={(evt) => this.correctField(evt)}
+          placeholder="+7 (930) 555-05-55"/>
         </label>
+        {notificationPhone}
         <label>Email
-          <input type="email" name="email" onChange={(evt) => this.correctField(evt)}/>
+          <input type="email" name="email" onFocus={this.deleteValidity}
+          onChange={(evt) => this.correctField(evt)}
+          placeholder="example@gmail.com"/>
         </label>
+        {notificationEmail}
         <label>Пароль
-          <input type="password" name="password" onChange={(evt) => this.correctField(evt)}/>
+          <input type="password" name="password" onFocus={this.deleteValidity}
+          onChange={(evt) => this.correctField(evt)}
+          placeholder="********"/>
         </label>
+        {notificationPassword}
         <button onClick={() => {
           this.handleValidation(onRegistration, name, phone, email, password)
-
         }}>
           зарегистрироваться
         </button>
