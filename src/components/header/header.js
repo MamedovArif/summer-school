@@ -21,10 +21,12 @@ const Header = (props) => {
 
   const mapping = {
     out: 'Войти',
+    error: 'Войти',
     entrance: 'Выйти'
   }
   const mappingQ = {
     out: 'login',
+    error: 'login',
     entrance: 'logout'
   }
   const registration = isLoggedIn === 'entrance' ? null :

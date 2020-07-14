@@ -48,3 +48,9 @@
   opacity: 0.8;
 }
 
+.login-page .error {
+  margin-top: 20px;
+
+  color: tomato;
+}
+

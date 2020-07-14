@@ -43,28 +43,64 @@ export default class App extends Component {
       {
         name: 'Robert',
         phone: '+7 786 ...',
-        login: '',
-        password: '',
-        cartList: [],
-        bookmarksList: [],
+        email: 'asd',
+        password: 'asdi',
+        cartList: [
+          {
+            id: 'per4',
+            title: 'Перфоратор',
+            brand: 'HITACHI',
+            model: 'DH24PH',
+            isNew: false,
+            initialPrice: 11750,
+            price: 10500,
+            powerSupply: 'electronetwork',
+            isHit: true,
+            power: 730,
+            numberOfIdle: 1050,
+            frequencyOfStrikes: 4500,
+            impactEnergy: 2.7,
+            weight: 2.7,
+            url: `https://avatars.mds.yandex.net/get-mpic/1605421/img_id4263042739453333466.jpeg/9hq`,
+            quantuty: 2
+          },
+        ],
+        bookmarksList: [
+          {
+            id: 'ang25',
+            title: 'УШМ',
+            brand: 'MAKITA',
+            model: 'GA5041R',
+            isNew: false,
+            initialPrice: null,
+            price: 8897,
+            powerSupply: 'accumulator',
+            isHit: true,
+            power: 1100,
+            numberOfIdle: 11000,
+            maxDiscDiameter: 125,
+            weight: 2.4,
+            url: `https://avatars.mds.yandex.net/get-mpic/1866031/img_id4984682844879837665.jpeg/orig`
+          }
+        ],
       },
 
       {
-        name: 'Bob',
+        name: 'Antony',
         phone: '+7 786 ...',
-        login: 'example',
-        password: '123a',
+        email: 'qwe',
+        password: 'qwe',
         cartList: [],
         bookmarksList: [],
       }
     ]
   }
 
-  onRegistration = (name, phone, login, password) => {
+  onRegistration = (name, phone, email, password) => {
     const {users} = this.state;
 
     const user = users.find((person) => {
-      return person.login === login
+      return person.email === email
     });
     if (user) {
       this.setState({
@@ -76,7 +112,7 @@ export default class App extends Component {
     const newUser = {
       name,
       phone,
-      login,
+      email,
       password,
       cartList: [],
       bookmarksList: [],
@@ -90,9 +126,9 @@ export default class App extends Component {
     })
   }
 
-  onLogin = (login, password) => {
+  onLogin = (email, password) => {
     const user = this.state.users.find((person) => {
-      return person.login === login //сылка на объект из users
+      return person.email === email //сылка на объект из users
     });
 
     if (!user) {
