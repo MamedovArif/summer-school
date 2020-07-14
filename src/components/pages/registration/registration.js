@@ -38,7 +38,7 @@ class RegistrationPage extends Component {
       })
       return;
     }
-    if (phone.includes('@') ) { //////////!!!!
+    if (phone.length < 11 || isNaN(Number(phone))) { //////////!!!!
       phoneElement.style = 'border: 2px solid tomato;';
       this.setState({
         notificationPhone: <p className="validation-registration">Не корректный номер телефона</p>
@@ -137,9 +137,9 @@ class RegistrationPage extends Component {
         </label>
         {notificationName}
         <label>Моб. телефон
-          <input type="tel" name="phone" onFocus={this.deleteValidity}
+          <input type="tel" name="phone" onFocus={this.deleteValidity} maxLength='11'
           onChange={(evt) => this.correctField(evt)}
-          placeholder="+7 (930) 555-05-55"/>
+          placeholder="89305550555"/>
         </label>
         {notificationPhone}
         <label>Email
@@ -149,7 +149,7 @@ class RegistrationPage extends Component {
         </label>
         {notificationEmail}
         <label>Пароль
-          <input type="text" name="password" onFocus={this.deleteValidity}
+          <input type="password" name="password" onFocus={this.deleteValidity}
           onChange={(evt) => this.correctField(evt)}
           placeholder="********"/>
         </label>
