@@ -54,7 +54,29 @@ class RegistrationPage extends Component {
       })
       return;
     }
-    if (password.length < 8 ) { ///////!!!!!
+
+    let upper = false;
+    let lower = false;
+    let num = false;
+    for (let i = 65; i <= 90; i++) {
+      if (password.includes(String.fromCodePoint(i))) {
+        upper = true;
+      };
+    }
+    for (let i = 97; i <= 122; i++) {
+      if (password.includes(String.fromCodePoint(i))) {
+        lower = true;
+      };
+    }
+    for (let i = 48; i <= 57; i++) {
+      if (password.includes(String.fromCodePoint(i))) {
+        num = true;
+      };
+    }
+    if (password.length < 8 || !upper || !lower || !num) { ///////!!!!!
+      console.log(upper);
+      console.log(lower);
+      console.log(num);
       passwordElement.style = 'border: 2px solid tomato;';
       this.setState({
         notificationPassword: (
@@ -127,7 +149,7 @@ class RegistrationPage extends Component {
         </label>
         {notificationEmail}
         <label>Пароль
-          <input type="password" name="password" onFocus={this.deleteValidity}
+          <input type="text" name="password" onFocus={this.deleteValidity}
           onChange={(evt) => this.correctField(evt)}
           placeholder="********"/>
         </label>
