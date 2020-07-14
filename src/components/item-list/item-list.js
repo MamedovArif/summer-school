@@ -90,7 +90,7 @@ class ItemList extends Component {
   renderGood = (item, category, funcs) => {
     const {id, title, brand, model, isNew,
       initialPrice, price, url} = item;
-    const {correctCounterCart, correctCounterBookmarks} = funcs;
+    const {handleClickByCartOfList} = funcs;
     const sale = initialPrice ?
       <div className="discount">{initialPrice} ₽</div> :
       <div className="discount"></div>;
@@ -99,9 +99,9 @@ class ItemList extends Component {
       <li key={id} className="layout-item-goods">
         {novelty}
         <div className="actions">
-          <button onClick={() => correctCounterCart(id)}
+          <button name="toCartList" onClick={(evt) => handleClickByCartOfList(evt, id)}
             className="buy-actions">Купить</button>
-          <button onClick={() => correctCounterBookmarks(id)}
+          <button name="toBookmarkList" onClick={(evt) => handleClickByCartOfList(evt, id)}
             className="bookmarks-actions">В закладки</button>
         </div>
         <div className="image-container">

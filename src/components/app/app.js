@@ -162,44 +162,36 @@ export default class App extends Component {
   componentDidMount = () => {
     this.setState({
       funcs: {
-        correctCounterCart: this.correctCounterCart,
-        correctCounterBookmarks: this.correctCounterBookmarks,
-        deleteFromCart: this.deleteFromCart,
+        handleClickByCartOfList: this.handleClickByCartOfList,
+        counterQuantuty: this.counterQuantuty,
+
         moveToBookmarks: this.moveToBookmarks,
         addToCart: this.addToCart,
         deleteFromBookmarks: this.deleteFromBookmarks,
-        increaseQuantuty: this.increaseQuantuty,
-        reduceQuantuty: this.reduceQuantuty
+        deleteFromCart: this.deleteFromCart,
       }
     })
   }
 
-  reduceQuantuty = (id) => {
+  counterQuantuty = (evt, id) => {
+    const behavior = evt.target.name;
     this.setState(({currentUser}) => {
       const {cartList} = currentUser;
       const index = cartList.findIndex((item) => {
         return item.id === id
       })
       const newCartList = cartList.slice();
-      if (newCartList[index].quantuty > 1) {
-        newCartList[index].quantuty -= 1;
+
+      if (behavior === 'add') {
+        newCartList[index].quantuty += 1
       } else {
-        newCartList.splice(index, 1)
+        if (newCartList[index].quantuty > 1) {
+          newCartList[index].quantuty -= 1
+        } else {
+          newCartList.splice(index, 1)
+        }
       }
-      return {
-        currentUser: Object.assign(currentUser, {cartList: newCartList})
-      }
-    })
-  }
 
-  increaseQuantuty = (id) => {
-    this.setState(({currentUser}) => {
-      const {cartList} = currentUser;
-      const index = cartList.findIndex((item) => {
-        return item.id === id
-      })
-      const newCartList = cartList.slice();
-      newCartList[index].quantuty += 1;
       return {
         currentUser: Object.assign(currentUser, {cartList: newCartList})
       }
@@ -208,68 +200,44 @@ export default class App extends Component {
 
   service = new MockService();
 
-  correctCounterCart = (id) => { //КНОПКА КУПИТЬ
+  handleClickByCartOfList = (evt, id) => { //КНОПКА КУПИТЬ
+    const behavior = evt.target.name;
+    const typeButton = { //name
+      toCartList: 'cartList',
+      toBookmarkList: 'bookmarksList'
+    }
     if (this.state.isLoggedIn !== 'entrance') {
       return;
     }
     const str = id.slice(0, 3);
-    const mapping = { // move to utils
+    const mapping = { //name
       per: this.service.getAllPerforators,
       ang: this.service.getAllAngleGrinders,
     }
     let getGoods = mapping[str];
+
+
     getGoods()
       .then((goods) => {
         this.setState(({currentUser}) => {
 
-          const newList = currentUser.cartList.slice();
-          const addGood = goods.find((item) => {
+          const newList = currentUser[typeButton[behavior]].slice();
+          const addGood = goods.find((item) => { //name
             return item.id === id;
           })
-          const copyAddGood = Object.assign({}, addGood, {quantuty: 1})//zero
-          const repeatGood = newList.findIndex((item) => {
+          const copyAddGood = Object.assign({}, addGood, {quantuty: 1}) //name
+          const checkRepeatGood = newList.findIndex((item) => {
             return item.id === id
           });
-          if (repeatGood === -1) {
+          if (checkRepeatGood === -1) {
             newList.push(copyAddGood);
           } else {
-            newList[repeatGood].quantuty += 1
+            if (behavior === 'toCartList') {
+              newList[checkRepeatGood].quantuty += 1
+            }
           }
           return {
-            currentUser: Object.assign(currentUser, {cartList: newList})
-          }
-        })
-      })
-  }
-
-  correctCounterBookmarks = (id) => { //КНОПКА "В ЗАКЛАДКИ"
-    if (this.state.isLoggedIn !== 'entrance') {
-      return;
-    }
-    const str = id.slice(0, 3);
-    const mapping = { // move to utils
-      per: this.service.getAllPerforators,
-      ang: this.service.getAllAngleGrinders,
-    }
-    let getGoods = mapping[str];
-    getGoods()
-      .then((goods) => {
-        this.setState(({currentUser}) => {
-
-          const newList = currentUser.bookmarksList.slice();
-          //есть ли такой товар уже в закладках
-          const addGood = goods.find((item) => {
-            return item.id === id;
-          })
-          const repeatGood = newList.findIndex((item) => {
-            return item.id === id
-          })
-          if (repeatGood === -1) {
-            newList.push(addGood);
-          }
-
-          return {
-            currentUser: Object.assign(currentUser, {bookmarksList: newList})
+            currentUser: Object.assign(currentUser, {[typeButton[behavior]]: newList})
           }
         })
       })

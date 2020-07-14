@@ -29,7 +29,7 @@ const CartPage = ({appState}) => {
       })
     }
     const {moveToBookmarks, deleteFromCart,
-      increaseQuantuty, reduceQuantuty} = appState.funcs;
+      counterQuantuty} = appState.funcs;
     const {id} = item;
     const type = id.slice(0, 3);
 
@@ -66,10 +66,10 @@ const CartPage = ({appState}) => {
           onClick={() => moveToBookmarks(id)}>переместить в закладки</button>
         <button className="button-cart"
           onClick={() => deleteFromCart(id)}>удалить из корзины</button>
-        <button className="button-cart"
-          onClick={() => increaseQuantuty(id)}>увеличить</button>
-        <button className="button-cart"
-          onClick={() => reduceQuantuty(id)}>уменьшить</button>
+        <button className="button-cart" name="add"
+          onClick={(evt) => counterQuantuty(evt, id)}>увеличить</button>
+        <button className="button-cart" name="reduce"
+          onClick={(evt) => counterQuantuty(evt, id)}>уменьшить</button>
       </li>
     )
   })
