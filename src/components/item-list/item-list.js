@@ -60,7 +60,6 @@ class ItemList extends Component {
     })
   }
 
-
   sortingByType = (goods, type) => {
     const sortGoods = goods.slice().sort((a, b) => {
       return a[type] - b[type];
@@ -99,9 +98,9 @@ class ItemList extends Component {
       <li key={id} className="layout-item-goods">
         {novelty}
         <div className="actions">
-          <button name="toCartList" onClick={(evt) => handleClickByCartOfList(evt, id)}
+          <button name="byCart" onClick={(evt) => handleClickByCartOfList(evt, id)}
             className="buy-actions">Купить</button>
-          <button name="toBookmarkList" onClick={(evt) => handleClickByCartOfList(evt, id)}
+          <button name="byToBookmarks" onClick={(evt) => handleClickByCartOfList(evt, id)}
             className="bookmarks-actions">В закладки</button>
         </div>
         <div className="image-container">

@@ -38,7 +38,7 @@ export default class App extends Component {
     funcs: {},
     isLoggedIn: 'out',
     isRegistration: 'no',
-    currentUser: null, //!!!
+    currentUser: null,
     users: [
       {
         name: 'Robert',
@@ -164,11 +164,8 @@ export default class App extends Component {
       funcs: {
         handleClickByCartOfList: this.handleClickByCartOfList,
         counterQuantuty: this.counterQuantuty,
-
-        moveToBookmarks: this.moveToBookmarks,
-        addToCart: this.addToCart,
-        deleteFromBookmarks: this.deleteFromBookmarks,
-        deleteFromCart: this.deleteFromCart,
+        deleteFromNecessaryList: this.deleteFromNecessaryList,
+        moveToNecessaryList: this.moveToNecessaryList
       }
     })
   }
@@ -202,122 +199,98 @@ export default class App extends Component {
 
   handleClickByCartOfList = (evt, id) => { //КНОПКА КУПИТЬ
     const behavior = evt.target.name;
-    const typeButton = { //name
-      toCartList: 'cartList',
-      toBookmarkList: 'bookmarksList'
+    const dispatcherByTypeButton = {
+      byCart: 'cartList',
+      byToBookmarks: 'bookmarksList'
     }
     if (this.state.isLoggedIn !== 'entrance') {
       return;
     }
     const str = id.slice(0, 3);
-    const mapping = { //name
+    const dispatcherByTypeId = {
       per: this.service.getAllPerforators,
       ang: this.service.getAllAngleGrinders,
     }
-    let getGoods = mapping[str];
+    let getGoods = dispatcherByTypeId[str];
 
 
     getGoods()
       .then((goods) => {
         this.setState(({currentUser}) => {
 
-          const newList = currentUser[typeButton[behavior]].slice();
-          const addGood = goods.find((item) => { //name
+          const newList = currentUser[dispatcherByTypeButton[behavior]].slice();
+          const addedProduct = goods.find((item) => {
             return item.id === id;
           })
-          const copyAddGood = Object.assign({}, addGood, {quantuty: 1}) //name
+          const transformAddedProduct = Object.assign({}, addedProduct, {quantuty: 1})
           const checkRepeatGood = newList.findIndex((item) => {
             return item.id === id
           });
           if (checkRepeatGood === -1) {
-            newList.push(copyAddGood);
+            newList.push(transformAddedProduct);
           } else {
             if (behavior === 'toCartList') {
               newList[checkRepeatGood].quantuty += 1
             }
           }
           return {
-            currentUser: Object.assign(currentUser, {[typeButton[behavior]]: newList})
+            currentUser: Object.assign(currentUser, {[dispatcherByTypeButton[behavior]]: newList})
           }
         })
       })
   }
 
-  deleteFromCart = (id) => {
-    const {cartList} = this.state.currentUser;
-    const index = cartList.findIndex((item) => item.id === id);
+  deleteFromNecessaryList = (evt, id) => {
+    const behavior = evt.target.name;
+    const dispatcher = {
+      cart: 'cartList',
+      bookmarks: 'bookmarksList'
+    }
+    const list = this.state.currentUser[dispatcher[behavior]];
+    const index = list.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('cart-page см button "удалить из корзины"')
     }
-    const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
+    const newList = [].concat(list.slice(0, index), list.slice(index + 1));
     this.setState(({currentUser}) => {
       return {
-        currentUser: Object.assign(currentUser, {cartList: newCartList})
+        currentUser: Object.assign(currentUser, {[dispatcher[behavior]]: newList})
       }
     })
   }
 
-  moveToBookmarks = (id) => {
-    const {cartList, bookmarksList} = this.state.currentUser;
-    const index = cartList.findIndex((item) => item.id === id);
+  moveToNecessaryList = (evt, id) => {
+    const behavior = evt.target.name;
+    const dispatcherByList = {
+      moveFromBookmarks: 'bookmarksList',
+      moveFromCart: 'cartList',
+    }
+    const {currentUser} = this.state;
+
+    const fromList = currentUser[dispatcherByList[behavior]];
+    const values = Object.values(dispatcherByList);
+    const acceptor = values.find((item) => item !== dispatcherByList[behavior]);
+    const toList = currentUser[acceptor];
+
+    const index = fromList.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error('')
     }
-    const addBookmarks = cartList[index];
-    const repeatGood = bookmarksList.findIndex((item) => {
+    const relocatableItem = fromList[index];
+    const isRepeatGood = toList.findIndex((item) => {
       return item.id === id
     })
-    let newBookmarksList = [];
-    if (repeatGood === -1) {
-      newBookmarksList = [].concat(bookmarksList, addBookmarks);
+    let newToList = [];
+    if (isRepeatGood === -1) {
+      newToList = [].concat(toList, relocatableItem);
     } else {
-      newBookmarksList = [].concat(bookmarksList);
+      newToList = [].concat(toList);
     }
-    const newCartList = [].concat(cartList.slice(0, index), cartList.slice(index + 1));
+    const newFromList = [].concat(fromList.slice(0, index), fromList.slice(index + 1));
 
     this.setState(({currentUser}) => {
       return {
-        currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
-      }
-    })
-  }
-
-  addToCart = (id) => {
-    const {cartList, bookmarksList} = this.state.currentUser;
-    const index = bookmarksList.findIndex((item) => item.id === id);
-    if (index === -1) {
-      throw new Error('')
-    }
-    const addCart = bookmarksList[index];
-    const newAddCart = Object.assign({}, addCart, {quantuty: 1});
-
-    const repeatGood = cartList.findIndex((item) => {
-      return item.id === addCart.id
-    })
-    let newCartList = [];
-    if (repeatGood === -1) {
-      newCartList = [].concat(cartList, newAddCart);
-    } else {
-      newCartList = [].concat(cartList)
-    }
-    const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
-    this.setState(({currentUser}) => {
-      return {
-        currentUser: Object.assign(currentUser, {cartList: newCartList}, {bookmarksList: newBookmarksList})
-      }
-    })
-  }
-
-  deleteFromBookmarks = (id) => {
-    const {bookmarksList} = this.state.currentUser;
-    const index = bookmarksList.findIndex((item) => item.id === id);
-    if (index === -1) {
-      throw new Error('')
-    }
-    const newBookmarksList = [].concat(bookmarksList.slice(0, index), bookmarksList.slice(index + 1));
-    this.setState(({currentUser}) => {
-      return {
-        currentUser: Object.assign(currentUser, {bookmarksList: newBookmarksList})
+        currentUser: Object.assign(currentUser, {[dispatcherByList[behavior]]: newFromList}, {[acceptor]: newToList})
       }
     })
   }
@@ -368,8 +341,6 @@ export default class App extends Component {
                     <OrderPage appState={this.state} />
                   )
                 }} />
-
-
 
                 <Route path="/login" render={() => {
                   return (

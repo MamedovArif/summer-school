@@ -28,7 +28,7 @@ const BookmarksPage = ({appState}) => {
         resolve(item);
       })
     }
-    const {addToCart, deleteFromBookmarks} = appState.funcs;
+    const {moveToNecessaryList, deleteFromNecessaryList} = appState.funcs;
     const {id} = item;
     const type = id.slice(0, 3);
 
@@ -60,8 +60,10 @@ const BookmarksPage = ({appState}) => {
           <Record field="numberOfIdle" label="макс. частота вращения диска" />
           {mapping[type]()}
         </ItemDetails>
-        <button className="button-cart" onClick={() => addToCart(id)}>добавить в корзину</button>
-        <button className="button-cart" onClick={() => deleteFromBookmarks(id)}>удалить из закладок</button>
+        <button className="button-cart" name="moveFromBookmarks"
+          onClick={(evt) => moveToNecessaryList(evt, id)}>добавить в корзину</button>
+        <button className="button-cart" name="bookmarks"
+          onClick={(evt) => deleteFromNecessaryList(evt, id)}>удалить из закладок</button>
       </li>
     )
   })

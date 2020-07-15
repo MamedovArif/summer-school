@@ -28,7 +28,7 @@ const CartPage = ({appState}) => {
         resolve(item);
       })
     }
-    const {moveToBookmarks, deleteFromCart,
+    const {moveToNecessaryList, deleteFromNecessaryList,
       counterQuantuty} = appState.funcs;
     const {id} = item;
     const type = id.slice(0, 3);
@@ -62,10 +62,10 @@ const CartPage = ({appState}) => {
           {mapping[type]()}
           <Record field="quantuty" label="количество" />
         </ItemDetails>
-        <button className="button-cart"
-          onClick={() => moveToBookmarks(id)}>переместить в закладки</button>
-        <button className="button-cart"
-          onClick={() => deleteFromCart(id)}>удалить из корзины</button>
+        <button className="button-cart" name="moveFromCart"
+          onClick={(evt) => moveToNecessaryList(evt, id)}>переместить в закладки</button>
+        <button className="button-cart" name="cart"
+          onClick={(evt) => deleteFromNecessaryList(evt, id)}>удалить из корзины</button>
         <button className="button-cart" name="add"
           onClick={(evt) => counterQuantuty(evt, id)}>увеличить</button>
         <button className="button-cart" name="reduce"
