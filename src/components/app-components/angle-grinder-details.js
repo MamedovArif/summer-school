@@ -14,6 +14,7 @@ const AngleGrinderDetails = (props) => {
       <Record field="power" label="мощность" />
       <Record field="weight" label="вес" />
       <Record field="numberOfIdle" label="макс. частота вращения диска" />
+      <Record field="maxDiscDiameter" label="макс. диаметр диска" />
     </ItemDetails>
   )
 }

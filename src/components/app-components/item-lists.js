@@ -12,6 +12,7 @@ const List = (props) => {
     handleCheckbox, handleRadio, sortingInitialGoods} = props;
 
   const aboutPerforator = category === 'perforators' ? <AboutPerforator /> : null;
+
   return (
     <Fragment>
       <Filters sortingInitialGoods={sortingInitialGoods}

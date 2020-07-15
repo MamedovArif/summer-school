@@ -4,7 +4,6 @@ import { withService } from '../hoc';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 
 const PerforatorDetails = (props) => {
-  console.log(props);
   return (
     <ItemDetails {...props}>
       <Record field="model" label="модель" />
@@ -16,6 +15,7 @@ const PerforatorDetails = (props) => {
       <Record field="weight" label="вес" />
       <Record field="numberOfIdle" label="макс. частота вращения диска" />
       <Record field="impactEnergy" label="энергия удара" />
+      <Record field="frequencyOfStrikes" label="частота ударов" />
     </ItemDetails>
   )
 }
