@@ -7,7 +7,8 @@ import Catalog from '../pages/catalog';
 import CartPage from '../pages/cart-page';
 import BookmarksPage from '../pages/bookmarks-page';
 import OrderPage from '../pages/order-page';
-import {PerforatorDetails, AngleGrinderDetails} from '../app-components';
+import {PerforatorDetails, AngleGrinderDetails,
+  PerforatorList, AngleGrinderList} from '../app-components';
 import Company from '../pages/company';
 import News from '../pages/news';
 import Delivery from '../pages/delivery';
@@ -20,8 +21,6 @@ import SpecialOffers from '../pages/catalog/special-offers';
 import Materials from '../pages/catalog/materials';
 import Technic from '../pages/catalog/technic';
 import Tool from '../pages/catalog/tool';
-import Perforators from '../pages/catalog/tool/perforators';
-import AngleGrinders from '../pages/catalog/tool/angle-grinders';
 
 import {ServiceProvider} from '../service-context';
 import {AppStateProvider} from '../app-state-context';
@@ -320,14 +319,14 @@ export default class App extends Component {
                 <Route path="/catalog/tool" component={Tool} exact/>
 
                 <Route path="/catalog/tool/perforators/"
-                component={Perforators} exact/>
+                component={PerforatorList} exact/>
                 <Route path="/catalog/tool/perforators/:id" render={({match}) => {
                     const { id } = match.params;
                     return <PerforatorDetails itemId={id}/>
                   }}/>
 
                 <Route path="/catalog/tool/angle-grinders/"
-                component={AngleGrinders} exact/>
+                component={AngleGrinderList} exact/>
                 <Route path="/catalog/tool/angle-grinders/:id" render={({match}) => {
                     const { id } = match.params;
                     return <AngleGrinderDetails itemId={id}/>

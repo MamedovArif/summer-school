@@ -1,9 +1,10 @@
-import {PerforatorList} from './item-lists.js';
 import PerforatorDetails from './perforator-details.js';
 import AngleGrinderDetails from './angle-grinder-details.js';
+import {PerforatorList, AngleGrinderList} from './item-lists.js';
 
 export {
-  PerforatorDetails,
   PerforatorList,
+  AngleGrinderList,
+  PerforatorDetails,
   AngleGrinderDetails
 }
