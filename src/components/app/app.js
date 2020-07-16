@@ -327,7 +327,7 @@ export default class App extends Component {
 
                 <Route path="/catalog/tool/angle-grinders/"
                 component={AngleGrinderList} exact/>
-                <Route path="/catalog/tool/angle-grinders/:id" render={({match}) => {
+                <Route path="/catalog/tool/angle-grinders/:id" render={({match, location, history}) => {
                     const { id } = match.params;
                     return <AngleGrinderDetails itemId={id}/>
                   }}/>
@@ -369,3 +369,6 @@ export default class App extends Component {
     );
   }
 }
+
+//push splice forEach find sort
+//map filter reduce slice concat ...props

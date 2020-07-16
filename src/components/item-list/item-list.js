@@ -23,9 +23,8 @@ class ItemList extends Component {
       for (let sort of sorts) {
         sort.style = "border: none; border-bottom: 1.5px dotted #ee3643;"
       }
-
       this.updateItems();
-      this.updatePagination(); //успевает среагировать?
+      this.updatePagination();
     }
   }
 

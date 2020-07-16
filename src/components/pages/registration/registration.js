@@ -18,12 +18,6 @@ class RegistrationPage extends Component {
     notificationPhone: null
   }
 
-
-
-  componentDidUpdate = () => {
-
-  }
-
   handleValidation = (onRegistration, name, phone, email, password) => {
     const page = ReactDOM.findDOMNode(this);
     const nameElement = page.querySelector('input[name = name]');
