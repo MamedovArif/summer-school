@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
-
+import {connect} from 'react-redux';
 import ReactDOM from 'react-dom';
+
+import {registrationProcess} from '../../../actions'
 
 import './registration.css';
 
@@ -122,24 +124,28 @@ class RegistrationPage extends Component {
         то перейдите на страницу <Link to='/login'>входа</Link></p>
         <label>Имя
           <input type="text" name="name" maxLength='15' onFocus={this.deleteValidity}
+            autoComplete="off"
             onChange={(evt) => this.correctField(evt)}
             placeholder="Albert"/>
         </label>
         {notificationName}
         <label>Моб. телефон
           <input type="tel" name="phone" onFocus={this.deleteValidity} maxLength='10'
+          autoComplete="off"
           onChange={(evt) => this.correctField(evt)}
           placeholder="9305550555"/>
         </label>
         {notificationPhone}
         <label>Email
           <input type="email" name="email" onFocus={this.deleteValidity}
+          autoComplete="off"
           onChange={(evt) => this.correctField(evt)}
           placeholder="example@gmail.com"/>
         </label>
         {notificationEmail}
         <label>Пароль
           <input type="password" name="password" onFocus={this.deleteValidity}
+          autoComplete="off"
           onChange={(evt) => this.correctField(evt)}
           placeholder="********"/>
         </label>
@@ -155,4 +161,17 @@ class RegistrationPage extends Component {
   }
 }
 
-export default RegistrationPage;
+const mapStateToProps = (state) => {
+  return {
+    isRegistration: state.isRegistration
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRegistration: (name, phone, email, password) => dispatch(
+      registrationProcess(name, phone, email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

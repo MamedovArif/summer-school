@@ -4,4 +4,4 @@ const {
   Provider: ServiceProvider,
   Consumer: ServiceConsumer } = React.createContext();
 
-export {ServiceProvider, ServiceConsumer };
+export {ServiceProvider, ServiceConsumer};

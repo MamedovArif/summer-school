@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './pagination.js';
 import ReactDOM from 'react-dom';
-import {withAppState} from '../hoc';
+//import {withAppState} from '../hoc';
+
+import {connect} from 'react-redux';
+import {handleClickByCartOfList} from '../../actions';
 
 import './item-list.css';
 
@@ -85,10 +88,9 @@ class ItemList extends Component {
     )
   }
 
-  renderGood = (item, category, funcs) => {
+  renderGood = (item, category, handleClickByCartOfList, data) => {
     const {id, title, brand, model, isNew,
       initialPrice, price, url} = item;
-    const {handleClickByCartOfList} = funcs;
     const sale = initialPrice ?
       <div className="discount">{initialPrice} ₽</div> :
       <div className="discount"></div>;
@@ -97,9 +99,9 @@ class ItemList extends Component {
       <li key={id} className="layout-item-goods">
         {novelty}
         <div className="actions">
-          <button name="byCart" onClick={(evt) => handleClickByCartOfList(evt, id)}
+          <button name="byCart" onClick={(evt) => handleClickByCartOfList(evt, id, data)}
             className="buy-actions">Купить</button>
-          <button name="byToBookmarks" onClick={(evt) => handleClickByCartOfList(evt, id)}
+          <button name="byToBookmarks" onClick={(evt) => handleClickByCartOfList(evt, id, data)}
             className="bookmarks-actions">В закладки</button>
         </div>
         <div className="image-container">
@@ -121,10 +123,10 @@ class ItemList extends Component {
 
   render() {
     const {currentItems, items, itemsPerPage} = this.state;
-    const {category, appState} = this.props;
+    const {category, handleClickByCartOfList, data} = this.props;
 
     const goods = currentItems.map((item) => { //
-      return this.renderGood(item, category, appState.funcs)
+      return this.renderGood(item, category, handleClickByCartOfList, data)
      });
 
     const types = ['price', 'weight', 'power'];
@@ -150,7 +152,17 @@ class ItemList extends Component {
   }
 }
 
-export default withAppState(ItemList);
+const mapStateToProps = () => {
+  return {}
+}
+
+const mapDispatchToprops = (dispatch) => {
+  return {
+    handleClickByCartOfList: (event, id, data) => dispatch(handleClickByCartOfList(event, id, data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToprops)(ItemList);
 
 
 // <h2 className="visually-hidden">Список товаров</h2>

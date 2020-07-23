@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import {logoutProcess} from '../../../actions';
 
 import './logout.css';
 
-const LogoutPage = ({onLogout, appState}) => {
-  if (appState.isLoggedIn === 'out') {
+const LogoutPage = ({onLogout, isLoggedIn}) => {
+  if (isLoggedIn === 'out') {
     return <Redirect to='/' />
   }
   return (
@@ -16,4 +19,16 @@ const LogoutPage = ({onLogout, appState}) => {
   )
 }
 
-export default LogoutPage;
+const mapStateToProps = ({isLoggedIn}) => {
+  return {
+    isLoggedIn
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogout: (event) => dispatch(logoutProcess(event))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutPage);

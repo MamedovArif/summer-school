@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import './header.css';
 import logo from './img/logo-technomart.svg';
 
 const Header = (props) => {
-  const {currentUser, isLoggedIn} = props.appState;
+  const {currentUser, isLoggedIn} = props;
   let cartList;
   let bookmarksList;
   let nameUser;
-  if (currentUser) {
+  if (currentUser.cartList) {
     cartList = currentUser.cartList;
     bookmarksList = currentUser.bookmarksList;
     nameUser = <span className="name-user">{currentUser.name}</span>;
@@ -90,4 +91,13 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser,
+    isLoggedIn: state.isLoggedIn
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

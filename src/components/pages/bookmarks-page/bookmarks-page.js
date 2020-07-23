@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import {wrapperInnerPage} from '../wrapper-inner-page';
-import {withAppState} from '../../hoc';
+//import {withAppState} from '../../hoc';
 import ItemDetails, {Record} from '../../item-details';
+import {deleteFromNecessaryList, moveToNecessaryList} from '../../../actions';
 
 
 import './bookmarks-page.css';
 
-const BookmarksPage = ({appState}) => {
-  if (appState.isLoggedIn !== 'entrance') {
+const BookmarksPage = (props) => {
+  if (props.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
   }
-  const {bookmarksList} = appState.currentUser;
+  const {bookmarksList} = props.currentUser;
   if (bookmarksList.length === 0) {
     return (
       <div className="wrapper-cart-list upper">
@@ -28,7 +30,7 @@ const BookmarksPage = ({appState}) => {
         resolve(item);
       })
     }
-    const {moveToNecessaryList, deleteFromNecessaryList} = appState.funcs;
+    const {moveToNecessaryList, deleteFromNecessaryList} = props;
     const {id} = item;
     const type = id.slice(0, 3);
 
@@ -81,4 +83,18 @@ const linksOfArray = [
   {title: 'Закладки', path: 'bookmarks'}
 ]
 
-export default wrapperInnerPage(withAppState(BookmarksPage), linksOfArray);
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.isLoggedIn,
+    currentUser: state.currentUser
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteFromNecessaryList: (event, id) => dispatch(deleteFromNecessaryList(event, id)),
+    moveToNecessaryList: (event, id) => dispatch(moveToNecessaryList(event, id))
+  }
+}
+
+export default wrapperInnerPage(connect(mapStateToProps, mapDispatchToProps)(BookmarksPage), linksOfArray);

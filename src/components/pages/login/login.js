@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import {loginProcess} from '../../../actions';
 
 import './login.css';
 
@@ -79,4 +82,16 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+const mapStateToProps = ({isLoggedIn}) => {
+  return {
+    isLoggedIn
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: (email, password) => dispatch(loginProcess(email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

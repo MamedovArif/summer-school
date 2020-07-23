@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import {wrapperInnerPage} from '../wrapper-inner-page';
-import {withAppState} from '../../hoc';
+//import {withAppState} from '../../hoc';
 import ItemDetails, {Record} from '../../item-details';
+
+import {processCounterQuantity, deleteFromNecessaryList, moveToNecessaryList} from '../../../actions';
 
 import './cart-page.css';
 
-const CartPage = ({appState}) => {
-  if (appState.isLoggedIn !== 'entrance') {
+const CartPage = (props) => {
+  if (props.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
   }
-  const {cartList} = appState.currentUser;
+  const {cartList} = props.currentUser;
   if (cartList.length === 0) {
     return (
       <div className="wrapper-cart-list upper">
@@ -29,7 +32,7 @@ const CartPage = ({appState}) => {
       })
     }
     const {moveToNecessaryList, deleteFromNecessaryList,
-      counterQuantuty} = appState.funcs;
+      counterQuantity} = props;
     const {id} = item;
     const type = id.slice(0, 3);
 
@@ -60,16 +63,16 @@ const CartPage = ({appState}) => {
           <Record field="weight" label="вес" />
           <Record field="numberOfIdle" label="макс. частота вращения диска" />
           {mapping[type]()}
-          <Record field="quantuty" label="количество" />
+          <Record field="quantity" label="количество" />
         </ItemDetails>
         <button className="button-cart" name="moveFromCart"
           onClick={(evt) => moveToNecessaryList(evt, id)}>переместить в закладки</button>
         <button className="button-cart" name="cart"
           onClick={(evt) => deleteFromNecessaryList(evt, id)}>удалить из корзины</button>
         <button className="button-cart" name="add"
-          onClick={(evt) => counterQuantuty(evt, id)}>увеличить</button>
+          onClick={(evt) => counterQuantity(evt, id)}>увеличить</button>
         <button className="button-cart" name="reduce"
-          onClick={(evt) => counterQuantuty(evt, id)}>уменьшить</button>
+          onClick={(evt) => counterQuantity(evt, id)}>уменьшить</button>
       </li>
     )
   })
@@ -89,4 +92,19 @@ const linksOfArray = [
   {title: 'Корзина', path: 'bookmarks/cart'}
 ]
 
-export default wrapperInnerPage(withAppState(CartPage), linksOfArray);
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.isLoggedIn,
+    currentUser: state.currentUser
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    counterQuantity: (event, id) => dispatch(processCounterQuantity(event, id)),
+    deleteFromNecessaryList: (event, id) => dispatch(deleteFromNecessaryList(event, id)),
+    moveToNecessaryList: (event, id) => dispatch(moveToNecessaryList(event, id))
+  }
+}
+
+export default wrapperInnerPage(connect(mapStateToProps, mapDispatchToProps)(CartPage), linksOfArray);
