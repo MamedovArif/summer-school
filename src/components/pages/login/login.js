@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -6,80 +6,55 @@ import {loginProcess} from '../../../actions';
 
 import './login.css';
 
-class LoginPage extends Component {
-
-  state = {
-    email: '',
-    password: '',
-    notificationError: null
+const onNotificationError = (isLoggedIn, notificationError, setNotificationError) => {
+  if (isLoggedIn === 'error' && notificationError === null) {
+    setNotificationError(<p className="error">логин или пароль введены неверно</p>)
   }
+}
 
-  correctField = (evt) => {
-    const value = evt.target.value;
-    this.setState({
-        [evt.target.name]: value
-      })
-  }
+const LoginPage = (props) => {
 
-  componentDidUpdate = (prevProps) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [notificationError, setNotificationError] = useState(null);
 
-    if (this.props.isLoggedIn !== prevProps.isLoggedIn) {
-      if (this.props.isLoggedIn === 'error') {
-        this.setState({
-          notificationError: <p className="error">логин или пароль введены неверно</p>
-        })
-      }
+  const {isLoggedIn, onLogin} = props;
+  useEffect((isLoggedIn) => {
+    if (isLoggedIn === 'error') {
+      setNotificationError(<p className="error">логин или пароль введены неверно</p>)
     }
+  }, [isLoggedIn])
+
+
+  if (isLoggedIn === 'entrance') {
+    return <Redirect to='/bookmarks' />
   }
 
-  handleFocus = () => {
-    this.setState({
-      notificationError: null
-    })
-  }
-
-  onNotificationError = () => {
-    if (this.props.isLoggedIn === 'error' && this.state.notificationError === null) {
-      this.setState({
-        notificationError: <p className="error">логин или пароль введены неверно</p>
-      })
-    }
-  }
-
-  render() {
-    const {email, password} = this.state;
-    let {notificationError} = this.state;
-    const {isLoggedIn, onLogin} = this.props;
-    if (isLoggedIn === 'entrance') {
-      return <Redirect to='/bookmarks' />
-    }
-
-    return (
-      <div className="login-page">
-        <p>войдите, пожалуйста, чтобы посмотреть
-        свои закладки и корзину или оформить заказ</p>
-        <p>если вы не зарегистрированы,
-        то перейдите на страницу <b><Link to='/registration'>регистрации</Link></b></p>
-        <div>
-          <label>Email
-            <input type="email" name="email" onFocus={() => this.handleFocus()}
-            onChange={(evt) => this.correctField(evt)}/>
-          </label>
-        </div>
-        <div>
-          <label>Пароль
-            <input type="password" name="password" onFocus={() => this.handleFocus()}
-              onChange={(evt) => this.correctField(evt)}/>
-          </label>
-        </div>
-        <button onClick={() => {
-          onLogin(email, password);
-          this.onNotificationError();
-        }}>Войти</button>
-        {notificationError}
+  return (
+    <div className="login-page">
+      <p>войдите, пожалуйста, чтобы посмотреть
+      свои закладки и корзину или оформить заказ</p>
+      <p>если вы не зарегистрированы,
+      то перейдите на страницу <b><Link to='/registration'>регистрации</Link></b></p>
+      <div>
+        <label>Email
+          <input type="email" name="email" onFocus={() => setNotificationError(null)}
+          onChange={(evt) => setEmail(evt.target.value)}/>
+        </label>
       </div>
-    )
-  }
+      <div>
+        <label>Пароль
+          <input type="password" name="password" onFocus={() => setNotificationError(null)}
+            onChange={(evt) => setPassword(evt.target.value)}/>
+        </label>
+      </div>
+      <button onClick={() => {
+        onLogin(email, password);
+        onNotificationError(isLoggedIn, notificationError, setNotificationError);
+      }}>Войти</button>
+      {notificationError}
+    </div>
+  )
 }
 
 const mapStateToProps = ({isLoggedIn}) => {
