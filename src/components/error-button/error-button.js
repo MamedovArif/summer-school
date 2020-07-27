@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import './error-button.css';
 
-export default class ErrorButton extends Component {
-
-  state = {
-    renderError: false
-  };
-
-  render() {
-    if (this.state.renderError) {
-      this.hjkk.bh = 'hkgf';
-    }
-
-    return (
-      <button onClick={() => this.setState({renderError: true})}
-        className="credit-button" to="/contacts">
-        Отправить заявку
-      </button>
-    );
+const ErrorButton = () => {
+  const [renderError, setRenderError] = useState(false);
+  if (renderError) {
+    renderError.bh = 'hkgf';
   }
+
+  return (
+    <button onClick={() => setRenderError(true)}
+      className="credit-button" to="/contacts">
+      Отправить заявку
+    </button>
+  );
 }
+
+export default ErrorButton;

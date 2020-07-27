@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import {wrapperInnerPage} from '../wrapper-inner-page';
 
-const OrderPage = ({appState}) => {
-  if (appState.isLoggedIn !== 'entrance') {
+const OrderPage = (props) => {
+  if (props.isLoggedIn !== 'entrance') {
     return <Redirect to='/login' />
   }
-  const {cartList} = appState.currentUser;
+  const {cartList} = props.currentUser;
   if (cartList.length === 0) {
     return (
       <div>
@@ -26,4 +27,14 @@ const linksOfArray = [
   {title: 'Оформление заказа', path: 'bookmarks/cart/place-your-order'}
 ]
 
-export default wrapperInnerPage(OrderPage, linksOfArray);
+const mapStateToProps = ({isLoggedIn, currentUser}) => {
+  return {
+    isLoggedIn,
+    currentUser
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  wrapperInnerPage(OrderPage, linksOfArray));

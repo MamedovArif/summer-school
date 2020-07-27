@@ -4,14 +4,16 @@ import Filters from './filters';
 import AboutPerforator from './about-perforator';
 import ItemList from '../item-list';
 
-import { withService, withData, withFunctionalList } from '../hoc';
+import { withData, withFunctionalList } from '../hoc';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 
 const List = (props) => {
+
   const {initialGoods, currentGoods, category,
     handleCheckbox, handleRadio, sortingInitialGoods} = props;
 
-  const aboutPerforator = category === 'perforators' ? <AboutPerforator /> : null;
+  const aboutPerforator = category === 'perforators' ?
+    <AboutPerforator /> : null;
 
   return (
     <Fragment>
@@ -19,23 +21,11 @@ const List = (props) => {
         data={initialGoods}
         handleCheckbox={handleCheckbox} handleRadio={handleRadio}/>
 
-      <ItemList data={currentGoods} category={category} />
+      <ItemList data={currentGoods} category={category}/>
 
       {aboutPerforator}
     </Fragment>
   )
-}
-
-const mapPerforatorMethodsToProps = (service) => {
-  return {
-    getData: service.getAllPerforators
-  }
-}
-
-const mapAngleGrindersMethodsToProps = (service) => {
-  return {
-    getData: service.getAllAngleGrinders
-  }
 }
 
 const linksOfPerforators = [
@@ -50,10 +40,10 @@ const linksOfAngleGrinders = [
   {title: 'Болгарки', path: 'catalog/tool/angle-grinders/'},
 ]
 
-const PerforatorList = withService(mapPerforatorMethodsToProps)(
-  withData(wrapperInnerPage(withFunctionalList(List, 'perforators'), linksOfPerforators)));
+const PerforatorList = withData(
+  wrapperInnerPage(withFunctionalList(List, 'perforators'), linksOfPerforators));
 
-const AngleGrinderList = withService(mapAngleGrindersMethodsToProps)(
-  withData(wrapperInnerPage(withFunctionalList(List, 'angle-grinders'), linksOfAngleGrinders)));
+const AngleGrinderList = withData(
+  wrapperInnerPage(withFunctionalList(List, 'angle-grinders'), linksOfAngleGrinders));
 
 export {PerforatorList, AngleGrinderList};

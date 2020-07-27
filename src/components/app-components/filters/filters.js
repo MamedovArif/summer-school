@@ -80,18 +80,3 @@ const Filters = ({data, handleCheckbox, handleRadio, sortingInitialGoods}) => {
 }
 
 export default Filters;
-
-/*
-<li className="filter-option">
-  <input onChange={handleRadio}
-  className="visually-hidden filter-input-radio"
-  type="radio" name="networking" id="accumulator" />
-  <label className="radio" htmlFor="accumulator">Аккумуляторные</label>
-</li>
-<li className="filter-option">
-  <input onChange={handleRadio}
-  className="visually-hidden filter-input-radio disabled"
-  type="radio" name="networking" id="electronetwork"
-  defaultChecked/>
-  <label className="radio" htmlFor="electronetwork">Сетевые</label>
- </li> */

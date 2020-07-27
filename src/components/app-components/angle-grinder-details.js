@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ItemDetails, {Record} from '../item-details';
-import { withService } from '../hoc';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
+import {ServiceContext} from '../../index.js';
 
 const AngleGrinderDetails = (props) => {
+  const service = useContext(ServiceContext);
+
   return (
-    <ItemDetails {...props}>
+    <ItemDetails {...props} getData={service.getAngleGrinder}>
       <Record field="model" label="модель" />
       <Record field="brand" label="бренд" />
       <Record field="initialPrice" label="первоначальная цена" />
@@ -19,12 +21,6 @@ const AngleGrinderDetails = (props) => {
   )
 }
 
-const mapMethodsToProps = (service) => {
-  return {
-    getData: service.getAngleGrinder
-  }
-}
-
 const linksOfArray = [
   {title: 'Каталог', path: 'catalog/'},
   {title: 'Инструмент', path: 'catalog/tool'},
@@ -32,5 +28,4 @@ const linksOfArray = [
   {title: 'Болгарка', path: ''}
 ]
 
-export default withService(mapMethodsToProps)(
-  wrapperInnerPage(AngleGrinderDetails, linksOfArray));
+export default wrapperInnerPage(AngleGrinderDetails, linksOfArray);

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ItemDetails, {Record} from '../item-details';
-import { withService } from '../hoc';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
+import {ServiceContext} from '../../index.js';
 
 const PerforatorDetails = (props) => {
+  const service = useContext(ServiceContext);
+
   return (
-    <ItemDetails {...props}>
+    <ItemDetails {...props} getData={service.getPerforator}>
       <Record field="model" label="модель" />
       <Record field="brand" label="бренд" />
       <Record field="initialPrice" label="первоначальная цена" />
@@ -20,13 +22,6 @@ const PerforatorDetails = (props) => {
   )
 }
 
-const mapMethodsToProps = (service) => {
-  return {
-    getData: service.getPerforator
-  }
-}
-
-
 const linksOfArray = [
   {title: 'Каталог', path: 'catalog/'},
   {title: 'Инструмент', path: 'catalog/tool'},
@@ -34,5 +29,4 @@ const linksOfArray = [
   {title: 'Перфоратор', path: ''}
 ]
 
-export default withService(mapMethodsToProps)(
-  wrapperInnerPage(PerforatorDetails, linksOfArray));
+export default wrapperInnerPage(PerforatorDetails, linksOfArray);

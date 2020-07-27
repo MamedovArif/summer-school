@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './pagination.js';
 import ReactDOM from 'react-dom';
-//import {withAppState} from '../hoc';
 
 import {connect} from 'react-redux';
 import {handleClickByCartOfList} from '../../actions';

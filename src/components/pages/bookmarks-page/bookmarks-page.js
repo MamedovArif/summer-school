@@ -3,7 +3,6 @@ import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {wrapperInnerPage} from '../wrapper-inner-page';
-//import {withAppState} from '../../hoc';
 import ItemDetails, {Record} from '../../item-details';
 import {deleteFromNecessaryList, moveToNecessaryList} from '../../../actions';
 
