@@ -53,7 +53,10 @@ const App = () => {
 
           <Route path="/catalog/tool/perforators/"
           render={() => {
-            return <PerforatorList getData={service.getAllPerforators}/>}}
+            return <PerforatorList
+              getData={service.getAllPerforators}
+              category='perforators'
+              />}}
             exact/>
           <Route path="/catalog/tool/perforators/:id" render={({match}) => {
               const { id } = match.params;
@@ -62,7 +65,10 @@ const App = () => {
 
           <Route path="/catalog/tool/angle-grinders/"
           render={() => {
-            return <AngleGrinderList getData={service.getAllAngleGrinders}/>}}
+            return <AngleGrinderList
+            getData={service.getAllAngleGrinders}
+            category='angle-grinders'
+            />}}
             exact/>
           <Route path="/catalog/tool/angle-grinders/:id" render={({match, location, history}) => {
               const { id } = match.params;
