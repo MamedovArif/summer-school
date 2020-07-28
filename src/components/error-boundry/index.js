@@ -1,3 +1,3 @@
-import ErrorBoundry from './error-boundry';
+import ErrorBoundry from './error-boundry.tsx';
 
 export default ErrorBoundry;
