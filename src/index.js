@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/app';
 import ErrorBoundry from './components/error-boundry';
 import MockService from './services/mock-service';
-//import {ServiceProvider} from './components/service-context';
 
 import store from './store.js';
 

@@ -19,7 +19,7 @@ const LoginPage = (props) => {
   const [notificationError, setNotificationError] = useState(null);
 
   const {isLoggedIn, onLogin} = props;
-  useEffect((isLoggedIn) => {
+  useEffect(() => {
     if (isLoggedIn === 'error') {
       setNotificationError(<p className="error">логин или пароль введены неверно</p>)
     }
