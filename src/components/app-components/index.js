@@ -1,5 +1,5 @@
-import PerforatorDetails from './perforator-details.js';
-import AngleGrinderDetails from './angle-grinder-details.js';
+import PerforatorDetails from './perforator-details.tsx';
+import AngleGrinderDetails from './angle-grinder-details.tsx';
 import {PerforatorList, AngleGrinderList} from './item-lists.tsx';
 
 export {

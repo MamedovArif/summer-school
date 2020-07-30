@@ -3,13 +3,38 @@ import ItemDetails, {Record} from '../item-details';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 import {ServiceContext} from '../../index.js';
 
+type Item = {
+  [key: string]: any,
+  id: string,
+  title: string,
+  brand: string,
+  model: string,
+  isNew: boolean,
+  initialPrice: number,
+  price: number,
+  powerSupply: 'electronetwork' | 'accumulator',
+  isHit: boolean,
+  power: number,
+  numberOfIdle: number,
+  weight: number,
+  url: string,
 
-const PerforatorDetails = (props) => {
+  frequencyOfStrikes?: number,
+  impactEnergy?: number,
+  maxDiscDiameter?: number,
+}
+///////////
+type PropsPerforatorDetails = {
+  itemId: string
+}
+
+const PerforatorDetails:React.FC<PropsPerforatorDetails> = (props) => {
   const service = useContext(ServiceContext);
+  const getPerforator: Promise<Item> = service.getPerforator
 
   return (
-    <ItemDetails {...props} getData={service.getPerforator}>
-      <Record field="model" label="моделька" />
+    <ItemDetails {...props} getData={getPerforator}>
+      <Record field="model" label="модель" />
       <Record field="brand" label="бренд" />
       <Record field="initialPrice" label="первоначальная цена" />
       <Record field="price" label="цена" />

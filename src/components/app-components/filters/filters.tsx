@@ -2,7 +2,35 @@ import React from 'react';
 
 import './filters.css';
 
-const renderInput = (handleCheckbox, brand) => {
+type Item = {
+  [key: string]: any,
+  id: string,
+  title: string,
+  brand: string,
+  model: string,
+  isNew: boolean,
+  initialPrice: number,
+  price: number,
+  powerSupply: 'electronetwork' | 'accumulator',
+  isHit: boolean,
+  power: number,
+  numberOfIdle: number,
+  weight: number,
+  url: string,
+
+  frequencyOfStrikes?: number,
+  impactEnergy?: number,
+  maxDiscDiameter?: number,
+}
+
+type Maping = {
+  [key: string]: string,
+  electronetwork: string,
+  accumulator: string
+}
+
+const renderInput = (handleCheckbox: (e: React.ChangeEvent<HTMLInputElement>) => void,
+      brand: string) => {
   const lowerBrand = brand.toLowerCase();
   return (
     <li className="filter-option" key={lowerBrand}>
@@ -14,8 +42,9 @@ const renderInput = (handleCheckbox, brand) => {
   )
 }
 
-const renderRadio = (handleRadio, power, name) => {
-  const maping = {
+const renderRadio = (handleRadio: (e: React.ChangeEvent<HTMLInputElement>) => void,
+      power: string, name: string) => {
+  const maping: Maping = {
     electronetwork: 'сетевые',
     accumulator: 'аккумуляторные'
   }
@@ -30,8 +59,14 @@ const renderRadio = (handleRadio, power, name) => {
   )
 }
 
-const Filters = (props) => {
-  const {data, handleCheckbox, handleRadio, sortingInitialGoods} = props;
+type PropsFilters = {
+  data: Array<Item>,
+  handleCheckbox: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  handleRadio: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  sortingInitialGoods: () => void
+}
+
+const Filters = ({data, handleCheckbox, handleRadio, sortingInitialGoods}: PropsFilters) => {
   let brands = data.map((item) => {
     return item.brand
   });

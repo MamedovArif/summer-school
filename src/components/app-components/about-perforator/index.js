@@ -1,3 +1,3 @@
-import AboutPerforator from './about-perforator.js';
+import AboutPerforator from './about-perforator.tsx';
 
 export default AboutPerforator;

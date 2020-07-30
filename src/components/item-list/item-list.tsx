@@ -144,7 +144,8 @@ class ItemList extends Component<PropsItemList, StateItemList> {
     })
   }
 
-  paginate = (pageNumber: number): void => {
+  paginate = (e: React.ChangeEvent<HTMLInputElement>,
+        pageNumber: number): void => {
     const indexOfLastItem = pageNumber * this.state.itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage;
     const currentItems = this.state.items.slice(indexOfFirstItem, indexOfLastItem);
