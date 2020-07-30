@@ -1,3 +1,3 @@
-import withData from './with-data.js';
+import withData from './with-data.tsx';
 
-export { withData};
+export { withData };

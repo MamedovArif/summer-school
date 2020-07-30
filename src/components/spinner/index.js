@@ -1,3 +1,3 @@
-import Spinner from './spinner.js';
+import Spinner from './spinner.tsx';
 
 export default Spinner;

@@ -1,7 +1,7 @@
 const initialState = {
   isLoggedIn: 'out',
   isRegistration: 'no',
-  currentUser: {}, // !
+  currentUser: {},
   users: [
     {
       name: 'Robert',

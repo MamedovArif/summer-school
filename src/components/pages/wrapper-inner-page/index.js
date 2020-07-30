@@ -1,3 +1,3 @@
-import {wrapperInnerPage} from './wrapper-inner-page.js';
+import {wrapperInnerPage} from './wrapper-inner-page.tsx';
 
 export {wrapperInnerPage};
