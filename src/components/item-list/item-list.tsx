@@ -1,79 +1,16 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Pagination from './pagination.js';
-import ReactDOM from 'react-dom';
+import Pagination from './pagination';
 
 import {connect} from 'react-redux';
 import {handleClickByCartOfList} from '../../actions';
 
 import './item-list.css';
 
-type ItemCartList = {
-  id: string,
-  title: string,
-  brand: string,
-  model: string,
-  isNew: boolean,
-  initialPrice: number,
-  price: number,
-  powerSupply: 'electronetwork' | 'accumulator', //!!
-  isHit: boolean,
-  power: number,
-  numberOfIdle: number,
-  weight: number,
-  url: string, // !!isLoggedIn
-  quantity: number
+import { Item, MainState, EmptyArray} from '../../types'
 
-  frequencyOfStrikes?: number,
-  impactEnergy?: number,
-  maxDiscDiameter?: number,
-}
-
-type User = {
-  name: string,
-  phone: string,
-  email: string,
-  password: string,
-  cartList: Array<ItemCartList> | EmptyArray,
-  bookmarksList: Array<ItemCartList> | EmptyArray,
-}
-
-type EmptyUser = {};
-
-type IsLoggedIn =  'entrance' | 'out' | 'error'
-type IsRegistration = 'no' | 'error' | 'yes'
 type HandleClickFun = (event: React.MouseEvent<HTMLButtonElement>,
     id: string, data: Array<Item> | EmptyArray) => void
-
-type EmptyArray = []
-
-type MainState = {
-  isLoggedIn: IsLoggedIn,
-  isRegistration: IsRegistration,
-  currentUser: User | EmptyUser, // !
-  users: Array<User> | EmptyArray
-}
-///////////////////
-type Item = {
-  [key: string]: any,
-  id: string,
-  title: string,
-  brand: string,
-  model: string,
-  isNew: boolean,
-  initialPrice: number,
-  price: number,
-  powerSupply: 'electronetwork' | 'accumulator',
-  isHit: boolean,
-  power: number,
-  numberOfIdle: number,
-  weight: number,
-  url: string,
-
-  frequencyOfStrikes?: number,
-  impactEnergy?: number,
-  maxDiscDiameter?: number,
-}
 
 type StateItemList = {
   items: Array<Item> | EmptyArray,
@@ -112,13 +49,7 @@ class ItemList extends Component<PropsItemList, StateItemList> {
   }
   private inputRef = React.createRef<HTMLSelectElement>()
   componentDidUpdate = (prevProps: PropsItemList): void => { //для чекбоксов
-    // const itemList: React.ReactNode = ReactDOM.findDOMNode(this);
     if (this.props.data !== prevProps.data) {
-
-      // const sorts = itemList.querySelectorAll('input[name="sorting"]'); //ref
-      // for (let sort of sorts) {
-      //   sort.style = "border: none; border-bottom: 1.5px dotted #ee3643;"
-      // }
       this.updateItems();
       this.updatePagination();
     }

@@ -1,3 +1,3 @@
-import News from './news.js';
+import News from './news.tsx';
 
 export default News;

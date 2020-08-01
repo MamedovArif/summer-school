@@ -1,3 +1,7 @@
+.error {
+  border: 2px solid tomato;
+}
+
 .registration-page {
   width: 350px;
   margin: 20px auto;

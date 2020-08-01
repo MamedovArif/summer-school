@@ -1,3 +1,3 @@
-import BookmarksPage from './bookmarks-page.js';
+import BookmarksPage from './bookmarks-page.tsx';
 
 export default BookmarksPage;

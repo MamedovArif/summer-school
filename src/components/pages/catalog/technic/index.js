@@ -1,3 +1,3 @@
-import Technic from './technic.js';
+import Technic from './technic.tsx';
 
 export default Technic;

@@ -5,25 +5,7 @@ import ErrorIndicator from '../error-indicator';
 
 import './item-details.css';
 
-interface Item {
-  [key: string]: any;
-  id: string;
-  title: string;
-  brand: string;
-  model: string;
-  isNew: boolean;
-  initialPrice: number;
-  price: number;
-  powerSupply: string;
-  isHit: boolean;
-  power: number;
-  numberOfIdle: number;
-  weight: number;
-  url: string;
-  frequencyOfStrikes?: number;
-  impactEnergy?: number;
-  maxDiscDiameter?: number;
-}
+import { Item } from '../../types';
 
 type HooksState = {
   item: Item | null,
@@ -136,4 +118,3 @@ const ItemDetails = (props: PropsItemDetails) => {
 }
 
 export default ItemDetails;
-

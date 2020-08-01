@@ -6,16 +6,31 @@ import {loginProcess} from '../../../actions';
 
 import './login.css';
 
-const onNotificationError = (isLoggedIn, notificationError, setNotificationError) => {
+import {IsLoggedIn, MainState} from '../../../types';
+
+type PropsLoginPage = {
+  isLoggedIn: IsLoggedIn,
+  onLogin: (email: string, password: string) => MainState,
+}
+
+type Action = {
+  type: string,
+  email: string,
+  password: string
+}
+
+const onNotificationError = (isLoggedIn: IsLoggedIn,
+    notificationError: Object | null, setNotificationError: Function): void => {
   if (isLoggedIn === 'error' && notificationError === null) {
     setNotificationError(<p className="error">логин или пароль введены неверно</p>)
   }
 }
 
-const LoginPage = (props) => {
+const LoginPage = (props: PropsLoginPage) => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [notificationError, setNotificationError] = useState(null);
+  const [notificationError, setNotificationError] = useState<any>(null);
 
   const {isLoggedIn, onLogin} = props;
   useEffect(() => {
@@ -56,15 +71,15 @@ const LoginPage = (props) => {
   )
 }
 
-const mapStateToProps = ({isLoggedIn}) => {
+const mapStateToProps = ({isLoggedIn}: MainState) => {
   return {
     isLoggedIn
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: (arg: Action) => MainState): Object => {
   return {
-    onLogin: (email, password) => dispatch(loginProcess(email, password))
+    onLogin: (email: string, password: string) => dispatch(loginProcess(email, password))
   }
 }
 

@@ -1,3 +1,3 @@
-import OrderPage from './order-page.js';
+import OrderPage from './order-page.tsx';
 
 export default OrderPage;

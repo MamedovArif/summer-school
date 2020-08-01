@@ -2,31 +2,19 @@ import React from 'react';
 
 import './filters.css';
 
-type Item = {
-  [key: string]: any,
-  id: string,
-  title: string,
-  brand: string,
-  model: string,
-  isNew: boolean,
-  initialPrice: number,
-  price: number,
-  powerSupply: 'electronetwork' | 'accumulator',
-  isHit: boolean,
-  power: number,
-  numberOfIdle: number,
-  weight: number,
-  url: string,
-
-  frequencyOfStrikes?: number,
-  impactEnergy?: number,
-  maxDiscDiameter?: number,
-}
+import { Item } from '../../../types'
 
 type Maping = {
   [key: string]: string,
   electronetwork: string,
   accumulator: string
+}
+
+type PropsFilters = {
+  data: Array<Item>,
+  handleCheckbox: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  handleRadio: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  sortingInitialGoods: () => void
 }
 
 const renderInput = (handleCheckbox: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -57,13 +45,6 @@ const renderRadio = (handleRadio: (e: React.ChangeEvent<HTMLInputElement>) => vo
       <label className="radio" htmlFor={power}>{maping[power]}</label>
     </li>
   )
-}
-
-type PropsFilters = {
-  data: Array<Item>,
-  handleCheckbox: (e: React.ChangeEvent<HTMLInputElement>) => void,
-  handleRadio: (e: React.ChangeEvent<HTMLInputElement>) => void,
-  sortingInitialGoods: () => void
 }
 
 const Filters = ({data, handleCheckbox, handleRadio, sortingInitialGoods}: PropsFilters) => {

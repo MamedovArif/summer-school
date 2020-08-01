@@ -1,3 +1,3 @@
-import Services from './services.js';
+import Services from './services.tsx';
 
 export default Services;

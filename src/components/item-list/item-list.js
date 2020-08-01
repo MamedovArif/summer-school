@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Pagination from './pagination.js';
+import Pagination from './pagination';
 import ReactDOM from 'react-dom';
 
 import {connect} from 'react-redux';

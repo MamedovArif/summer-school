@@ -5,48 +5,7 @@ import {connect} from 'react-redux';
 import './header.css';
 import logo from './img/logo-technomart.svg';
 
-type ItemCartList = {
-  id: string,
-  title: string,
-  brand: string,
-  model: string,
-  isNew: boolean,
-  initialPrice: number,
-  price: number,
-  powerSupply: 'electronetwork' | 'accumulator', //!!
-  isHit: boolean,
-  power: number,
-  numberOfIdle: number,
-  weight: number,
-  url: string, // !!isLoggedIn
-  quantity: number
-
-  frequencyOfStrikes?: number,
-  impactEnergy?: number,
-  maxDiscDiameter?: number,
-}
-type EmptyArray = []
-
-type User = {
-  name: string,
-  phone: string,
-  email: string,
-  password: string,
-  cartList: Array<ItemCartList> | EmptyArray,
-  bookmarksList: Array<ItemCartList> | EmptyArray,
-}
-
-type EmptyUser = {};
-
-type IsLoggedIn =  'entrance' | 'out' | 'error'
-type IsRegistration = 'no' | 'error' | 'yes'
-
-type MainState = {
-  isLoggedIn: IsLoggedIn,
-  isRegistration: IsRegistration,
-  currentUser: User | EmptyUser, // !
-  users: Array<User> | EmptyArray
-}
+import { IsLoggedIn, User, MainState, Item, EmptyArray} from '../../types'
 
 type HeaderProps = {
   isLoggedIn: IsLoggedIn,
@@ -60,10 +19,9 @@ type Mapping = {
   entrance: string
 }
 
-const Header:React.FC<HeaderProps> = (props) => {
-  const {currentUser, isLoggedIn} = props;
-  let cartList: Array<ItemCartList> | EmptyArray | undefined;
-  let bookmarksList: Array<ItemCartList> | EmptyArray | undefined;
+const Header = ({currentUser, isLoggedIn}: HeaderProps) => {
+  let cartList: Array<Item> | EmptyArray | undefined;
+  let bookmarksList: Array<Item> | EmptyArray | undefined;
   let nameUser: React.ReactElement | null | undefined;
   if (currentUser.cartList) {
     cartList = currentUser.cartList;
@@ -111,9 +69,8 @@ const Header:React.FC<HeaderProps> = (props) => {
               </span>
             </label>
           </form>
-          <Link className="basket" to="/bookmarks/cart">Корзина: {cartList.length}</Link>
           <Link className="bookmark" to="/bookmarks">Закладки: {bookmarksList.length}</Link>
-
+          <Link className="basket" to="/bookmarks/cart">Корзина: {cartList.length}</Link>
           <Link className="orders" to="/bookmarks/cart/place-your-order">
             Оформить заказ
           </Link>
@@ -159,5 +116,5 @@ const mapStateToProps = (state: MainState) => {
 
 const mapDispatchToProps = {}
 
-//export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

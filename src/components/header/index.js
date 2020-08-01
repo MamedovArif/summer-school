@@ -1,3 +1,3 @@
-import Header from './header.js';
+import Header from './header.tsx';
 
 export default Header;

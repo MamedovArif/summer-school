@@ -1,7 +1,16 @@
+const nullUser = {
+  name: '',
+  phone: '',
+  email: '',
+  password: '',
+  cartList: [],
+  bookmarksList: [],
+}
+
 const initialState = {
   isLoggedIn: 'out',
   isRegistration: 'no',
-  currentUser: {},
+  currentUser: nullUser,
   users: [
     {
       name: 'Robert',
@@ -119,7 +128,7 @@ const reducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        currentUser: {},
+        currentUser: nullUser,
         isLoggedIn: 'out',
         isRegistration: 'no',
       }

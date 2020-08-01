@@ -1,3 +1,3 @@
-import SpecialOffers from './special-offers.js';
+import SpecialOffers from './special-offers.tsx';
 
 export default SpecialOffers;

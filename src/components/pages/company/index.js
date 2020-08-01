@@ -1,3 +1,3 @@
-import Company from './company.js';
+import Company from './company.tsx';
 
 export default Company;

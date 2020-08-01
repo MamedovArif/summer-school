@@ -6,6 +6,7 @@ import './header.css';
 import logo from './img/logo-technomart.svg';
 
 const Header = (props) => {
+  console.log(props);
   const {currentUser, isLoggedIn} = props;
   let cartList;
   let bookmarksList;

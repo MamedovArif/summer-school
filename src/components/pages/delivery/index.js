@@ -1,3 +1,3 @@
-import Delivery from './delivery.js';
+import Delivery from './delivery.tsx';
 
 export default Delivery;

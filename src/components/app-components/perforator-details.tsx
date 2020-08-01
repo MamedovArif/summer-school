@@ -3,27 +3,8 @@ import ItemDetails, {Record} from '../item-details';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
 import {ServiceContext} from '../../index.js';
 
-type Item = {
-  [key: string]: any,
-  id: string,
-  title: string,
-  brand: string,
-  model: string,
-  isNew: boolean,
-  initialPrice: number,
-  price: number,
-  powerSupply: 'electronetwork' | 'accumulator',
-  isHit: boolean,
-  power: number,
-  numberOfIdle: number,
-  weight: number,
-  url: string,
+import { Item } from '../../types'
 
-  frequencyOfStrikes?: number,
-  impactEnergy?: number,
-  maxDiscDiameter?: number,
-}
-///////////
 type PropsPerforatorDetails = {
   itemId: string
 }

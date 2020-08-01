@@ -1,3 +1,3 @@
-import RegistrationPage from './registration.js';
+import RegistrationPage from './registration.tsx';
 
 export default RegistrationPage;

@@ -1,3 +1,3 @@
-import LoginPage from './login.js';
+import LoginPage from './login.tsx';
 
 export default LoginPage;

@@ -1,3 +1,3 @@
-import CartPage from './cart-page.js';
+import CartPage from './cart-page.tsx';
 
 export default CartPage;

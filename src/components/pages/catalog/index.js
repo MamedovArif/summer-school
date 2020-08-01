@@ -1,3 +1,3 @@
-import Catalog from './catalog.js';
+import Catalog from './catalog.tsx';
 
 export default Catalog;

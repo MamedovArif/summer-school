@@ -1,3 +1,3 @@
-import Tool from './tool.js';
+import Tool from './tool.tsx';
 
 export default Tool;

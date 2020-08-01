@@ -1,3 +1,3 @@
-import Contacts from './contacts.js';
+import Contacts from './contacts.tsx';
 
 export default Contacts;

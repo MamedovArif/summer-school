@@ -1,3 +1,3 @@
-import LogoutPage from './logout.js';
+import LogoutPage from './logout.tsx';
 
 export default LogoutPage;

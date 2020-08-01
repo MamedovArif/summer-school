@@ -9,27 +9,7 @@ import ItemList from '../item-list';
 
 import { withData } from '../hoc';
 import {wrapperInnerPage} from '../pages/wrapper-inner-page';
-
-type Item = {
-  [key: string]: any,
-  id: string,
-  title: string,
-  brand: string,
-  model: string,
-  isNew: boolean,
-  initialPrice: number,
-  price: number,
-  powerSupply: 'electronetwork' | 'accumulator',
-  isHit: boolean,
-  power: number,
-  numberOfIdle: number,
-  weight: number,
-  url: string,
-
-  frequencyOfStrikes?: number,
-  impactEnergy?: number,
-  maxDiscDiameter?: number,
-}
+import { Item } from '../../types'
 
 type ResultUseWithFunctionalList = {
   handleCheckbox: (evt: React.ChangeEvent<HTMLInputElement>) => void,
@@ -37,6 +17,12 @@ type ResultUseWithFunctionalList = {
   handleRadio: (evt: React.ChangeEvent<HTMLInputElement>) => void,
   initialGoods: Array<Item>,
   currentGoods: Array<Item>
+}
+
+type ListProps = {
+  getData: Promise<Array<Object>>,
+  data: Array<Item>,
+  category: string
 }
 
 const useWithFunctionalList = (data: Array<Item>): ResultUseWithFunctionalList => {
@@ -86,12 +72,6 @@ const useWithFunctionalList = (data: Array<Item>): ResultUseWithFunctionalList =
     initialGoods,
     currentGoods
   }
-}
-
-type ListProps = {
-  getData: Promise<Array<Object>>,
-  data: Array<Item>,
-  category: string
 }
 
 const List = (props: ListProps) => {
